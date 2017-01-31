@@ -1,0 +1,3 @@
+espritsocialpro_homepage:
+    path:     /
+    defaults: { _controller: EspritsocialproBundle:Default:index }

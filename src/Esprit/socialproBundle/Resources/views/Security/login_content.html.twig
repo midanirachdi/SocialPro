@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1"/>
+    <title>Social Pro</title>
+    <link rel="icon" href="{{ asset('bundles/espritsocialpro/login/img/logosp.ico') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/espritsocialpro/login/css/style.css') }}"/>
+</head>
+
+<body>
+<div class="wrapper">
+    <br/><br/><br/>
+    <div class="container1">
+        <div class="card"></div>
+        <div class="card">
+            <center><img src="{{ asset('bundles/espritsocialpro/login/img/logosp.png') }}" width="150px"
+                         height="150px"/></center>
+            <br/>
+
+            <form action="{{ path("fos_user_security_check") }}" method="post">
+
+
+                {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                {% endif %}
+
+
+                <div class="input-container1">
+
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required"/>
+                    <label for="username">Email</label>
+                    <div class="bar"></div>
+                </div>
+
+                <div class="input-container1">
+
+                    <input type="password" id="password" name="_password" required="required"/>
+                    <label for="password">{{ 'security.login.password'|trans }}</label>
+                    <div class="bar" style="height: 2px;"></div>
+                </div>
+
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+                <div class="button-container1">
+                    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"/>
+                </div>
+
+                <div class="footer"><a href="{{ path('fos_user_resetting_request') }}">Forgot password ?</a></div>
+                <div class="footer"><a href="{{ path('fos_user_registration_register') }}">register user</a></div>
+
+            </form>
+        </div>
+
+
+        <div class="card alt">
+            <div class="toggle">
+                <div><img src="{{ asset('bundles/espritsocialpro/login/img/di.png') }}"></div>
+            </div>
+            <h1 class="title">Demande d'inscription
+                <div class="close"></div>
+
+            </h1>
+            <form>
+                <div class="input-container1" style="margin-bottom: 7px;">
+                    <input type="#{type}" id="#{label}" required="required"/>
+                    <label for="#{label}">Nom</label>
+                    <div class="bar"></div>
+                </div>
+                <div class="input-container1" style="margin-bottom: 7px;">
+                    <input type="#{type}" id="#{label}" required="required"/>
+                    <label for="#{label}">Prénom</label>
+                    <div class="bar"></div>
+                </div>
+                <div class="input-container1" style="margin-bottom: 7px;">
+                    <input type="#{type}" id="#{label}" required="required"/>
+                    <label for="#{label}">Email</label>
+                    <div class="bar"></div>
+                </div>
+                <div class="input-container1"style="margin-bottom: 7px;">
+                    <input  type="Password" id="#{label}" required="required"/>
+                    <label for="#{label}">Mot de passe</label>
+                    <div class="bar"></div>
+                </div>
+                <div class="input-container1"style="margin-bottom: 30px;">
+                    <input  type="Password" id="#{label}" required="required"/>
+                    <label for="#{label}">Confirmer votre mot de passe</label>
+                    <div class="bar"></div>
+                </div>
+                <div class="button-container1">
+        <span>                <input type="submit" name="login" value="Demander"/>
+</span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <ul class="bg-bubbles">
+
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script src="{{ asset('bundles/espritsocialpro/login/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/espritsocialpro/login/js/index.js') }}"></script>
+</div>
