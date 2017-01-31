@@ -1,0 +1,15 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: pidevsocialpro
+    database_user: root
+    database_password: null
+    mailer_transport: gmail
+    mailer_port: 465
+    mailer_encryption: ssl
+    mailer_auth_mode: login
+    mailer_host: smtp.gmail.com
+    mailer_user: pisocial.pro@gmail.com
+    mailer_password: "07201725"
+    secret: 1ea801e7bc94c62c0db882a3521fd6854b7a6709
