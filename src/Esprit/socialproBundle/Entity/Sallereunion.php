@@ -23,9 +23,10 @@ class Sallereunion
     /**
      * @ORM\OneToMany(targetEntity="Reunion", mappedBy="sallereunion")
      */
-    private $reunion;
+    private $reunions;
     public function __construct() {
         $this->users = new ArrayCollection();
+        $this->reunions = new ArrayCollection();
     }
     /**
      * @ORM\Column(type="integer")
@@ -104,18 +105,20 @@ class Sallereunion
     /**
      * @return mixed
      */
-    public function getReunion()
+    public function getReunions()
     {
-        return $this->reunion;
+        return $this->reunions;
     }
 
     /**
-     * @param mixed $reunion
+     * @param mixed $reunions
      */
-    public function setReunion($reunion)
+    public function setReunions($reunions)
     {
-        $this->reunion = $reunion;
+        $this->reunions = $reunions;
     }
+
+
 
 
 }

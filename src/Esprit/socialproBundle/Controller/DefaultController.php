@@ -8,6 +8,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
+
         return $this->render('EspritsocialproBundle:Default:index.html.twig');
     }
 }

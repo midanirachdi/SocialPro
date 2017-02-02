@@ -61,8 +61,7 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->competences = new ArrayCollection();
-        $this->reunions = new ArrayCollection();
-        $this->historiques = new ArrayCollection();
+        $this->projets = new ArrayCollection();
     }
     /**
      * @ORM\OneToOne(targetEntity="Historique", inversedBy="user")
@@ -72,7 +71,7 @@ class User extends BaseUser
     /**
      * @ORM\OneToMany(targetEntity="Reunion", mappedBy="user")
      */
-    private $reunions;
+    private $reunion;
     /**
      * @ORM\ManyToOne(targetEntity="Equipe", inversedBy="users")
      * @ORM\JoinColumn(name="idequipe", referencedColumnName="idequipe")
@@ -84,114 +83,9 @@ class User extends BaseUser
      */
     private $departement;
     /**
-     * @ORM\OneToMany(targetEntity="Projet", mappedBy="projet")
+     * @ORM\OneToMany(targetEntity="Projet", mappedBy="user")
      */
     private $projets;
-
-    /**
-     * @return mixed
-     */
-    public function getCompetences()
-    {
-        return $this->competences;
-    }
-
-    /**
-     * @param mixed $competences
-     */
-    public function setCompetences($competences)
-    {
-        $this->competences = $competences;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getReunions()
-    {
-        return $this->reunions;
-    }
-
-    /**
-     * @param mixed $reunions
-     */
-    public function setReunions($reunions)
-    {
-        $this->reunions = $reunions;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHistoriques()
-    {
-        return $this->historiques;
-    }
-
-    /**
-     * @param mixed $historiques
-     */
-    public function setHistoriques($historiques)
-    {
-        $this->historiques = $historiques;
-    }
-
-
-
-
-
-
-
-
-
-    /**
-     * @return mixed
-     */
-    public function getReunion()
-    {
-        return $this->reunions;
-    }
-
-    /**
-     * @param mixed $reunions
-     */
-    public function setReunion($reunions)
-    {
-        $this->reunions = $reunions;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEquipe()
-    {
-        return $this->equipe;
-    }
-
-    /**
-     * @param mixed $equipe
-     */
-    public function setEquipe($equipe)
-    {
-        $this->equipe = $equipe;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDepartement()
-    {
-        return $this->departement;
-    }
-
-    /**
-     * @param mixed $departement
-     */
-    public function setDepartement($departement)
-    {
-        $this->departement = $departement;
-    }
-
 
     /**
      * @return mixed
@@ -223,6 +117,38 @@ class User extends BaseUser
     public function setMatricule($matricule)
     {
         $this->matricule = $matricule;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param mixed $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * @param mixed $prenom
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
     }
 
     /**
@@ -308,35 +234,97 @@ class User extends BaseUser
     /**
      * @return mixed
      */
-    public function getNom()
+    public function getCompetences()
     {
-        return $this->nom;
+        return $this->competences;
     }
 
     /**
-     * @param mixed $nom
+     * @param mixed $competences
      */
-    public function setNom($nom)
+    public function setCompetences($competences)
     {
-        $this->nom = $nom;
+        $this->competences = $competences;
     }
 
     /**
      * @return mixed
      */
-    public function getPrenom()
+    public function getHistorique()
     {
-        return $this->prenom;
+        return $this->historique;
     }
 
     /**
-     * @param mixed $prenom
+     * @param mixed $historique
      */
-    public function setPrenom($prenom)
+    public function setHistorique($historique)
     {
-        $this->prenom = $prenom;
+        $this->historique = $historique;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getReunion()
+    {
+        return $this->reunion;
+    }
 
+    /**
+     * @param mixed $reunion
+     */
+    public function setReunion($reunion)
+    {
+        $this->reunion = $reunion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEquipe()
+    {
+        return $this->equipe;
+    }
+
+    /**
+     * @param mixed $equipe
+     */
+    public function setEquipe($equipe)
+    {
+        $this->equipe = $equipe;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDepartement()
+    {
+        return $this->departement;
+    }
+
+    /**
+     * @param mixed $departement
+     */
+    public function setDepartement($departement)
+    {
+        $this->departement = $departement;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProjets()
+    {
+        return $this->projets;
+    }
+
+    /**
+     * @param mixed $projets
+     */
+    public function setProjets($projets)
+    {
+        $this->projets = $projets;
+    }
 
 }

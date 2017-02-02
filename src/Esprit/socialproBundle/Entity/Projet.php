@@ -32,7 +32,7 @@ class Projet
     private $taches;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="user")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="projets")
      * @ORM\JoinColumn(name="iduser",referencedColumnName="id")
      */
     private $user;
@@ -181,5 +181,5 @@ class Projet
         $this->user = $user;
     }
 
-    
+
 }

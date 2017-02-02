@@ -5,9 +5,10 @@ security:
         FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
-        ROLE_CLIENT:       ROLE_USER
-        ROLE_AGENT: ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_EMPLOYE: ROLE_EMPLOYE
+        ROLE_CHEF_DEP: ROLE_CHEF_DEP
+        ROLE_CHEF_PROJET: ROLE_CHEF_PROJET
+        ROLE_ADMIN: ROLE_ADMIN
 
     providers:
         fos_userbundle:
@@ -18,8 +19,11 @@ security:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
+                default_target_path:  /socialpro
                 csrf_token_generator: security.csrf.token_manager
-            logout:       true
+            logout:
+                path:           /logout
+                target: /login
             anonymous:    true
 
     access_control:
@@ -27,4 +31,5 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/socialpro, role: [ROLE_ADMIN, ROLE_EMPLOYE, ROLE_CHEF_DEP, ROLE_CHEF_PROJET] }
 # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers

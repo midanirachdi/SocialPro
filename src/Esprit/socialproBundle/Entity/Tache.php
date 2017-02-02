@@ -24,8 +24,7 @@ class Tache
      * @ORM\OneToMany(targetEntity="Historique", mappedBy="tache")
      */
     private $historique;
-    public function __construct() {
-    }
+
     /**
      * @ORM\ManyToOne(targetEntity="Projet", inversedBy="taches")
      * @ORM\JoinColumn(name="idprojet", referencedColumnName="idprojet")
@@ -54,22 +53,6 @@ class Tache
     public function setIdtache($idtache)
     {
         $this->idtache = $idtache;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHistoriques()
-    {
-        return $this->historiques;
-    }
-
-    /**
-     * @param mixed $historiques
-     */
-    public function setHistoriques($historiques)
-    {
-        $this->historiques = $historiques;
     }
 
 
@@ -137,5 +120,5 @@ class Tache
         $this->historique = $historique;
     }
 
-    
+
 }

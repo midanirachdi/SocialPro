@@ -21,7 +21,7 @@ class Historique
     private $idhistorique;
 
     /**
-     * @ORM\OneToOne(targetEntity="User", inversedBy="historique")
+     * @ORM\OneToOne(targetEntity="User", mappedBy="historique")
      * @ORM\JoinColumn(name="iduser", referencedColumnName="id")
      */
     private $user;
@@ -30,24 +30,24 @@ class Historique
      * @ORM\JoinColumn(referencedColumnName="idtache",name="idtache")
      */
     private $tache;
-    public function __construct() {
-    }
+
 
     /**
      * @return mixed
      */
-    public function getTaches()
+    public function getTache()
     {
-        return $this->taches;
+        return $this->tache;
     }
 
     /**
-     * @param mixed $taches
+     * @param mixed $tache
      */
-    public function setTaches($taches)
+    public function setTache($tache)
     {
-        $this->taches = $taches;
+        $this->tache = $tache;
     }
+
 
 
 
