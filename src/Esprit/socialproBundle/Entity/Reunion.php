@@ -25,8 +25,7 @@ class Reunion
      * @ORM\JoinColumn(referencedColumnName="id",name="iduser")
      */
     private $user;
-    public function __construct() {
-    }
+
     /**
      * @ORM\Column(type="string",length=255)
      */
@@ -40,7 +39,7 @@ class Reunion
      */
     private $dateFin;
     /**
-     * @ORM\ManyToOne(targetEntity="Sallereunion", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="Sallereunion", inversedBy="reunions")
      * @ORM\JoinColumn(name="idsallereunion", referencedColumnName="idsallereunion")
      */
     private $sallereunion;
@@ -66,16 +65,17 @@ class Reunion
      */
     public function getUser()
     {
-        return $this->users;
+        return $this->user;
     }
 
     /**
-     * @param mixed $users
+     * @param mixed $user
      */
-    public function setUser($users)
+    public function setUser($user)
     {
-        $this->users = $users;
+        $this->user = $user;
     }
+
 
     /**
      * @return mixed

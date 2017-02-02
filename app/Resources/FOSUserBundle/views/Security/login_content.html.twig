@@ -2,9 +2,6 @@
 <html>
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
 
 <head>
     <meta charset="UTF-8">
@@ -12,12 +9,9 @@
     <title>Social Pro</title>
     <link rel="icon" href="{{ asset('bundles/espritsocialpro/login/img/logosp.ico') }}"/>
     <link rel="stylesheet" href="{{ asset('bundles/espritsocialpro/login/css/style.css') }}"/>
-    <style>
-        * {
-            zoom: 98%;
-        }
-    </style>
+
 </head>
+
 
 <body>
 <div class="wrapper">
@@ -55,12 +49,30 @@
                 </div>
 
 
-                <div class="button-container1">
-                    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"/>
-                </div>
+                    <label style="display: none;" for="remember_me">{{ 'security.login.remember_me'|trans }}
+                        <input  type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                        <i class="input-helper"></i>
+                    </label>
 
-                <div class="footer"><a href="{{ path('fos_user_resetting_request') }}">Forgot password ?</a></div>
-                <div class="footer"><a href="{{ path('fos_user_registration_register') }}">register user</a></div>
+
+
+                        <div class="button-container1">
+                            <input type="submit" id="_submit" name="_submit"
+                                   value="{{ 'security.login.submit'|trans }}"/>
+                            {% if error %}
+                                <center>
+                                    <h2 style="color: #880000;">
+                                        <img height="20px" width="20px"
+                                             src="{{ asset('bundles/espritsocialpro/login/img/alert.png') }}">
+                                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                                    </h2>
+                                </center>
+                            {% endif %}
+                        </div>
+
+                        <div class="footer"><a href="{{ path('fos_user_resetting_request') }}">Forgot password ?</a>
+                        </div>
+                        {#<div class="footer"><a href="{{ path('fos_user_registration_register') }}">register user</a></div>#}
 
             </form>
         </div>
@@ -90,13 +102,13 @@
                     <label for="#{label}">Email</label>
                     <div class="bar"></div>
                 </div>
-                <div class="input-container1"style="margin-bottom: 7px;">
-                    <input  type="Password" id="#{label}" required="required"/>
+                <div class="input-container1" style="margin-bottom: 7px;">
+                    <input type="Password" id="#{label}" required="required"/>
                     <label for="#{label}">Mot de passe</label>
                     <div class="bar"></div>
                 </div>
-                <div class="input-container1"style="margin-bottom: 30px;">
-                    <input  type="Password" id="#{label}" required="required"/>
+                <div class="input-container1" style="margin-bottom: 30px;">
+                    <input type="Password" id="#{label}" required="required"/>
                     <label for="#{label}">Confirmer votre mot de passe</label>
                     <div class="bar"></div>
                 </div>

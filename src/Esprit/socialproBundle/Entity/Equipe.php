@@ -103,5 +103,5 @@ class Equipe
         $this->nomequipe = $nomequipe;
     }
 
-    
+
 }
