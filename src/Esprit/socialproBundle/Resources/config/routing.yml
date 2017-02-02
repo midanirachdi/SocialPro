@@ -1,3 +1,11 @@
 espritsocialpro_homepage:
     path:     /socialpro
     defaults: { _controller: EspritsocialproBundle:Default:index }
+
+espritsocialpro_profile:
+    path:     /profile
+    defaults: { _controller: EspritsocialproBundle:Profile:index }
+
+espritsocialpro_profile_photos:
+    path:     /photos
+    defaults: { _controller: EspritsocialproBundle:Profile:photos }
