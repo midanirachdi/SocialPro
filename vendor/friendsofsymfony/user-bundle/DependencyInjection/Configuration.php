@@ -105,7 +105,7 @@ class Configuration implements ConfigurationInterface
                                 ->scalarNode('name')->defaultValue('fos_user_profile_form')->end()
                                 ->arrayNode('validation_groups')
                                     ->prototype('scalar')->end()
-                                    ->defaultValue(array('Profile', 'Default'))
+                                    ->defaultValue(array('Profil', 'Default'))
                                 ->end()
                             ->end()
                         ->end()

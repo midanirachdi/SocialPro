@@ -74,11 +74,11 @@ class Profiler
     }
 
     /**
-     * Loads the Profile for the given Response.
+     * Loads the Profil for the given Response.
      *
      * @param Response $response A Response instance
      *
-     * @return Profile|false A Profile instance
+     * @return Profile|false A Profil instance
      */
     public function loadProfileFromResponse(Response $response)
     {
@@ -90,11 +90,11 @@ class Profiler
     }
 
     /**
-     * Loads the Profile for the given token.
+     * Loads the Profil for the given token.
      *
      * @param string $token A token
      *
-     * @return Profile A Profile instance
+     * @return Profile A Profil instance
      */
     public function loadProfile($token)
     {
@@ -102,9 +102,9 @@ class Profiler
     }
 
     /**
-     * Saves a Profile.
+     * Saves a Profil.
      *
-     * @param Profile $profile A Profile instance
+     * @param Profile $profile A Profil instance
      *
      * @return bool
      */
@@ -159,7 +159,7 @@ class Profiler
      * @param Response   $response  A Response instance
      * @param \Exception $exception An exception instance if the request threw one
      *
-     * @return Profile|null A Profile instance or null if the profiler is disabled
+     * @return Profile|null A Profil instance or null if the profiler is disabled
      */
     public function collect(Request $request, Response $response, \Exception $exception = null)
     {

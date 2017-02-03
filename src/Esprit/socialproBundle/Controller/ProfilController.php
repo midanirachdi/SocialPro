@@ -4,16 +4,16 @@ namespace Esprit\socialproBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class ProfileController extends Controller
+class ProfilController extends Controller
 {
     public function indexAction()
     {
 
-        return $this->render('EspritsocialproBundle:Profile:profile.html.twig');
+        return $this->render('EspritsocialproBundle:Profil:profil.html.twig');
     }
 
     public function photosAction()
     {
-        return $this->render('EspritsocialproBundle:Profile:profilephotos.html.twig');
+        return $this->render('EspritsocialproBundle:Profil:profilphotos.html.twig');
     }
 }

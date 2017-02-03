@@ -54,7 +54,7 @@ class LocalizedController implements ContainerAwareInterface
 
     public function profileAction()
     {
-        return new Response('Profile');
+        return new Response('Profil');
     }
 
     public function homepageAction()
