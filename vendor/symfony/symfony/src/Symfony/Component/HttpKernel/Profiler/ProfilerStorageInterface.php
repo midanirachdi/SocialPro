@@ -44,9 +44,9 @@ interface ProfilerStorageInterface
     public function read($token);
 
     /**
-     * Saves a Profile.
+     * Saves a Profil.
      *
-     * @param Profile $profile A Profile instance
+     * @param Profile $profile A Profil instance
      *
      * @return bool Write operation successful
      */

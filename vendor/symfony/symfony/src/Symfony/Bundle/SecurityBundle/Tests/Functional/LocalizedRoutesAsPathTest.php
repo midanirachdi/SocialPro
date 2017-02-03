@@ -27,7 +27,7 @@ class LocalizedRoutesAsPathTest extends WebTestCase
         $client->submit($form);
 
         $this->assertRedirect($client->getResponse(), '/'.$locale.'/profile');
-        $this->assertEquals('Profile', $client->followRedirect()->text());
+        $this->assertEquals('Profil', $client->followRedirect()->text());
 
         $client->request('GET', '/'.$locale.'/logout');
         $this->assertRedirect($client->getResponse(), '/'.$locale.'/');

@@ -2,10 +2,50 @@ espritsocialpro_homepage:
     path:     /socialpro
     defaults: { _controller: EspritsocialproBundle:Default:index }
 
-espritsocialpro_profile:
-    path:     /profile
-    defaults: { _controller: EspritsocialproBundle:Profile:index }
+espritsocialpro_profil:
+    path:     /profil
+    defaults: { _controller: EspritsocialproBundle:Profil:index }
 
-espritsocialpro_profile_photos:
+espritsocialpro_profil_photos:
     path:     /photos
-    defaults: { _controller: EspritsocialproBundle:Profile:photos }
+    defaults: { _controller: EspritsocialproBundle:Profil:photos }
+
+espritsocialpro_filactualite:
+    path:     /Filactualite
+    defaults: { _controller: EspritsocialproBundle:Filactualite:index }
+
+espritsocialpro_employes:
+    path:     /Employes
+    defaults: { _controller: EspritsocialproBundle:Employes:index }
+
+espritsocialpro_departements:
+    path:     /Departements
+    defaults: { _controller: EspritsocialproBundle:Departement:index }
+
+espritsocialpro_reunions:
+    path:     /Reunions
+    defaults: { _controller: EspritsocialproBundle:Reunion:index }
+
+espritsocialpro_projets:
+    path:     /Projets
+    defaults: { _controller: EspritsocialproBundle:Projets:index }
+
+espritsocialpro_offres:
+    path:     /Offres
+    defaults: { _controller: EspritsocialproBundle:Offres:index }
+
+espritsocialpro_forum:
+    path:     /Forum
+    defaults: { _controller: EspritsocialproBundle:Forum:index }
+
+espritsocialpro_statistiques:
+    path:     /Statistiques
+    defaults: { _controller: EspritsocialproBundle:Statistiques:index }
+
+espritsocialpro_historique:
+    path:     /Historique
+    defaults: { _controller: EspritsocialproBundle:Historique:index }
+
+espritsocialpro_calendrier:
+    path:     /Calendrier
+    defaults: { _controller: EspritsocialproBundle:Calendrier:index }
