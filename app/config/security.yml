@@ -32,4 +32,5 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/socialpro, role: [ROLE_ADMIN, ROLE_EMPLOYE, ROLE_CHEF_DEP, ROLE_CHEF_PROJET] }
+        - { path: ^/.*/, role: IS_AUTHENTICATED_ANONYMOUSLY }
 # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
