@@ -52,7 +52,6 @@
                 <i class="hm-icon zmdi zmdi-apps"></i>
             </a>
             <ul class="dropdown-menu pull-right">
-
                 <li>
                     <a href="#">
                         <i class="palette-Red-400 bg zmdi zmdi-calendar"></i>
@@ -152,6 +151,7 @@
 
 </header>
 {% endblock %}
+
 <section id="main">
     <section id="content">
         <div class="container">
@@ -386,20 +386,22 @@
     </ul>
 
     <ul class="main-menu">
-        <li class="active"><a href="{{ path('espritsocialpro_filactualite') }}"><i class="zmdi zmdi-home"></i>Fil d'actualité</a></li>
-        <li><a href="{{ path('espritsocialpro_profil') }}" ><i class="zmdi zmdi-collection-text"></i> Profil</a></li>
-
-        {#{% if is_granted('ROLE_ADMIN') %} #}{# mettre le bloc à afficher ici #}{#{% endif %}#}
-
-        <li><a href="{{ path('espritsocialpro_employes') }}"><i class="zmdi zmdi-view-compact"></i> Employés</a></li>
-        <li><a href="{{ path('espritsocialpro_departements') }}"><i class="zmdi zmdi-format-underlined"></i> Département</a></li>
-        <li><a href="{{ path('espritsocialpro_reunions') }}"><i class="zmdi zmdi-widgets"></i> Réunions</a></li>
-        <li><a href="{{ path('espritsocialpro_projets') }}"><i class="zmdi zmdi-view-list"></i> Projets</a></li>
-        <li><a href="{{ path('espritsocialpro_offres') }}"><i class="zmdi zmdi-swap-alt"></i>Offres</a></li>
-        <li><a href="{{ path('espritsocialpro_forum') }}"><i class="zmdi zmdi-collection-item"></i> Forum </a></li>
-        <li><a href="{{ path('espritsocialpro_statistiques') }}"><i class="zmdi zmdi-trending-up"></i> Statistiques</a></li>
-        <li><a href="{{ path('espritsocialpro_historique') }}" ><i class="zmdi zmdi-collection-text"></i> Historique</a></li>
-        <li><a href="{{ path('espritsocialpro_calendrier') }}"><i class="zmdi zmdi-calendar"></i> Calendrier</a></li>
+        <li {% block active %} {% endblock %}><a href="{{ path('espritsocialpro_filactualite') }}"><i class="zmdi zmdi-home"></i>Fil d'actualité</a></li>
+        <li {% block active1 %} {% endblock %}><a class="" href="{{ path('espritsocialpro_profil') }}" ><i class="zmdi zmdi-collection-text"></i> Profil</a></li>
+        <li {% block active2 %} {% endblock %}><a href="{{ path('espritsocialpro_employes') }}"><i class="zmdi zmdi-view-compact"></i> Employés</a></li>
+        <li {% block active3 %} {% endblock %}><a href="{{ path('espritsocialpro_departements') }}"><i class="zmdi zmdi-format-underlined"></i> Département</a></li>
+        <li {% block active31 %} class="sub-menu" {% endblock %}><a href="#"  data-ma-action="submenu-toggle"><i class="zmdi zmdi-widgets"></i> Réunions</a>
+            <ul>
+                <li {% block active4 %} {% endblock %}><a href="{{ path('espritsocialpro_gestionreunions') }}">Gestion des réunions</a></li>
+                <li {% block active5 %} {% endblock %}><a href="{{ path('espritsocialpro_reunions') }}">Calendrier des réunions</a></li>
+            </ul>
+        </li>
+        <li {% block active6 %} {% endblock %}><a href="{{ path('espritsocialpro_projets') }}"><i class="zmdi zmdi-view-list"></i> Projets</a></li>
+        <li {% block active7 %} {% endblock %}><a href="{{ path('espritsocialpro_offres') }}"><i class="zmdi zmdi-swap-alt"></i>Offres</a></li>
+        <li {% block active8 %} {% endblock %}><a href="{{ path('espritsocialpro_forum') }}"><i class="zmdi zmdi-collection-item"></i> Forum </a></li>
+        <li {% block active9 %} {% endblock %}><a href="{{ path('espritsocialpro_statistiques') }}"><i class="zmdi zmdi-trending-up"></i> Statistiques</a></li>
+        <li {% block active10 %} {% endblock %}><a href="{{ path('espritsocialpro_historique') }}" ><i class="zmdi zmdi-collection-text"></i> Historique</a></li>
+        <li {% block active11 %} {% endblock %}><a href="{{ path('espritsocialpro_calendrier') }}"><i class="zmdi zmdi-calendar"></i> Calendrier</a></li>
 
     </ul>
 </aside>
@@ -417,6 +419,7 @@
         <li><a href="{{ path('espritsocialpro_projets') }}">Projets</a></li>
         <li><a href="{{ path('espritsocialpro_statistiques') }}">Statistiques</a></li>
         <li><a href="{{ path('espritsocialpro_calendrier') }}">Calendrier</a></li>
+        {#{% if is_granted('ROLE_ADMIN') %} #}{# mettre le bloc à afficher ici #}{#{% endif %}#}
     </ul>
 </footer>
 {% endblock %}
