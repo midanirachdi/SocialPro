@@ -11,5 +11,5 @@ parameters:
     mailer_auth_mode: login
     mailer_host: smtp.gmail.com
     mailer_user: pisocial.pro@gmail.com
-    mailer_password: "07201725"
+    mailer_password: '07201725'
     secret: 1ea801e7bc94c62c0db882a3521fd6854b7a6709

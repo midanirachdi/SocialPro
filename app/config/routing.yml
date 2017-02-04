@@ -1,6 +1,6 @@
 espritsocialpro:
     resource: "@EspritsocialproBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /socialpro
 
 app:
     resource: "@AppBundle/Controller/"

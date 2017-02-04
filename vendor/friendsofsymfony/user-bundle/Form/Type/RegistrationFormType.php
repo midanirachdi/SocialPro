@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Form\Type;
 
+use Esprit\socialproBundle\Form\StringToArrayTransformer;
 use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -37,6 +38,7 @@ class RegistrationFormType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $transformer = new StringToArrayTransformer();
         $builder
             ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
@@ -55,13 +57,24 @@ class RegistrationFormType extends AbstractType
             ->add('fonction')
             ->add('nbprojets')
             ->add('evaluation')
-            ->add('roles', ChoiceType::class, array('label' => 'Type ',
-                'choices' => array(' AGENT' => 'ROLE_AGENT',
-                    'CLIENT' => 'ROLE_CLIENT'),
-                'required' => true, 'multiple' => true,))
+            ->add($builder->create(
+                'roles', ChoiceType::class, array(
+                'label' => 'Rôle',
+                'required' => true,
+                'mapped'=> true,
+                'multiple' => false,
+                'expanded'=> false,
+                'choices' => array(
+                    'employe' => 'ROLE_EMPLOYE',
+                    'chef de département' => 'ROLE_CHEF_DEP',
+                    'chef de projet' => 'ROLE_CHEF_PROJET',
+                    'administrateur' => 'ROLE_ADMIN',
+                )
 
+            ))
+            ->addModelTransformer($transformer))
 
-        ;
+            ;
     }
 
     /**
