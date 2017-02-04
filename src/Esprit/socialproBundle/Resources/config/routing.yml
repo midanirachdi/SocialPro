@@ -1,5 +1,5 @@
 espritsocialpro_homepage:
-    path:     /socialpro
+    path:     /index
     defaults: { _controller: EspritsocialproBundle:Default:index }
 
 espritsocialpro_profil:

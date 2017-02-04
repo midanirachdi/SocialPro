@@ -70,7 +70,6 @@ class SecurityController extends Controller
      */
     protected function renderLogin(array $data)
     {
-
         return $this->render('@FOSUser/Security/login.html.twig', $data);
     }
 
