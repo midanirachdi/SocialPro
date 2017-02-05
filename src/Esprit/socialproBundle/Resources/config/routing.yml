@@ -30,6 +30,10 @@ espritsocialpro_departements:
     path:     /Departements
     defaults: { _controller: EspritsocialproBundle:Departement:index }
 
+espritsocialpro_departementsaffectation:
+    path:     /Affectations
+    defaults: { _controller: EspritsocialproBundle:Departement:affectation }
+
 espritsocialpro_reunions:
     path:     /Reunions
     defaults: { _controller: EspritsocialproBundle:Reunion:index }
@@ -42,9 +46,22 @@ espritsocialpro_projets:
     path:     /Projets
     defaults: { _controller: EspritsocialproBundle:Projets:index }
 
+espritsocialpro_taches:
+    path:     /Taches
+    defaults: { _controller: EspritsocialproBundle:Projets:taches }
+
+espritsocialpro_equipes:
+    path:     /Equipes
+    defaults: { _controller: EspritsocialproBundle:Projets:equipes }
+
+espritsocialpro_gestionprojets:
+    path:     /GestionProjets
+    defaults: { _controller: EspritsocialproBundle:Projets:gestionprojets }
+
 espritsocialpro_offres:
     path:     /Offres
     defaults: { _controller: EspritsocialproBundle:Offres:index }
+
 espritsocialpro_ajoutoffre:
     path:     /ajoutoffre
     defaults: { _controller: EspritsocialproBundle:Offres:ajout }
@@ -56,7 +73,6 @@ espritsocialpro_forum:
 espritsocialpro_support:
     path:     /Support
     defaults: { _controller: EspritsocialproBundle:Forum:support }
-
 
 espritsocialpro_statistiques:
     path:     /Statistiques
