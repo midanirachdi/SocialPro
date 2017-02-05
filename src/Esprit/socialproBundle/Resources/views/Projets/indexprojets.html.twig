@@ -11,9 +11,215 @@
 
 {% block bodyheader %}
 
+    <br>
+    <h3 style="">Bonjour nom_chef, Il est "date_actuelle"</h3>
 {% endblock %}
-
+{% block division1 %} class="c-header" {% endblock %}
+{% block division2 %} id="c-grid" class="clearfix"  {% endblock %}
 {% block bodymain %}
-    <!--**********************************************************-->
-    <h1>BODY</h1>
+    <div class="column size-1of2">
+        <div class="card" id="todo-lists">
+            <div class="card-header ch-dark palette-Purple-300 bg">
+                <h2>Les taches</h2>
+                <!--
+                <ul class="actions a-alt">
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="#">Change Date Range</a>
+                            </li>
+                            <li>
+                                <a href="#">Change Graph Type</a>
+                            </li>
+                            <li>
+                                <a href="#">Other Settings</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>-->
+            </div>
+            <div class="card-body">
+                <div class="list-group lg-alt">
+                    <div class="list-group-item-header palette-Purple text">Aujourd'hui</div>
+                    <div class="list-group-item media checked">
+                        <div class="pull-left">
+                            <div class="avatar-char ac-check">
+                                <input class="acc-check" type="checkbox" checked>
+                                <span class="acc-helper palette-Purple-300 bg">"C"</span>
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">Etude de projet</div>
+                            <small class="lgi-text">08:55 AM</small>
+                        </div>
+                    </div>
+                    <div class="list-group-item media checked">
+                        <div class="pull-left">
+                            <div class="avatar-char ac-check">
+                                <input class="acc-check" type="checkbox" checked>
+                                <span class="acc-helper palette-Purple-300 bg">"C"</span>
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">Design la template</div>
+                            <small class="lgi-text">08:55 AM</small>
+                        </div>
+                    </div>
+                    <div class="list-group-item-header palette-Light-Blue text">Demain</div>
+                    <div class="list-group-item media">
+                        <div class="pull-left">
+                            <div class="avatar-char ac-check">
+                                <input class="acc-check" type="checkbox">
+                                <span class="acc-helper palette-Light-Blue bg">P</span>
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">effectuer le developpement de front-end d'une application web</div>
+                            <small class="lgi-text">10:30 P</small>
+                        </div>
+                    </div>
+                    <div class="list-group-item media">
+                        <div class="pull-left">
+                            <div class="avatar-char ac-check">
+                                <input class="acc-check" type="checkbox">
+                                <span class="acc-helper palette-Light-Blue bg">P</span>
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">implementation base de données</div>
+                            <small class="lgi-text">10:30 P</small>
+                        </div>
+                    </div>
+                    <!--<a href="#" class="list-group-item view-more">
+                        <i class="zmdi zmdi-long-arrow-right"></i>
+                        View all
+                    </a>-->
+                </div>
+                <button class="btn palette-Purple-300 bg btn-float waves-effect waves-circle waves-float">
+                    <a href="{{ path('espritsocialpro_taches') }}"> <i class="zmdi zmdi-plus"></i> </a>
+                </button>
+            </div>
+        </div>
+        <div>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Les équipes</h2>
+                    <small>L'équipe dédiée à chaque projet</small>
+                    <button class="btn palette-Blue-Grey bg btn-float waves-effect waves-circle waves-float">
+                        <a href="{{ path('espritsocialpro_equipes') }}"> <i class="zmdi zmdi-plus"></i> </a>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="list-group lg-alt c-overflow mCustomScrollbar _mCS_4 mCS-autoHide mCS_no_scrollbar" style="position: relative; overflow: visible;">
+                        <div id="mCSB_4" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical_horizontal mCSB_outside" tabindex="0">
+                            <div id="mCSB_4_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y mCS_x_hidden mCS_no_scrollbar_x" style="position: relative; top: 0px; left: 0px; width: 100%;" dir="ltr">
+                                <a href="#" class="list-group-item media">
+                                    <div class="pull-left">
+                                        <img class="avatar-img mCS_img_loaded" src="http://img15.hostingpics.net/pics/858572192.jpg" alt>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lgi-heading">Equipe d'analyse</div>
+                                        <small class="lgi-text">Sorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis lobortis sapien non posuere</small>
+                                    </div>
+                                </a>
+                                <a href="#" class="list-group-item media">
+                                    <div class="pull-left">
+                                        <img class="avatar-img mCS_img_loaded" src="http://img15.hostingpics.net/pics/232197804.jpg" alt>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lgi-heading">Equipe de developpement</div>
+                                        <small class="lgi-text">Sorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis lobortis sapien non posuere</small>
+                                    </div>
+                                </a>
+                                <a href="#" class="list-group-item media">
+                                    <div class="pull-left">
+                                        <img class="avatar-img mCS_img_loaded" src="http://img15.hostingpics.net/pics/558455256.jpg" alt>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lgi-heading">Equipe de finance</div>
+                                        <small class="lgi-text">Sorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis lobortis sapien non posuere</small>
+                                    </div>
+                                </a>
+                                <a href="#" class="list-group-item media">
+                                    <div class="pull-left">
+                                        <img class="avatar-img mCS_img_loaded" src="http://img15.hostingpics.net/pics/950712379.jpg" alt>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lgi-heading">Equipe d'administration</div>
+                                        <small class="lgi-text">Sorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis lobortis sapien non posuere</small>
+                                    </div>
+                                </a>
+                                <!--<a href="#" class="list-group-item view-more">
+                                    <i class="zmdi zmdi-long-arrow-right"></i>
+                                    View all
+                                </a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="column size-1of2">
+        <div class="card popular-post">
+            <div class="card-header cw-header palette-Teal-400 bg">
+                <h2 style="color: white;">Les projets</h2>
+                <button class="btn palette-Light-Green bg btn-float waves-effect waves-circle waves-float">
+                    <a href="{{ path('espritsocialpro_gestionprojets') }}"> <i class="zmdi zmdi-plus"></i> </a>
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="list-group lg-alt c-overflow mCustomScrollbar _mCS_4 mCS-autoHide mCS_no_scrollbar" style="position: relative; overflow: visible;">
+                    <div id="mCSB_4" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical_horizontal mCSB_outside" tabindex="0">
+                        <div id="mCSB_4_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y mCS_x_hidden mCS_no_scrollbar_x" style="position: relative; top: 0px; left: 0px; width: 100%;" dir="ltr">
+                            <a href="#" class="list-group-item media">
+                                <div class="pull-left">
+                                    <img class="avatar-img mCS_img_loaded" src="http://img15.hostingpics.net/pics/257988soccer.png" alt>
+                                </div>
+                                <div class="media-body">
+                                    <div class="lgi-heading">Developpement site web de resultats de resultats de football</div>
+                                    <small class="lgi-text">Sorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis lobortis sapien non posuere</small>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item media">
+                                <div class="pull-left">
+                                    <img class="avatar-img mCS_img_loaded" src="http://img15.hostingpics.net/pics/139059android.png" alt>
+                                </div>
+                                <div class="media-body">
+                                    <div class="lgi-heading">Developpement une application android</div>
+                                    <small class="lgi-text">Sorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis lobortis sapien non posuere</small>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item media">
+                                <div class="pull-left">
+                                    <img class="avatar-img mCS_img_loaded" src="http://img15.hostingpics.net/pics/223713facebookmessenger.png" alt>
+                                </div>
+                                <div class="media-body">
+                                    <div class="lgi-heading">Developpement un messenger chat bot</div>
+                                    <small class="lgi-text">Sorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis lobortis sapien non posuere</small>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item media">
+                                <div class="pull-left">
+                                    <img class="avatar-img mCS_img_loaded" src="http://img15.hostingpics.net/pics/219386apple.png" alt>
+                                </div>
+                                <div class="media-body">
+                                    <div class="lgi-heading">developpement une application ios</div>
+                                    <small class="lgi-text">Sorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis lobortis sapien non posuere</small>
+                                </div>
+                            </a>
+                            <!--<a href="#" class="list-group-item view-more">
+                                <i class="zmdi zmdi-long-arrow-right"></i>
+                                View all
+                            </a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
