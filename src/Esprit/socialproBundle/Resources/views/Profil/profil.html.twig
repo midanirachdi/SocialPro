@@ -1,11 +1,11 @@
 {% extends '@Espritsocialpro/layout.html.twig' %}
 
 {% block titreheader %}
-    Profil
+   <h2> Profil </h2>
 {% endblock %}
 {% block active1 %} class="active" {% endblock %}
 {% block descheader %}
-    description
+   <h3> Abderrabba Med Yassin : Développement</h3>
 {% endblock %}
 
 {% block bodyheader %}
@@ -35,14 +35,14 @@
                     </div>
 
                     <a href="#" class="pmop-edit">
-                        <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Update Profile Picture</span>
+                        <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Changez votre photo de profil</span>
                     </a>
                 </div>
 
 
                 <div class="pmo-stat">
-                    <h2 class="m-0 c-white">1562</h2>
-                    Total Connections
+                    <h2 class="m-0 c-white">Role</h2>
+                    Employé
                 </div>
             </div>
 
@@ -50,10 +50,11 @@
                 <h2>Contact</h2>
 
                 <ul>
-                    <li><i class="zmdi zmdi-phone"></i> 00971 12345678 9</li>
-                    <li><i class="zmdi zmdi-email"></i> malinda-h@gmail.com</li>
-                    <li><i class="zmdi zmdi-facebook-box"></i> malinda.hollaway</li>
-                    <li><i class="zmdi zmdi-twitter"></i> @malinda (twitter.com/malinda)</li>
+                    <li><i class="zmdi zmdi-phone"></i> 55123456</li>
+                    <li><i class="zmdi zmdi-email"></i> mohamedyassin.abderrabba@esprit.tn
+                    </li>
+                    <li><i class="zmdi zmdi-facebook-box"></i> yassin.abderrabba</li>
+                    <li><i class="zmdi zmdi-twitter"></i> @yassin (twitter.com/yassin)</li>
                     <li>
                         <i class="zmdi zmdi-pin"></i>
                         <address class="m-b-0 ng-binding">
@@ -71,40 +72,40 @@
                 <div class="pmob-body">
                     <div class="row">
                         <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="img/profile-pics/1.jpg" alt="">
+                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/1.jpg') }}" alt="">
                         </a>
                         <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="img/profile-pics/2.jpg" alt="">
+                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/2.jpg') }}" alt="">
                         </a>
                         <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="img/profile-pics/3.jpg" alt="">
+                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/3.jpg') }}" alt="">
                         </a>
                         <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="img/profile-pics/4.jpg" alt="">
+                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/4.jpg') }}" alt="">
                         </a>
                         <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="img/profile-pics/5.jpg" alt="">
+                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/5.jpg') }}" alt="">
                         </a>
                         <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="img/profile-pics/6.jpg" alt="">
+                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/6.jpg') }}" alt="">
                         </a>
                         <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="img/profile-pics/7.jpg" alt="">
+                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/7.jpg') }}" alt="">
                         </a>
                         <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="img/profile-pics/8.jpg" alt="">
+                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/8.jpg') }}" alt="">
                         </a>
                         <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="img/profile-pics/1.jpg" alt="">
+                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/profile-pics/1.jpg') }}" alt="">
                         </a>
                         <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="img/profile-pics/2.jpg" alt="">
+                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/profile-pics/2.jpg') }}" alt="">
                         </a>
                         <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="img/profile-pics/3.jpg" alt="">
+                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/media/gallery/thumbs/3.jpg') }}" alt="">
                         </a>
                         <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="img/profile-pics/4.jpg" alt="">
+                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/profile-pics/4.jpg') }}" alt="">
                         </a>
                     </div>
                 </div>
@@ -113,15 +114,15 @@
 
         <div class="pm-body clearfix">
             <ul class="tab-nav tn-justified">
-                <li class="active waves-effect"><a href="{{ path('espritsocialpro_profil') }}">About</a></li>
-                <li class="waves-effect"><a href="{{ path('espritsocialpro_profil_photos') }}">Photos</a></li>
-                <li class="waves-effect"><a href="{ path('espritsocialpro_profil_connections') }}">Connections</a></li>
+                <li class="active waves-effect"><a href="{{ path('espritsocialpro_profil') }}">à propos</a></li>
+                <li class="waves-effect"><a href="{{ path('espritsocialpro_profil_photos') }}">Compétences</a></li>
+
             </ul>
 
 
             <div class="pmb-block">
                 <div class="pmbb-header">
-                    <h2><i class="zmdi zmdi-equalizer m-r-5"></i> Summary</h2>
+                    <h2><i class="zmdi zmdi-equalizer m-r-5"></i> Description</h2>
 
                     <ul class="actions">
                         <li class="dropdown">
@@ -131,7 +132,7 @@
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a data-pmb-action="edit" href="#">Edit</a>
+                                    <a data-pmb-action="edit" href="#">Modifier</a>
                                 </li>
                             </ul>
                         </li>
@@ -139,12 +140,12 @@
                 </div>
                 <div class="pmbb-body p-l-30">
                     <div class="pmbb-view">
-                        Sed eu est vulputate, fringilla ligula ac, maximus arcu. Donec sed felis vel magna mattis ornare ut non turpis. Sed id arcu elit. Sed nec sagittis tortor. Mauris ante urna, ornare sit amet mollis eu, aliquet ac ligula. Nullam dolor metus, suscipit ac imperdiet nec, consectetur sed ex. Sed cursus porttitor leo.
+                            Je m'appelle yassin....
                     </div>
 
                     <div class="pmbb-edit">
                         <div class="fg-line">
-                            <textarea class="form-control" rows="5" placeholder="Summary...">Sed eu est vulputate, fringilla ligula ac, maximus arcu. Donec sed felis vel magna mattis ornare ut non turpis. Sed id arcu elit. Sed nec sagittis tortor. Mauris ante urna, ornare sit amet mollis eu, aliquet ac ligula. Nullam dolor metus, suscipit ac imperdiet nec, consectetur sed ex. Sed cursus porttitor leo.</textarea>
+                            <textarea class="form-control" rows="5" placeholder="Summary...">Je m'appelle yassin ...</textarea>
                         </div>
                         <div class="m-t-10">
                             <button class="btn btn-primary btn-sm">Save</button>
@@ -156,7 +157,7 @@
 
             <div class="pmb-block">
                 <div class="pmbb-header">
-                    <h2><i class="zmdi zmdi-account m-r-5"></i> Basic Information</h2>
+                    <h2><i class="zmdi zmdi-account m-r-5"></i> Informations basiques</h2>
 
                     <ul class="actions">
                         <li class="dropdown">
@@ -166,7 +167,7 @@
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a data-pmb-action="edit" href="#">Edit</a>
+                                    <a data-pmb-action="edit" href="#">modifier</a>
                                 </li>
                             </ul>
                         </li>
@@ -175,21 +176,18 @@
                 <div class="pmbb-body p-l-30">
                     <div class="pmbb-view">
                         <dl class="dl-horizontal">
-                            <dt>Full Name</dt>
-                            <dd>Mallinda Hollaway</dd>
+                            <dt>Nom Complet</dt>
+                            <dd>yassin abderrabba</dd>
                         </dl>
                         <dl class="dl-horizontal">
-                            <dt>Gender</dt>
-                            <dd>Female</dd>
+                            <dt>Sexe</dt>
+                            <dd>Homme</dd>
                         </dl>
                         <dl class="dl-horizontal">
-                            <dt>Birthday</dt>
+                            <dt>Date de naissance</dt>
                             <dd>June 23, 1990</dd>
                         </dl>
-                        <dl class="dl-horizontal">
-                            <dt>Martial Status</dt>
-                            <dd>Single</dd>
-                        </dl>
+
                     </div>
 
                     <div class="pmbb-edit">
@@ -197,7 +195,7 @@
                             <dt class="p-t-10">Full Name</dt>
                             <dd>
                                 <div class="fg-line">
-                                    <input type="text" class="form-control" placeholder="eg. Mallinda Hollaway">
+                                    <input type="text" class="form-control" placeholder="eg. yassin abderrabba">
                                 </div>
 
                             </dd>
@@ -246,7 +244,7 @@
 
             <div class="pmb-block">
                 <div class="pmbb-header">
-                    <h2><i class="zmdi zmdi-phone m-r-5"></i> Contact Information</h2>
+                    <h2><i class="zmdi zmdi-phone m-r-5"></i> Contactez</h2>
 
                     <ul class="actions">
                         <li class="dropdown">
@@ -256,7 +254,7 @@
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a data-pmb-action="edit" href="#">Edit</a>
+                                    <a data-pmb-action="edit" href="#">modifier</a>
                                 </li>
                             </ul>
                         </li>
@@ -265,20 +263,21 @@
                 <div class="pmbb-body p-l-30">
                     <div class="pmbb-view">
                         <dl class="dl-horizontal">
-                            <dt>Mobile Phone</dt>
-                            <dd>00971 12345678 9</dd>
+                            <dt>Numero de téléphone</dt>
+                            <dd>55123456</dd>
                         </dl>
                         <dl class="dl-horizontal">
-                            <dt>Email Address</dt>
-                            <dd>malinda.h@gmail.com</dd>
+                            <dt>Adresse Email</dt>
+                            <dd>mohamedyassin.abderrabba@esprit.tn
+                            </dd>
                         </dl>
                         <dl class="dl-horizontal">
                             <dt>Twitter</dt>
-                            <dd>@malinda</dd>
+                            <dd>@yassin</dd>
                         </dl>
                         <dl class="dl-horizontal">
                             <dt>Skype</dt>
-                            <dd>malinda.hollaway</dd>
+                            <dd>yassin abderrabba</dd>
                         </dl>
                     </div>
 
@@ -295,7 +294,7 @@
                             <dt class="p-t-10">Email Address</dt>
                             <dd>
                                 <div class="fg-line">
-                                    <input type="email" class="form-control" placeholder="eg. malinda.h@gmail.com">
+                                    <input type="email" class="form-control" placeholder="eg. yassin.h@gmail.com">
                                 </div>
                             </dd>
                         </dl>
@@ -303,7 +302,7 @@
                             <dt class="p-t-10">Twitter</dt>
                             <dd>
                                 <div class="fg-line">
-                                    <input type="text" class="form-control" placeholder="eg. @malinda">
+                                    <input type="text" class="form-control" placeholder="eg. @yassin">
                                 </div>
                             </dd>
                         </dl>
@@ -311,7 +310,7 @@
                             <dt class="p-t-10">Skype</dt>
                             <dd>
                                 <div class="fg-line">
-                                    <input type="text" class="form-control" placeholder="eg. malinda.hollaway">
+                                    <input type="text" class="form-control" placeholder="eg. yassin.abderrabba">
                                 </div>
                             </dd>
                         </dl>
