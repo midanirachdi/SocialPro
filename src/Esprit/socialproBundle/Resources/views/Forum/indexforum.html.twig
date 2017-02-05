@@ -11,10 +11,31 @@
 {% endblock %}
 
 {% block bodyheader %}
-
+Choisissez votre catégorie
 {% endblock %}
 
 {% block bodymain %}
-    <!--**********************************************************-->
-    <h1>BODY</h1>
+    <div class="container">
+        <div id="c-grid" class="clear-fix" data-columns="2">
+            <div class="column size-1of1">
+                <div class="card palette-Red-400 bg">
+                    <div class="pie-grid clearfix text-center">
+                        <div class="col-xs-4 col-sm-6 col-md-6 pg-item">
+                            <div class="c-white">
+                                <h1><a style="color: white" href="{{ path('espritsocialpro_support') }}">Support</a></h1>
+                                <br></div>
+                        </div>
+
+
+                        <div class="col-xs-4 col-sm-6 col-md-5 pg-item">
+                            <div class="pgi-title">
+                                <h1><a style="color: white" href="{{ path('espritsocialpro_support') }}">Juridique</a>
+                                </h1><br></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
