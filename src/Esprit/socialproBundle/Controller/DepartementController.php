@@ -10,4 +10,9 @@ class DepartementController extends Controller
     {
         return $this->render('EspritsocialproBundle:Departement:indexdepartement.html.twig');
     }
-}
+
+    public function affectationAction()
+    {
+        return $this->render('EspritsocialproBundle:Departement:gestionaffectations.html.twig');
+
+    }}
