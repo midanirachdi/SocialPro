@@ -18,6 +18,14 @@ espritsocialpro_employes:
     path:     /Employes
     defaults: { _controller: EspritsocialproBundle:Employes:index }
 
+espritsocialpro_ajoutemployes:
+    path:     /AjoutEmployes
+    defaults: { _controller: EspritsocialproBundle:Employes:ajoutemployes }
+
+espritsocialpro_demandeinscrptionemployes:
+    path:     /DemandeEmployes
+    defaults: { _controller: EspritsocialproBundle:Employes:demandeinscrption }
+
 espritsocialpro_departements:
     path:     /Departements
     defaults: { _controller: EspritsocialproBundle:Departement:index }
