@@ -10,4 +10,13 @@ class EmployesController extends Controller
     {
         return $this->render('EspritsocialproBundle:Employes:indexemployes.html.twig');
     }
-}
+
+    public function demandeinscrptionAction()
+    {
+        return $this->render('EspritsocialproBundle:Employes:demandeinscription.html.twig');
+    }
+
+    public function ajoutemployesAction()
+    {
+        return $this->render('EspritsocialproBundle:Employes:ajoutemployes.html.twig');
+    }}

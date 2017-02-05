@@ -388,7 +388,13 @@
     <ul class="main-menu">
         <li {% block active %} {% endblock %}><a href="{{ path('espritsocialpro_filactualite') }}"><i class="zmdi zmdi-home"></i>Fil d'actualité</a></li>
         <li {% block active1 %} {% endblock %}><a class="" href="{{ path('espritsocialpro_profil') }}" ><i class="zmdi zmdi-collection-text"></i> Profil</a></li>
-        <li {% block active2 %} {% endblock %}><a href="{{ path('espritsocialpro_employes') }}"><i class="zmdi zmdi-view-compact"></i> Employés</a></li>
+        <li {% block active2 %} class="sub-menu" {% endblock %}><a href="#"  data-ma-action="submenu-toggle"><i class="zmdi zmdi-view-compact"></i> Employés</a>
+            <ul>
+                <li {% block active21 %} {% endblock %}><a href="{{ path('espritsocialpro_employes') }}">Recherche des employés</a></li>
+                <li {% block active22 %} {% endblock %}><a href="{{ path('espritsocialpro_ajoutemployes') }}">Ajout des employés</a></li>
+                <li {% block active23 %} {% endblock %}><a href="{{ path('espritsocialpro_demandeinscrptionemployes') }}">Gestion des demandes d'inscription</a></li>
+            </ul>
+        </li>
         <li {% block active3 %} {% endblock %}><a href="{{ path('espritsocialpro_departements') }}"><i class="zmdi zmdi-format-underlined"></i> Département</a></li>
         <li {% block active31 %} class="sub-menu" {% endblock %}><a href="#"  data-ma-action="submenu-toggle"><i class="zmdi zmdi-widgets"></i> Réunions</a>
             <ul>
