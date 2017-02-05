@@ -10,4 +10,8 @@ class OffresController extends Controller
     {
         return $this->render('EspritsocialproBundle:Offres:indexoffres.html.twig');
     }
+    public function ajoutAction()
+    {
+        return $this->render('EspritsocialproBundle:Offres:ajoutoffres.html.twig');
+    }
 }

@@ -37,10 +37,18 @@ espritsocialpro_projets:
 espritsocialpro_offres:
     path:     /Offres
     defaults: { _controller: EspritsocialproBundle:Offres:index }
+espritsocialpro_ajoutoffre:
+    path:     /ajoutoffre
+    defaults: { _controller: EspritsocialproBundle:Offres:ajout }
 
 espritsocialpro_forum:
     path:     /Forum
     defaults: { _controller: EspritsocialproBundle:Forum:index }
+
+espritsocialpro_support:
+    path:     /Support
+    defaults: { _controller: EspritsocialproBundle:Forum:support }
+
 
 espritsocialpro_statistiques:
     path:     /Statistiques

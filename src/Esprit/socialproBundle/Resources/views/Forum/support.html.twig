@@ -1,0 +1,107 @@
+{% extends '@Espritsocialpro/layout.html.twig' %}
+
+{% block titreheader %}
+    Forum
+{% endblock %}
+
+{% block active8 %} class="active" {% endblock %}
+
+{% block descheader %}
+
+{% endblock %}
+
+{% block bodyheader %}
+
+{% endblock %}
+
+{% block bodymain %}
+
+    <div class="card">
+        <div class="action-header palette-Teal-400 bg clearfix">
+
+            <div class="ah-search">
+                <input type="text" placeholder="Terme à chercher..." class="ahs-input">
+
+                <i class="ah-search-close zmdi zmdi-long-arrow-left" data-ma-action="ah-search-close"></i>
+            </div>
+
+            <ul class="ah-actions actions a-alt">
+                <li>
+                    <a href="#" class="ah-search-trigger" data-ma-action="ah-search-open">
+                        <i class="zmdi zmdi-search"></i>
+                    </a>
+                </li>
+
+
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" aria-expanded="true">
+                        <i class="zmdi zmdi-sort"></i>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <a href="#">Trier par date de modification</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Trier par auteur</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="list-group lg-alt lg-even-black">
+            <div class="list-group-item media">
+
+
+                <div class="pull-left">
+                    <div class="avatar-char palette-Light-Blue bg">P</div>
+                </div>
+
+
+                <div class="media-body">
+                    <div class="lgi-heading">Migration vers symfony 3</div>
+                    <small class="lgi-text">Quisque non tortor ultricies, posuere elit id, lacinia purus curabitur.</small>
+                </div>
+            </div>
+
+            <div class="list-group-item media">
+
+
+
+
+                <div class="pull-left">
+                    <div class="avatar-char palette-Red-400 bg">D</div>
+                </div>
+
+                <div class="media-body">
+                    <div class="lgi-heading">Délais de fin de projet</div>
+                    <small class="lgi-text">Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</small>
+                </div>
+            </div>
+
+
+        </div>
+
+        <ul class="pagination lg-pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <i class="zmdi zmdi-chevron-left"></i>
+                </a>
+            </li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <i class="zmdi zmdi-chevron-right"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    {% endblock %}

@@ -10,4 +10,12 @@ class ForumController extends Controller
     {
         return $this->render('EspritsocialproBundle:Forum:indexforum.html.twig');
     }
+
+    public function supportAction()
+    {
+        return $this->render('EspritsocialproBundle:Forum:support.html.twig');
+    }
+
+
+
 }
