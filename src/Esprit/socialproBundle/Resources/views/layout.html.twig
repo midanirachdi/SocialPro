@@ -156,7 +156,7 @@
     <section id="content">
         <div class="container">
             <div class="card">
-                <div class="card-header">
+                <div {% block division1 %} class="card-header" {% endblock %}>
                     <h2>{% block titreheader %}{% endblock %}<small>{% block descheader %}{% endblock %}</small></h2>
 
                     {% block bodyheader %}
@@ -165,7 +165,7 @@
                     {% endblock %}
                 </div>
 
-                <div class="card-body">
+                <div {% block division2 %} class="card-body" {% endblock %}>
                     {% block bodymain %}
                         <!--**********************************************************-->
 
