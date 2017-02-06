@@ -7,7 +7,7 @@ espritsocialpro_profil:
     defaults: { _controller: EspritsocialproBundle:Profil:index }
 
 espritsocialpro_profil_photos:
-    path:     /photos
+    path:     /competences
     defaults: { _controller: EspritsocialproBundle:Profil:photos }
 
 espritsocialpro_filactualite:
