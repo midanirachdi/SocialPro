@@ -7,7 +7,10 @@
 {% block descheader %}
 
 {% endblock %}
+{% block cssjs %}
 
+
+{% endblock %}
 {% block bodyheader %}
 
 {% endblock %}
@@ -16,7 +19,7 @@
 {% block active5 %} class="active" {% endblock %}
 
 {% block bodymain %}
-    <!--**********************************************************-->
+
 <section id="content">
 <div class="container c-boxed">
 
@@ -24,21 +27,44 @@
         <div id="calendar" class="card">
 
         </div>
-
-
-
+    <div class="card-body card-padding">
+        <div class="row">
+    <div class="fg-line">
+        <div class="col-sm-3 m-b-15">
+            <p class="f-500 c-black m-b-15">Disabled Items</p>
+            <select class="chosen" data-placeholder="Choose a Country...">
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option disabled value="Afghanistan">Afghanistan</option>
+                <option disabled value="Aland Islands">Aland Islands</option>
+                <option value="Albania">Albania</option>
+                <option disabled value="Algeria">Algeria</option>
+                <option value="American Samoa">American Samoa</option>
+            </select>
+        </div>
+        </div>
+        </div>
+    </div>
 
         <!-- Add event -->
         <div class="modal fade" id="addNew-event" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Add an Event</h4>
+                        <h4 class="modal-title">Planifier une réunion</h4>
                     </div>
                     <div class="modal-body">
+
                         <form class="addEvent" role="form">
                             <div class="form-group">
-                                <label for="eventName">Event Name</label>
+                                <label for="eventName">Sujet de la réunion</label>
+                                <div class="fg-line">
+                                    <input type="text" class="input-sm form-control" id="eventName" placeholder="Sujet">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="eventName">Les employés participants</label>
                                 <div class="fg-line">
                                     <input type="text" class="input-sm form-control" id="eventName" placeholder="eg: Sports day">
                                 </div>
@@ -75,7 +101,21 @@
         </div>
     </div>
     </section>
-
+    <script type="text/javascript">
+        $(function () {
+            $('#lstFruits').multiselect({
+                includeSelectAllOption: true
+            });
+            $('#btnSelected').click(function () {
+                var selected = $("#lstFruits option:selected");
+                var message = "";
+                selected.each(function () {
+                    message += $(this).text() + " " + $(this).val() + "\n";
+                });
+                alert(message);
+            });
+        });
+    </script>
 
 
 
