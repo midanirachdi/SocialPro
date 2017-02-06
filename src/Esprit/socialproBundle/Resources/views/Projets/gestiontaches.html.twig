@@ -13,9 +13,150 @@
 
 {% block bodyheader %}
 
+    <br>
+    <h3 style="">Bonjour/Bonsoir nom_chef, Il est "date_actuelle"</h3>
 {% endblock %}
-
+{% block division1 %} class="c-header" {% endblock %}
+{% block division2 %} id="c-grid" class="clearfix"  {% endblock %}
 {% block bodymain %}
-    <!--**********************************************************-->
-    <h1>BODY</h1>
+    <div class="column size-1of3">
+        <div>
+            <button id="creer" class="btn btn-info waves-effect">Creer Une tache</button>
+        </div>
+        <div class="card">
+            <div class="card-header ch-alt">
+                <h2>Effectuer une tache </h2>
+            </div>
+            <div class="card-body card-padding">
+                <div class="form-group fg-float m-b-30">
+                    <div class="fg-line">
+                        <input type="text" class="form-control input-sm">
+                        <label class="fg-label">Nom_Employe</label>
+                    </div>
+                </div>
+                <div class="form-group fg-float m-b-30">
+                    <div class="fg-line">
+                        <input type="text" class="form-control input-sm">
+                        <label class="fg-label">Projet</label>
+                    </div>
+                </div>
+                <div class="form-group fg-float m-b-30">
+                    <div class="fg-line">
+                        <input type="text" class="form-control input-sm">
+                        <label class="fg-label">Nom_Tache</label>
+                    </div>
+                </div>
+
+                <div class="form-group fg-float m-b-30">
+                    <div class="fg-line">
+                        <textarea class="form-control" rows="3"></textarea>
+                        <label class="fg-label">Description</label>
+                    </div>
+                </div>
+                <div class="form-group fg-float m-b-30">
+                    <div class="fg-line">
+                        <input type="date" class="bootstrap-datetimepicker-widget">
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="m-t-20">
+                    <button class="btn btn-info waves-effect">Créer</button>
+                    <!--<button class="btn btn-danger waves-effect">Annuler</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="column size-1of3">
+        <div>
+            <button id="update" class="btn btn-warning waves-effect">Modifier une tache</button>
+        </div>
+        <div class="card">
+            <div class="card-header ch-alt">
+                <h2>Modifier une tache </h2>
+            </div>
+            <div class="card-body card-padding">
+                <div class="form-group fg-float m-b-30">
+                    <div class="fg-line">
+                        <div class="select">
+                            <select class="form-control">
+                                <option>Tache</option>
+                                <option>Tache 1</option>
+                                <option>Tache 2</option>
+                                <option>Tache 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group fg-float m-b-30">
+                    <div class="fg-line">
+                        <input type="text" class="form-control input-sm">
+                        <label class="fg-label">Nom_Employe</label>
+                    </div>
+                </div>
+                <div class="form-group fg-float m-b-30">
+                    <div class="fg-line">
+                        <input type="text" class="form-control input-sm">
+                        <label class="fg-label">Projet</label>
+                    </div>
+                </div>
+                <div class="form-group fg-float m-b-30">
+                    <div class="fg-line">
+                        <input type="text" class="form-control input-sm">
+                        <label class="fg-label">Nom_Tache</label>
+                    </div>
+                </div>
+
+                <div class="form-group fg-float m-b-30">
+                    <div class="fg-line">
+                        <textarea class="form-control" rows="3"></textarea>
+                        <label class="fg-label">Description</label>
+                    </div>
+                </div>
+                <div class="form-group fg-float m-b-30">
+                    <div class="fg-line">
+                        <input type="date" class="bootstrap-datetimepicker-widget">
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="m-t-20">
+                    <button class="btn btn-warning waves-effect">Modifier</button>
+                    <!--<button class="btn btn-danger waves-effect">Annuler</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="column size-1of3">
+        <div>
+            <button id="supprimer" class="btn btn-danger waves-effect">Supprimer une tache</button>
+        </div>
+        <div class="card">
+            <div class="card-header ch-alt">
+                <h2>Supprimer une tache </h2>
+            </div>
+            <div class="card-body card-padding">
+                <div class="form-group fg-float m-b-30">
+                    <div class="fg-line">
+                        <div class="select">
+                            <select class="form-control">
+                                <option>Tache</option>
+                                <option>Tache 1</option>
+                                <option>Tache 2</option>
+                                <option>Tache 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="m-t-20">
+                    <button class="btn btn-danger waves-effect">Supprimer</button>
+                    <!--<button class="btn btn-danger waves-effect">Annuler</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
