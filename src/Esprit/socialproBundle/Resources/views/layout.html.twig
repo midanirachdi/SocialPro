@@ -544,6 +544,7 @@
 <script src="{{ asset('bundles/espritsocialpro/index/js/functions.js')  }}"></script>
 <script src="{{ asset('bundles/espritsocialpro/index/js/actions.js')  }}"></script>
 <script src="{{ asset('bundles/espritsocialpro/index/js/demo.js')  }}"></script>
+    {% block tabscript %}
     <script type="text/javascript">
         $(document).ready(function(){
             //Basic Example
@@ -591,6 +592,7 @@
         });
 
     </script>
+{% endblock %}
 {% endblock %}
 </body>
 
