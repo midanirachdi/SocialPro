@@ -18,13 +18,21 @@
 {% block bodymain %}
     <div id="container">
     <div class="card">
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form" method="post">
             <div class="card-body card-padding">
+                <div class="form-group">
+                    <label for="inputMatricule" class="col-sm-2 control-label">Matricule</label>
+                    <div class="col-sm-10">
+                        <div class="fg-line">
+                            <input type="number" class="form-control input-sm" id="inputNom" placeholder="Matricule" name="matricule">
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">
                         <div class="fg-line">
-                            <input type="email" class="form-control input-sm" id="inputEmail3" placeholder="Email">
+                            <input type="email" class="form-control input-sm" id="inputEmail3" placeholder="Email" name="email">
                         </div>
                     </div>
                 </div>
@@ -32,7 +40,7 @@
                     <label for="inputNom" class="col-sm-2 control-label">Nom</label>
                     <div class="col-sm-10">
                         <div class="fg-line">
-                            <input type="text" class="form-control input-sm" id="inputNom" placeholder="Nom">
+                            <input type="text" class="form-control input-sm" id="inputNom" placeholder="Nom" name="nom">
                         </div>
                     </div>
                 </div>
@@ -40,7 +48,7 @@
                     <label for="inputPrenom" class="col-sm-2 control-label">Prénom</label>
                     <div class="col-sm-10">
                         <div class="fg-line">
-                            <input type="text" class="form-control input-sm" id="inputPrenom" placeholder="Prénom">
+                            <input type="text" class="form-control input-sm" id="inputPrenom" placeholder="Prénom" name="prenom">
                         </div>
                     </div>
                 </div>
@@ -48,7 +56,7 @@
                     <label for="inputNum" class="col-sm-2 control-label">Numéro de téléphone</label>
                     <div class="col-sm-10">
                         <div class="fg-line">
-                            <input type="number" class="form-control input-sm" id="inputNum" placeholder="Numéro de téléphone">
+                            <input type="number" class="form-control input-sm" id="inputNum" placeholder="Numéro de téléphone" name="numtell">
                         </div>
                     </div>
                 </div>
@@ -56,7 +64,7 @@
                     <label for="inputDate" class="col-sm-2 control-label">Date de naissance</label>
                     <div class="col-sm-10">
                         <div class="fg-line">
-                            <input type="date" class="form-control input-sm" id="inputDate" placeholder="Date de naissance">
+                            <input type="date" class="form-control input-sm" id="inputDate" placeholder="Date de naissance" name="datenaiss">
                         </div>
                     </div>
                 </div>
@@ -64,9 +72,9 @@
                     <label for="selectSexe" class="col-sm-2 control-label">Sexe</label>
                     <div class="col-sm-10">
                         <div class="fg-line">
-                            <select class="selectpicker" id="selectSexe">
-                                <option>Homme</option>
-                                <option>Femme</option>
+                            <select class="selectpicker" id="selectSexe" name="sex">
+                                <option value="homme">Homme</option>
+                                <option value="femme">Femme</option>
                             </select>
                         </div>
                     </div>
@@ -74,7 +82,7 @@
                 <div class="form-group">
                     <label for="inputAdresse" class="col-sm-2 control-label">Adresse</label>
                     <div class="fg-line">
-                        <textarea id="inputAdresse" class="form-control auto-size" placeholder="" data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; height: 43px;"></textarea>
+                        <textarea name="adresse" id="inputAdresse" class="form-control auto-size" placeholder="" data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; height: 43px;"></textarea>
                     </div>
                 </div>
 
@@ -82,17 +90,17 @@
                     <label for="selectRole" class="col-sm-2 control-label">Rôle</label>
                     <div class="col-sm-10">
                         <div class="fg-line">
-                            <select class="selectpicker" id="selectRole">
-                                <option>Employé</option>
-                                <option>Chef de Projet</option>
-                                <option>Chef de Département</option>
+                            <select class="selectpicker" id="selectRole" name="role">
+                                <option value="ROLE_EMPLOYE">Employé</option>
+                                <option value="ROLE_CHEF_PROJET">Chef de Projet</option>
+                                <option value="ROLE_CHEF_DEP">Chef de Département</option>
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-success btn-sm">Ajouter Employé</button>
+                        <input type="submit" class="btn btn-success btn-sm" value="Ajouter Employé"/>
                     </div>
                 </div>
             </div>
