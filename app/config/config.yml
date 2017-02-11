@@ -48,6 +48,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    date:
+        #define the timezone to be the same of tunis time.
+        timezone: Europe/Paris
 
 # Doctrine Configuration
 doctrine:
