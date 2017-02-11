@@ -42,6 +42,26 @@ class User extends BaseUser
      * @ORM\Column(type="string",length=255)
      */
     private $adresse;
+
+    /**
+     * @return mixed
+     */
+    public function getDatenaiss()
+    {
+        return $this->datenaiss;
+    }
+
+    /**
+     * @param mixed $datenaiss
+     */
+    public function setDatenaiss($datenaiss)
+    {
+        $this->datenaiss = $datenaiss;
+    }
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     */
+    private $datenaiss;
     /**
      * @ORM\Column(type="string",length=255)
      */
@@ -55,9 +75,30 @@ class User extends BaseUser
      */
     private $evaluation;
     /**
+     * @ORM\Column(type="string",length=255,nullable=true)
+     */
+    private $sex;
+
+    /**
+     * @return mixed
+     */
+    public function getSex()
+    {
+        return $this->sex;
+    }
+
+    /**
+     * @param mixed $sex
+     */
+    public function setSex($sex)
+    {
+        $this->sex = $sex;
+    }
+    /**
      * @ORM\ManyToMany(targetEntity="Competence", mappedBy="users")
      */
     private $competences;
+
     public function __construct()
     {
         parent::__construct();
