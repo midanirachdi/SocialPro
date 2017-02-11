@@ -11,9 +11,17 @@ class EmployesController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('EspritsocialproBundle:Employes:indexemployes.html.twig');
+        $users=$this->getDoctrine()->getManager()->getRepository("EspritsocialproBundle:User")->findAll();
+        return $this->render('EspritsocialproBundle:Employes:indexemployes.html.twig',array("users"=>$users));
     }
 
+    public function supprimerAction($id)
+    {
+        $user=$this->getDoctrine()->getManager()->getRepository("EspritsocialproBundle:User")->find($id);
+        $this->getDoctrine()->getManager()->remove($user);
+        $this->getDoctrine()->getManager()->flush();
+        return $this->redirectToRoute("espritsocialpro_employes");
+    }
     public function demandeinscrptionAction()
     {
         return $this->render('EspritsocialproBundle:Employes:demandeinscription.html.twig');
