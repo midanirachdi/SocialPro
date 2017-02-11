@@ -68,6 +68,9 @@ espritsocialpro_offres:
 espritsocialpro_ajoutoffre:
     path:     /ajoutoffre
     defaults: { _controller: EspritsocialproBundle:Offres:ajout }
+espritsocialpro_suppoffre:
+    path:     /suppoffre/{id}
+    defaults: { _controller: EspritsocialproBundle:Offres:supp }
 
 espritsocialpro_forum:
     path:     /Forum

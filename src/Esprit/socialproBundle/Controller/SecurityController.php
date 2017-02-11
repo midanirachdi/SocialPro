@@ -13,7 +13,7 @@ namespace Esprit\socialproBundle\Controller;
 
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+
 use FOS\UserBundle\Controller\SecurityController as BaseController;
 
 class SecurityController extends BaseController

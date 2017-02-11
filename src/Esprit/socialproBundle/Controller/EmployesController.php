@@ -46,8 +46,7 @@ class EmployesController extends Controller
             $utilisateur->setSex($request->get("sex"));
             $utilisateur->setAdresse($request->get("adresse"));
             $utilisateur->addRole($request->get("role"));
-            $utilisateur->setPlainPassword("123456");
-            $utilisateur->setEnabled(true);
+            $utilisateur->setPassword("0000");
             $this->getDoctrine()->getManager()->persist($utilisateur);
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute("espritsocialpro_employes");
