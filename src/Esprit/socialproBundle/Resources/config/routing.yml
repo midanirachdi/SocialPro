@@ -96,6 +96,11 @@ espritsocialpro_departement:
     path:     /ajoutDepartement
     defaults: { _controller: EspritsocialproBundle:Departement:ajout }
 
-espritsocialpro_depa:
-    path:     /afficheDepartement
-    defaults: { _controller: EspritsocialproBundle:Departement:affiche }
+supp_departement:
+    path:     /suppDepartement/{id}
+    defaults: { _controller: EspritsocialproBundle:Departement:supprimer }
+
+modifier_departement:
+    path:     /modifierDepartement/{id}
+    defaults: { _controller: EspritsocialproBundle:Departement:modifier }
+
