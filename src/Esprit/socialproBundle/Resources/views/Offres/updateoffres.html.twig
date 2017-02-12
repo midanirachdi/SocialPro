@@ -1,0 +1,100 @@
+{% extends '@Espritsocialpro/layout.html.twig' %}
+
+{% block titreheader %}
+    Modification d'une offre
+{% endblock %}
+
+{% block active7 %} class="active" {% endblock %}
+
+{% block descheader %}
+
+{% endblock %}
+
+{% block bodyheader %}
+
+{% endblock %}
+
+{% block bodymain %}
+
+    <div class="card">
+        <div class="container">
+
+        <div class="card-body card-padding">
+
+        {{ form_start(form ,{'class': 'form-horizontal','role': 'form' } ) }}
+
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Description de l'offre:</label>
+                <div class="col-sm-10">
+                    <div class="fg-line">
+                        {{ form_widget(form.description,
+                        { 'attr': {'rows':'5', 'class': 'form-control','placeholder': "Décrivez l'offre que vous allez ajouter"} }
+                        ) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Mots clés:</label>
+                <div class="col-sm-10">
+                    <div class="fg-line">
+                        {{ form_widget(form.motscles,
+                        { 'attr': {'class': 'form-control input-sm', 'placeholder':'tags' } }) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Contact:</label>
+                <div class="col-sm-10">
+                    <div class="fg-line">
+                        {{ form_widget(form.contact,
+                        { 'attr': {'class': 'form-control input-sm','placeholder':'Contact'} }) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Date début:</label>
+                <div class="col-sm-10">
+                    <div class="input-group form-group">
+                        <div class="dtp-container fg-line">
+                            {{ form_widget(form.dateDebut,
+                            { 'attr': {'class': 'form-control date-time-picker','placeholder':'Date début'} }) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Date fin:</label>
+                <div class="col-sm-10">
+                    <div class="input-group form-group">
+                        <div class="dtp-container fg-line">
+                            {{ form_widget(form.dateFin,
+                            { 'attr': {'class': 'form-control date-time-picker','placeholder':'Date fin'} }) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="input-group form-group">
+                    {{ form_widget(form.Ajouter,
+                    { 'attr': {'class': 'btn btn-primary btn-sm'} }) }}
+                    </div>
+                    </div>
+            </div>
+
+            </br>
+            {{ form_end(form) }}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

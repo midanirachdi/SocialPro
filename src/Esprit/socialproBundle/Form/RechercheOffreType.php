@@ -9,17 +9,13 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class OffreType extends AbstractType
+class RechercheOffreType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('description',TextareaType::class)
-            ->add('motscles')
-            ->add('contact')
-            ->add('dateDebut',TextType::class)
-            ->add('dateFin',TextType::class)
-            ->add('Ajouter',SubmitType::class)
+            ->add('Rechercher',SubmitType::class)
         ;
 
     }

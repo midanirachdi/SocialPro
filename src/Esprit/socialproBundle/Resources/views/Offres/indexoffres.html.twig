@@ -15,7 +15,6 @@
 {% endblock %}
 
 {% block bodymain %}
-    <h3>probleme de modification/suppression par ID </h3>
     <div class="card">
         <div class="pull-right">
             <div class="card-header">
@@ -26,7 +25,22 @@
             </div>
         </div>
 
-        <table id="data-table-command" class="table table-striped table-vmiddle">
+        <div class="card-header" style="display:inline-flex">
+            {{ form_start(form) }}
+
+            {{ form_widget(form.description,
+            { 'attr': {'class': 'search-field form-control','placeholder':'Rechercher...'} }) }}
+
+            {#<a href="#" class="btn btn-info"><i class="zmdi zmdi-search"></i></a>#}
+            {{ form_widget(form.Rechercher,
+            { 'icon': {'class':'zmdi zmdi-search'}, 'attr': {'class': 'btn btn-info'} }) }}
+
+            {{ form_end(form) }}
+
+
+        </div>
+
+        <table id="data-table-basic" class="table table-striped">
             <thead>
             <tr>
                 <th data-column-id="idoffre" data-order="desc" data-identifier="true">Id</th>
@@ -35,86 +49,37 @@
                 <th data-column-id="contact" data-order="desc">Contact</th>
                 <th data-column-id="dateDebut" data-order="desc">Date début</th>
                 <th data-column-id="dateFin" data-order="desc">Date fin</th>
-                <th data-column-id="commands" data-formatter="commands" data-sortable="false">
-                    Actions
-                </th>
+                <th data-column-id="commands" data-formatter="commands" data-sortable="false">Actions</th>
             </tr>
             </thead>
             <tbody>
             {% for offre in offres %}
-            <tr>
-                <td>{{ offre.idoffre }}</td>
-                <td>{{ offre.description }}</td>
-                <td>{{ offre.motscles }}</td>
-                <td>{{ offre.contact }}</td>
-                <td>{{ offre.dateDebut }}</td>
-                <td>{{ offre.dateFin }}</td>
-                <td></td>
-            </tr>
+                <tr>
+                    <td>{{ offre.idoffre }}</td>
+                    <td>{{ offre.description }}</td>
+                    <td>{{ offre.motscles }}</td>
+                    <td>{{ offre.contact }}</td>
+                    <td>{{ offre.dateDebut }}</td>
+                    <td>{{ offre.dateFin }}</td>
+                    <td>
+                        <a href="{{ path('espritsocialpro_modifoffre',{'id':offre.idoffre}) }}"
+                           class='btn palette-Light-Green bg btn-icon waves-effect waves-circle waves-float'>
+                            <span class='zmdi zmdi-edit'></span>
+                        </a>
+                        <a href="{{ path('espritsocialpro_suppoffre',{'id':offre.idoffre}) }}"
+                           class='btn btn-danger btn-icon waves-effect waves-circle waves-float'>
+                            <span class='zmdi zmdi-delete'></span>
+                        </a>
+                    </td>
+
+                </tr>
             {% endfor %}
             </tbody>
         </table>
-
-
     </div>
+
     {% block tabscript %}
-        <script type="text/javascript">
 
-            $(document).ready(function () {
-
-                //Basic Example
-                $("#data-table-basic").bootgrid({
-                    css: {
-                        icon: 'zmdi icon',
-                        iconColumns: 'zmdi-view-module',
-                        iconDown: 'zmdi-expand-more',
-                        iconRefresh: 'zmdi-refresh',
-                        iconUp: 'zmdi-expand-less'
-                    },
-                });
-
-                //Selection
-                $("#data-table-selection").bootgrid({
-                    css: {
-                        icon: 'zmdi icon',
-                        iconColumns: 'zmdi-view-module',
-                        iconDown: 'zmdi-expand-more',
-                        iconRefresh: 'zmdi-refresh',
-                        iconUp: 'zmdi-expand-less'
-                    },
-                    selection: true,
-                    multiSelect: true,
-                    rowSelect: true,
-                    keepSelection: true
-
-                });
-
-                //Command Buttons
-                $("#data-table-command").bootgrid({
-                    css: {
-                        icon: 'zmdi icon',
-                        iconColumns: 'zmdi-view-module',
-                        iconDown: 'zmdi-expand-more',
-                        iconRefresh: 'zmdi-refresh',
-                        iconUp: 'zmdi-expand-less'
-                    },
-                    formatters: {
-                        "commands": function (column, row) {
-                            {% for offre in offres %}
-                            var id= $(this).data("row-id");
-                            return "<a href='{{ path("espritsocialpro_suppoffre",{"id":offre.idoffre}) }}' class=\"btn palette-Light-Blue btn-icon bg waves-effect waves-circle waves-float\" data-row-id=\""
-                                + row.id
-                                + "\"><span class=\"zmdi zmdi-edit zmdi-hc-fw\"></span></a> "
-                                + "<a href='{{ path("espritsocialpro_suppoffre",{"id":offre.idoffre}) }}' class=\"btn palette-Deep-Orange btn-icon bg waves-effect waves-circle waves-float\" data-row-id=\""
-                                + row.id
-                                + "\"><span class=\"zmdi zmdi-delete zmdi-hc-fw\"></span></a>";
-                            {% endfor %}
-                        }
-                    }
-
-
-                });
-            });
-        </script>
     {% endblock %}
+
 {% endblock %}
