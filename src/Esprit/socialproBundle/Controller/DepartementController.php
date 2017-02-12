@@ -63,9 +63,10 @@ class DepartementController extends Controller
 
         if($request->isMethod("post"))
         {
-            $dep->setId($request->get("id"));
-            $dep->setNom($request->get("nomDepartement"));
-            $dep->setNom($request->get("chef"));
+
+            $dep->setNomDepartement($request->get("nom"));
+            $chef=$this->getDoctrine()->getManager()->getRepository("EspritsocialproBundle:User")->find($request->get("chef"));
+            $dep->setChef($chef);
             $em->persist($dep);
             $em->flush();
             return $this->redirectToRoute("espritsocialpro_departements");
