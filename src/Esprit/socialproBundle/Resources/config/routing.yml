@@ -85,3 +85,11 @@ espritsocialpro_historique:
 espritsocialpro_calendrier:
     path:     /Calendrier
     defaults: { _controller: EspritsocialproBundle:Calendrier:index }
+
+espritsocialpro_departement:
+    path:     /ajoutDepartement
+    defaults: { _controller: EspritsocialproBundle:Departement:ajout }
+
+espritsocialpro_depa:
+    path:     /afficheDepartement
+    defaults: { _controller: EspritsocialproBundle:Departement:affiche }
