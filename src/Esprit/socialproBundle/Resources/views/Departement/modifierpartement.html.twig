@@ -1,0 +1,62 @@
+{% extends '@Espritsocialpro/layout.html.twig' %}
+
+{% block titreheader %}
+   modifier  Départements
+{% endblock %}
+
+{% block descheader %}
+
+
+{% endblock %}
+
+{% block active2 %} class="sub-menu active" {% endblock %}
+    {% block active22 %} class="active" {% endblock %}
+{% block bodyheader %}
+
+{% endblock %}
+
+{% block bodymain %}
+    <div id="container">
+        <div class="card">
+            <form class="form-horizontal" role="form" method="post">
+                <div class="card-body card-padding">
+                    <div class="form-group">
+                        <label for="inputNom" class="col-sm-2 control-label">Nom</label>
+                        <div class="col-sm-10">
+                            <div class="fg-line">
+                                <input value="{{ dep.nomDepartement }}" type="text" class="form-control input-sm" id="inputNom" placeholder="Nom Departement" name="nom">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="form-group">
+                    <label for="selectUser" class="col-sm-2 control-label">Chef de departement</label>
+                    <div class="col-sm-10">
+                        <div class="fg-line">
+                            <select class="selectpicker" id="selectUser" name="chef">
+                                {% for user in users %}
+                                    {% if dep.chef.id == user.id %}
+                                <option value="{{ user.id }}" selected >{{ user.username }}</option>
+                                    {% else %}
+                                    <option value="{{ user.id }}"  >{{ user.username }}</option>
+                               {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn palette-Green bg waves-effect" >modifier Departement</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% block tabscript %}
+
+{% endblock %}
+{% endblock %}
