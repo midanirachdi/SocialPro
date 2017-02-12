@@ -4,7 +4,7 @@ namespace Esprit\socialproBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="OffreRepository")
  * @ORM\Table(name="Offre")
  */
 class Offre
