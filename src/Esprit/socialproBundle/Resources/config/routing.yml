@@ -1,3 +1,7 @@
+espritsocialpro_equipe:
+    resource: "@EspritsocialproBundle/Resources/config/routing/equipe.yml"
+    prefix:   /equipe
+
 espritsocialpro_homepage:
     path:     /index
     defaults: { _controller: EspritsocialproBundle:Default:index }
@@ -48,9 +52,22 @@ espritsocialpro_projets:
     path:     /Projets
     defaults: { _controller: EspritsocialproBundle:Projets:index }
 
+espritsocialpro_ajout_projets:
+    path:     /addProjets
+    defaults: { _controller: EspritsocialproBundle:Projets:ajout }
+
+espritsocialpro_supp_projets:
+    path:     /suppProjets/{idprojet}
+    defaults: { _controller: EspritsocialproBundle:Projets:supprime }
+
+espritsocialpro_update_projets:
+    path:     /updateProjets/{idprojet}
+    defaults: { _controller: EspritsocialproBundle:Projets:update }
+
 espritsocialpro_taches:
     path:     /Taches
     defaults: { _controller: EspritsocialproBundle:Projets:taches }
+
 
 espritsocialpro_equipes:
     path:     /Equipes
@@ -58,7 +75,7 @@ espritsocialpro_equipes:
 
 espritsocialpro_gestionprojets:
     path:     /GestionProjets
-    defaults: { _controller: EspritsocialproBundle:Projets:gestionprojets }
+    defaults: { _controller: EspritsocialproBundle:Projets:affiche }
 
 espritsocialpro_offres:
     path:     /Offres
@@ -93,8 +110,6 @@ espritsocialpro_historique:
 espritsocialpro_calendrier:
     path:     /Calendrier
     defaults: { _controller: EspritsocialproBundle:Calendrier:index }
-<<<<<<< Updated upstream
-
 espritsocialpro_departement:
     path:     /ajoutDepartement
     defaults: { _controller: EspritsocialproBundle:Departement:ajout }
