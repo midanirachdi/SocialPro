@@ -5,14 +5,17 @@
 {% endblock %}
 {% block active1 %} class="active" {% endblock %}
 {% block descheader %}
-   <h3> Abderrabba Med Yassin : Développement</h3>
+   <h3> {{ app.user.nom }} {{ app.user.prenom }} {% if app.user.departement!=NULL %} :  {{app.user.departement.nomDepartement}}
+       {% elseif  app.user.equipe!=NULL %}:  {{  app.user.equipe.nomequipe}}
+       {% else %}
+       {% endif %}</h3>
 {% endblock %}
 
 {% block bodyheader %}
-
 {% endblock %}
 
 {% block bodymain %}
+
     <div class="card" id="profile-main">
         <div class="pm-overview c-overflow">
             <div class="pmo-pic">
@@ -42,85 +45,104 @@
 
                 <div class="pmo-stat">
                     <h2 class="m-0 c-white">Role</h2>
-                    Employé
+                    {{ app.user.fonction }}
                 </div>
             </div>
 
             <div class="pmo-block pmo-contact hidden-xs">
                 <h2>Contact</h2>
 
-                <ul>
-                    <li><i class="zmdi zmdi-phone"></i> 55123456</li>
-                    <li><i class="zmdi zmdi-email"></i> mohamedyassin.abderrabba@esprit.tn
+                <ul>{% if app.user.numtel!=NULL %}
+                    <li><i class="zmdi zmdi-phone"></i> {{ app.user.numtel }}</li>
+                    {% endif %}
+                    <li><i class="zmdi zmdi-email"></i> {{ app.user.email }}
                     </li>
-                    <li><i class="zmdi zmdi-facebook-box"></i> yassin.abderrabba</li>
-                    <li><i class="zmdi zmdi-twitter"></i> @yassin (twitter.com/yassin)</li>
+                    {% if app.user.facebook!=NULL %}
+
+                    <li><i class="zmdi zmdi-facebook-box"></i> {{ app.user.facebook }}</li>
+                    {% endif %}
+                    {% if app.user.twitter!=NULL %}
+                    <li><i class="zmdi zmdi-twitter"></i> {{ app.user.twitter }}</li>
+                    {% endif %}
+                    {% if app.user.adresse!=NULL %}
                     <li>
                         <i class="zmdi zmdi-pin"></i>
                         <address class="m-b-0 ng-binding">
-                            44-46 Morningside Road,<br>
-                            Edinburgh,<br>
-                            Scotland
+                            {{ app.user.adresse }}
                         </address>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
+            <div id="ajaxconnected">{{ render(controller('EspritsocialproBundle:Profil:rechercherconnecter')) }} </div>
 
-            <div class="pmo-block pmo-items hidden-xs">
-                <h2>Connections</h2>
 
-                <div class="pmob-body">
-                    <div class="row">
-                        <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/1.jpg') }}" alt="">
-                        </a>
-                        <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/2.jpg') }}" alt="">
-                        </a>
-                        <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/3.jpg') }}" alt="">
-                        </a>
-                        <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/4.jpg') }}" alt="">
-                        </a>
-                        <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/5.jpg') }}" alt="">
-                        </a>
-                        <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/6.jpg') }}" alt="">
-                        </a>
-                        <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/7.jpg') }}" alt="">
-                        </a>
-                        <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/8.jpg') }}" alt="">
-                        </a>
-                        <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/profile-pics/1.jpg') }}" alt="">
-                        </a>
-                        <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/profile-pics/2.jpg') }}" alt="">
-                        </a>
-                        <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/media/gallery/thumbs/3.jpg') }}" alt="">
-                        </a>
-                        <a href="#" class="col-xs-2">
-                            <img class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/profile-pics/4.jpg') }}" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="pm-body clearfix">
             <ul class="tab-nav tn-justified">
-                <li class="active waves-effect"><a href="{{ path('espritsocialpro_profil') }}">à propos</a></li>
-                <li class="waves-effect"><a href="{{ path('espritsocialpro_profil_photos') }}">Compétences</a></li>
+                <li id="aprop" class="active waves-effect"><a href="javascript:void(0)" onclick="toapropos()">à propos</a></li>
+                <li id="compet" class="waves-effect"><a href="javascript:void(0)" onclick="tocompetence()">Compétences</a></li>
 
             </ul>
 
+<div style="display: none" id="competences">
 
-            <div class="pmb-block">
+
+            <div  class="pmb-block clearfix photos" >
+                <div class="p-header">
+                    <table class="table">
+                        <thead>
+                        <th>ID</th>
+                        <th>Compétence</th>
+                        <th>Date d'éxpiration</th>
+                        <th>Document</th>
+                        </thead>
+                        <tr>
+                            <td>1</td>
+                            <td>angular JS</td>
+                            <td>17/12/2018</td>
+                            <td><img src="{{ asset('bundles/espritsocialpro/index/img/demo/images.jpg') }}"/> </td>
+                        </tr>
+                        <tr >
+                            <td>2</td>
+                            <td>c#</td>
+                            <td>22/02/2018</td>
+                            <td >
+                                <div class="alert alert-danger">
+                                    <strong>Attention :</strong> Vous n'avez toujours pas validé cette compétence avec une certification
+                                    elle ne sera donc pas prise en concidération.
+                                </div>
+                                <input type="file"/>
+                            </td>
+                        </tr>
+                        <tr >
+                            <td>2</td>
+                            <td>Java</td>
+                            <td>22/02/2018</td>
+                            <td>
+                                <div class="alert alert-danger">
+                                    <strong>Attention :</strong> Vous n'avez toujours pas validé cette compétence avec une certification
+                                    elle ne sera donc pas prise en concidération.
+                                </div>
+
+                                <input type="file"/>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+
+</div>
+
+
+
+
+<div  id="apropos">
+            <div  class="pmb-block">
                 <div class="pmbb-header">
                     <h2><i class="zmdi zmdi-equalizer m-r-5"></i> Description</h2>
 
@@ -140,24 +162,31 @@
                 </div>
                 <div class="pmbb-body p-l-30">
                     <div class="pmbb-view">
-                            Je m'appelle yassin....
+                        {% if app.user.description!=NULL  %}
+                            {{ app.user.description }}
+                        {% else %}
+                        Voulez vous ajouter une description
+                        {% endif %}
                     </div>
-
+                    <form method="post" action="modifierdescription">
                     <div class="pmbb-edit">
                         <div class="fg-line">
-                            <textarea class="form-control" rows="5" placeholder="Summary...">Je m'appelle yassin ...</textarea>
+                            <textarea name="description" class="form-control" rows="5" placeholder="Decrivez vous..." >{{ app.user.description }}</textarea>
                         </div>
-                        <div class="m-t-10">
-                            <button class="btn btn-primary btn-sm">Save</button>
-                            <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancel</button>
-                        </div>
+                        <center>
+                            <div class="m-t-30">
+                                <button class="btn btn-primary waves-effect">Enregistrer</button>
+                                <button data-pmb-action="reset" class="btn palette-Deep-Orange bg waves-effect">Annuler</button>
+                            </div>
+                        </center>
                     </div>
+                    </form>
                 </div>
             </div>
 
             <div class="pmb-block">
                 <div class="pmbb-header">
-                    <h2><i class="zmdi zmdi-account m-r-5"></i> Informations basiques</h2>
+                    <h2><i class="zmdi zmdi-account m-r-5"></i> Informations générales</h2>
 
                     <ul class="actions">
                         <li class="dropdown">
@@ -167,84 +196,65 @@
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a data-pmb-action="edit" href="#">modifier</a>
+                                    <a data-pmb-action="edit" href="#">Modifier</a>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 </div>
+
                 <div class="pmbb-body p-l-30">
                     <div class="pmbb-view">
                         <dl class="dl-horizontal">
                             <dt>Nom Complet</dt>
-                            <dd>yassin abderrabba</dd>
+                            <dd>{{ app.user.prenom }} {{ app.user.nom }}</dd>
                         </dl>
                         <dl class="dl-horizontal">
-                            <dt>Sexe</dt>
-                            <dd>Homme</dd>
+                            <dt>Gendre</dt>
+                            <dd>{{ app.user.gendre }}</dd>
                         </dl>
                         <dl class="dl-horizontal">
                             <dt>Date de naissance</dt>
-                            <dd>June 23, 1990</dd>
+                            <dd>{{ app.user.datenaissance|date("d/m/Y") }}</dd>
                         </dl>
 
                     </div>
-
+                    <form method="POST" action="modifierinfos">
                     <div class="pmbb-edit">
-                        <dl class="dl-horizontal">
-                            <dt class="p-t-10">Full Name</dt>
-                            <dd>
-                                <div class="fg-line">
-                                    <input type="text" class="form-control" placeholder="eg. yassin abderrabba">
-                                </div>
 
-                            </dd>
-                        </dl>
+
                         <dl class="dl-horizontal">
-                            <dt class="p-t-10">Gender</dt>
-                            <dd>
-                                <div class="fg-line">
-                                    <select class="form-control">
-                                        <option>Male</option>
-                                        <option>Female</option>
-                                        <option>Other</option>
-                                    </select>
-                                </div>
-                            </dd>
-                        </dl>
-                        <dl class="dl-horizontal">
-                            <dt class="p-t-10">Birthday</dt>
+                            <dt class="p-t-10">Date de naissance</dt>
                             <dd>
                                 <div class="dtp-container dropdown fg-line">
-                                    <input type='text' class="form-control date-picker" data-toggle="dropdown" placeholder="Click here...">
+                                    <input name="datenaissance" type='text' class="form-control date-picker" data-toggle="dropdown" value="{{ app.user.datenaissance|date("d/m/Y") }}" placeholder="cliquer ici...">
                                 </div>
                             </dd>
                         </dl>
                         <dl class="dl-horizontal">
-                            <dt class="p-t-10">Martial Status</dt>
+                            <dt class="p-t-10">adresse</dt>
                             <dd>
-                                <div class="fg-line">
-                                    <select class="form-control">
-                                        <option>Single</option>
-                                        <option>Married</option>
-                                        <option>Other</option>
-                                    </select>
+                                <div class="dtp-container dropdown fg-line">
+                                    <input name="adresse" type="text" class="form-control" placeholder="eg. 19 rue des bergers albert klaus,toulouse, france" value="{{ app.user.adresse }}">
                                 </div>
                             </dd>
                         </dl>
 
+                        <center>
                         <div class="m-t-30">
-                            <button class="btn btn-primary btn-sm">Save</button>
-                            <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancel</button>
+                            <button class="btn btn-primary waves-effect">Enregistrer</button>
+                            <button data-pmb-action="reset" class="btn palette-Deep-Orange bg waves-effect">Annuler</button>
                         </div>
+                        </center>
                     </div>
+                    </form>
                 </div>
             </div>
 
 
             <div class="pmb-block">
                 <div class="pmbb-header">
-                    <h2><i class="zmdi zmdi-phone m-r-5"></i> Contactez</h2>
+                    <h2><i class="zmdi zmdi-phone m-r-5"></i> Contact</h2>
 
                     <ul class="actions">
                         <li class="dropdown">
@@ -254,7 +264,7 @@
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a data-pmb-action="edit" href="#">modifier</a>
+                                    <a data-pmb-action="edit" href="#">Modifier</a>
                                 </li>
                             </ul>
                         </li>
@@ -264,66 +274,167 @@
                     <div class="pmbb-view">
                         <dl class="dl-horizontal">
                             <dt>Numero de téléphone</dt>
-                            <dd>55123456</dd>
+                            {% if app.user.numtel!=NULL %}
+                            <dd>{{ app.user.numtel }}</dd>
+                        {% else %}
+                            <dd><a data-pmb-action="edit" href="#">Ajouter mon numero de telephone</a>  </dd>
+
+                        {% endif %}
                         </dl>
                         <dl class="dl-horizontal">
                             <dt>Adresse Email</dt>
-                            <dd>mohamedyassin.abderrabba@esprit.tn
+                            <dd>{{ app.user.email }}
                             </dd>
                         </dl>
+
+
+
                         <dl class="dl-horizontal">
                             <dt>Twitter</dt>
-                            <dd>@yassin</dd>
+                            {% if app.user.twitter!=NULL %}
+                            <dd>@{{ app.user.skype }}</dd>
+                        {% else %}
+                            <dd>Ajouter mon compte twitter?</dd>
+
+                        {% endif %}
                         </dl>
+
+
                         <dl class="dl-horizontal">
                             <dt>Skype</dt>
-                            <dd>yassin abderrabba</dd>
+                            {% if app.user.skype!=NULL %}
+                            <dd>{{ app.user.skype }}</dd>
+                    {% else %}
+                        <dd>Ajouter mon compte skype</dd>
+                        {% endif %}
                         </dl>
-                    </div>
 
+
+                        <dl class="dl-horizontal">
+                            <dt>Facebook</dt>
+                            {% if app.user.facebook!=NULL %}
+                                <dd>{{ app.user.facebook }}</dd>
+                            {% else %}
+                                <dd>Ajouter mon compte Facebook</dd>
+                            {% endif %}
+                        </dl>
+
+
+                        <dl class="dl-horizontal">
+                            <dt>LinkedIn</dt>
+                            {% if app.user.linkedIn!=NULL %}
+                                <dd>{{ app.user.linkedIn }}</dd>
+                            {% else %}
+                                <dd>Ajouter mon compte LinkedIn</dd>
+                            {% endif %}
+                        </dl>
+                </div>
+                    <form method="POST" action="modifiercontact">
                     <div class="pmbb-edit">
                         <dl class="dl-horizontal">
-                            <dt class="p-t-10">Mobile Phone</dt>
+                            <dt class="p-t-10">Numero de téléphone</dt>
                             <dd>
                                 <div class="fg-line">
-                                    <input type="text" class="form-control" placeholder="eg. 00971 12345678 9">
+                                        <input type="text" name="numtel" class="form-control" placeholder="eg. 55123456" value="{{ app.user.numtel }}">
                                 </div>
                             </dd>
                         </dl>
                         <dl class="dl-horizontal">
-                            <dt class="p-t-10">Email Address</dt>
+                            <dt class="p-t-10">Addresse Email</dt>
                             <dd>
                                 <div class="fg-line">
-                                    <input type="email" class="form-control" placeholder="eg. yassin.h@gmail.com">
+                                    <input type="email" name="email" class="form-control" value="{{ app.user.email }}">
                                 </div>
                             </dd>
                         </dl>
+
                         <dl class="dl-horizontal">
                             <dt class="p-t-10">Twitter</dt>
                             <dd>
                                 <div class="fg-line">
-                                    <input type="text" class="form-control" placeholder="eg. @yassin">
-                                </div>
-                            </dd>
-                        </dl>
-                        <dl class="dl-horizontal">
-                            <dt class="p-t-10">Skype</dt>
-                            <dd>
-                                <div class="fg-line">
-                                    <input type="text" class="form-control" placeholder="eg. yassin.abderrabba">
+                                    <input type="text" name="twitter" class="form-control" placeholder="eg. username" value="{{ app.user.twitter }}">
                                 </div>
                             </dd>
                         </dl>
 
-                        <div class="m-t-30">
-                            <button class="btn btn-primary btn-sm">Save</button>
-                            <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancel</button>
-                        </div>
+                        <dl class="dl-horizontal">
+                            <dt class="p-t-10">Skype</dt>
+                            <dd>
+                                <div class="fg-line">
+
+                                    <input type="text" name="skype" class="form-control" placeholder="eg. username" value="{{ app.user.skype }}">
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <dl class="dl-horizontal">
+                            <dt class="p-t-10">Facebook</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <input name="facebook" type="text" class="form-control" placeholder="eg. username" value="{{ app.user.facebook }}">
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <dl class="dl-horizontal">
+                            <dt class="p-t-10">LinkedIn</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <input name="linkedIn" type="text" class="form-control" placeholder="eg. username" value="{{ app.user.LinkedIn }}">
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <center>
+                            <div class="m-t-30">
+                                <button class="btn btn-primary waves-effect">Enregistrer</button>
+                                <button data-pmb-action="reset" class="btn palette-Deep-Orange bg waves-effect">Annuler</button>
+                            </div>
+                        </center>
+
                     </div>
+                    </form>
                 </div>
             </div>
-        </div>
+        </div> </div>
     </div>
+    <script type="text/javascript">
+        function tocompetence(){
+            debugger;
+            document.getElementById('apropos').style.display='none';
+            document.getElementById('competences').style.display='inline';
+            document.getElementById('aprop').className='waves-effect';
+            document.getElementById('compet').className='active waves-effect';
+        }
+        function toapropos(){
+            debugger;
+            document.getElementById('apropos').style.display='inline';
+            document.getElementById('competences').style.display='none';
+            document.getElementById('aprop').className='active waves-effect';
+            document.getElementById('compet').className='waves-effect';
+        }
+
+        function testconnected(){
+            $.ajax({
+
+                url: '{{ path('rechercherconnecter') }}',
+                type: 'POST',
+
+            }).done(function(response){
+                    $('#ajaxconnected').html(response);
+                    debugger;
+                chargerconnected() ;
+                }
+            );
+        }
+
+        function chargerconnected() {
+            testconnected()
+
+        }
+
+
+    </script>
 {% endblock %}
 
 {% block loader %}

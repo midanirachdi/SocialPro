@@ -2,18 +2,102 @@
 
 namespace Esprit\socialproBundle\Controller;
 
+use Esprit\socialproBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\DateTime;
+
+
 
 class ProfilController extends Controller
 {
     public function indexAction()
     {
-
-        return $this->render('EspritsocialproBundle:Profil:profil.html.twig');
+        return $this->render('@Espritsocialpro/Profil/profil.html.twig');
     }
 
-    public function photosAction()
+
+    public function modifiercontactAction(Request $req)
     {
-        return $this->render('EspritsocialproBundle:Profil:profilphotos.html.twig');
+
+
+
+        $em = $this->getDoctrine()->getManager();
+        $user=$this->getUser();
+        $user->setNumtel($req->get("numtel")) ;
+        $user->setFacebook($req->get("facebook"));
+        $user->setTwitter($req->get("twitter"));
+        $user->setLinkedIn($req->get("linkedIn"));
+        $user->setSkype($req->get("skype"));
+        $user->setEmail($req->get("email"));
+        $em->persist($user);
+        $em->flush();
+        return $this->render('@Espritsocialpro/Profil/profil.html.twig');
     }
-}
+
+    public function modifierdescAction(Request $req)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user=$this->getUser();
+        $user->setDescription($req->get("description"));
+        $em->persist($user);
+        $em->flush();
+        return $this->render('@Espritsocialpro/Profil/profil.html.twig');
+
+    }
+
+    public function modifierindisponnibleAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user=$this->getUser();
+        $user->setConnected(2);
+        $em->persist($user);
+    }
+
+
+    public function modifierinfosAction(Request $req)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user=$this->getUser();
+        $date = new \DateTime($req->get("datenaissance"));
+        $user->setDatenaissance($date);
+        $user->setAdresse($req->get("adresse"));
+
+        $em->persist($user);
+        $em->flush();
+        return $this->render('@Espritsocialpro/Profil/profil.html.twig');
+    }
+
+    public function rechercherconnecterAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('EspritsocialproBundle:User')->findBy(array('connected'=>1));
+        $users =$users+ $em->getRepository('EspritsocialproBundle:User')->findBy(array('connected'=>2));
+        return $this->render('@Espritsocialpro/Profil/connectedprofil.html.twig',array('users'=>$users));
+    }
+
+    public function deconnecteretatAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user=$this->getUser();
+        $user->setConnected(0);
+        $em->persist($user);
+        $em->flush();
+        return $this->RedirectToRoute('fos_user_security_logout');
+    }
+    public function connecteretatAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user=$this->getUser();
+        $user->setConnected(1);
+        $em->persist($user);
+        $em->flush();
+        return $this->render('@FOSUser/Security/login.html.twig');
+    }
+
+
+    public function ProfilAmiAction($id)
+    {        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('EspritsocialproBundle:User')->findBy(array('id'=>$id));
+        return $this->render('@Espritsocialpro/Profil/profilAmi.html.twig',array('users'=>$users));
+    }}
