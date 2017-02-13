@@ -40,8 +40,8 @@ class EmployesController extends Controller
             $utilisateur->setNom($request->get("nom"));
             $utilisateur->setPrenom($request->get("prenom"));
             $utilisateur->setNumtel($request->get("numtell"));
-            $utilisateur->setDatenaiss(new \DateTime($request->get("datenaiss")));
-            $utilisateur->setSex($request->get("sex"));
+            $utilisateur->set(new \DateTime($request->get("datenaiss")));
+            $utilisateur->setGendre($request->get("sex"));
             $utilisateur->setAdresse($request->get("adresse"));
             $utilisateur->addRole($request->get("role"));
             $utilisateur->setPassword("0000");
@@ -51,7 +51,7 @@ class EmployesController extends Controller
 
             return $this->redirectToRoute("espritsocialpro_employes");
         }
-        return $this->render("EspritsocialproBundle:Employes:modifieremploye.html.twig",array("utilisateur"=>$utilisateur));
+        return $this->render("@Espritsocialpro/Employes/modifieremploye.html.twig",array("utilisateur"=>$utilisateur));
     }
     public function demandeinscrptionAction()
     {
@@ -73,8 +73,8 @@ class EmployesController extends Controller
             $utilisateur->setNom($request->get("nom"));
             $utilisateur->setPrenom($request->get("prenom"));
             $utilisateur->setNumtel($request->get("numtell"));
-            $utilisateur->setDatenaiss(new \DateTime($request->get("datenaiss")));
-            $utilisateur->setSex($request->get("sex"));
+            $utilisateur->setDatenaissance(new \DateTime($request->get("datenaiss")));
+            $utilisateur->setGendre($request->get("sex"));
             $utilisateur->setAdresse($request->get("adresse"));
             $utilisateur->addRole($request->get("role"));
             $utilisateur->setPassword("0000");
