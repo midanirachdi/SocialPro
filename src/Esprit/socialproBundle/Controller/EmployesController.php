@@ -51,7 +51,7 @@ class EmployesController extends Controller
 
             return $this->redirectToRoute("espritsocialpro_employes");
         }
-        return $this->render("EspritsocialproBundle:Employes:modifieremploye.html.twig",array("utilisateur"=>$utilisateur));
+        return $this->render("@Espritsocialpro/Employes/modifieremploye.html.twig",array("utilisateur"=>$utilisateur));
     }
     public function demandeinscrptionAction()
     {

@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Departement")
  */
 class Departement
+
 {
     /**
      * @ORM\Id
@@ -33,6 +34,27 @@ class Departement
      * @ORM\Column(type="string",length=255)
      */
     private $nomDepartement;
+    /**
+     * @ORM\OneToOne(targetEntity="Esprit\socialproBundle\Entity\User", cascade={"persist"})
+     */
+
+    private $chef;
+
+    /**
+     * @return mixed
+     */
+    public function getChef()
+    {
+        return $this->chef;
+    }
+
+    /**
+     * @param mixed $chef
+     */
+    public function setChef($chef)
+    {
+        $this->chef = $chef;
+    }
 
     /**
      * @return mixed

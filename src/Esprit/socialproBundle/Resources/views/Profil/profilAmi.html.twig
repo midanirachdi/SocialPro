@@ -1,0 +1,267 @@
+{% extends '@Espritsocialpro/layout.html.twig' %}
+
+{% block titreheader %}
+   <h2> Profil </h2>
+{% endblock %}
+{% block active1 %} class="active" {% endblock %}
+{% block descheader %}
+   <h3> {{ users[0].nom }} {{ users[0].prenom }} {% if users[0].departement!=NULL %} :  {{users[0].departement.nomDepartement}}
+       {% elseif  users[0].equipe!=NULL %}:  {{ users[0].equipe.nomequipe}}
+       {% else %}
+       {% endif %}</h3>
+{% endblock %}
+
+{% block bodyheader %}
+{% endblock %}
+
+{% block bodymain %}
+
+    <div class="card" id="profile-main">
+        <div class="pm-overview c-overflow">
+            <div class="pmo-pic">
+                <div class="p-relative">
+                    <a href="#">
+                        <img class="img-responsive" src="{{ asset('bundles/espritsocialpro/index/img/profile-pics/profile-pic-2.jpg')  }}" alt="">
+
+                    </a>
+
+                    <div class="dropdown pmop-message">
+                        <a data-toggle="dropdown" href="#" class="btn palette-White bg btn-float z-depth-1">
+                            <i class="zmdi zmdi-comment-text-alt"></i>
+                        </a>
+
+                        <div class="dropdown-menu">
+                            <textarea placeholder="Write something..."></textarea>
+
+                            <button class="btn bgm-green btn-float"><i class="zmdi zmdi-mail-send"></i></button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="pmo-stat">
+                    <h2 class="m-0 c-white">Role</h2>
+                    {{ users[0].fonction }}
+                </div>
+            </div>
+
+            <div class="pmo-block pmo-contact hidden-xs">
+                <h2>Contact</h2>
+
+                <ul>{% if users[0].numtel!=NULL %}
+                    <li><i class="zmdi zmdi-phone"></i> {{ users[0].numtel }}</li>
+                    {% endif %}
+                    <li><i class="zmdi zmdi-email"></i> {{ users[0].email }}
+                    </li>
+                    {% if users[0].facebook!=NULL %}
+
+                    <li><i class="zmdi zmdi-facebook-box"></i> {{ users[0].facebook }}</li>
+                    {% endif %}
+                    {% if users[0].twitter!=NULL %}
+                    <li><i class="zmdi zmdi-twitter"></i> {{ users[0].twitter }}</li>
+                    {% endif %}
+                    {% if users[0].adresse!=NULL %}
+                    <li>
+                        <i class="zmdi zmdi-pin"></i>
+                        <address class="m-b-0 ng-binding">
+                            {{ users[0].adresse }}
+                        </address>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+
+
+        </div>
+
+        <div class="pm-body clearfix">
+            <ul class="tab-nav tn-justified">
+                <li id="aprop" class="active waves-effect"><a href="javascript:void(0)" onclick="toapropos()">à propos</a></li>
+                <li id="compet" class="waves-effect"><a href="javascript:void(0)" onclick="tocompetence()">Compétences</a></li>
+
+            </ul>
+
+<div style="display: none" id="competences">
+
+
+            <div  class="pmb-block clearfix photos" >
+                <div class="p-header">
+                    <table class="table">
+                        <thead>
+                        <th>ID</th>
+                        <th>Compétence</th>
+                        <th>Date d'éxpiration</th>
+                        <th>Document</th>
+                        </thead>
+                        <tr>
+                            <td>1</td>
+                            <td>angular JS</td>
+                            <td>17/12/2018</td>
+                            <td><img src="{{ asset('bundles/espritsocialpro/index/img/demo/images.jpg') }}"/> </td>
+                        </tr>
+                        <tr >
+                            <td>2</td>
+                            <td>c#</td>
+                            <td>22/02/2018</td>
+                            <td >
+                                <div class="alert alert-danger">
+                                    <strong>Attention :</strong> Vous n'avez toujours pas validé cette compétence avec une certification
+                                    elle ne sera donc pas prise en concidération.
+                                </div>
+                                <input type="file"/>
+                            </td>
+                        </tr>
+                        <tr >
+                            <td>2</td>
+                            <td>Java</td>
+                            <td>22/02/2018</td>
+                            <td>
+                                <div class="alert alert-danger">
+                                    <strong>Attention :</strong> Vous n'avez toujours pas validé cette compétence avec une certification
+                                    elle ne sera donc pas prise en concidération.
+                                </div>
+
+                                <input type="file"/>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+
+</div>
+
+
+
+
+<div  id="apropos">
+            <div  class="pmb-block">
+                <div class="pmbb-header">
+                    <h2><i class="zmdi zmdi-equalizer m-r-5"></i> Description</h2>
+
+                    <ul class="actions">
+                        <li class="dropdown">
+
+
+
+                        </li>
+                    </ul>
+                </div>
+                {% if users[0].description!=NULL  %}
+                    <div class="pmbb-body p-l-30">
+                    <div class="pmbb-view">{{ users[0].description }}</div>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="pmb-block">
+                <div class="pmbb-header">
+                    <h2><i class="zmdi zmdi-account m-r-5"></i> Informations générales</h2>
+
+                </div>
+
+                <div class="pmbb-body p-l-30">
+                    <div class="pmbb-view">
+                        <dl class="dl-horizontal">
+                            <dt>Nom Complet</dt>
+                            <dd>{{ users[0].prenom }} {{ users[0].nom }}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>Gendre</dt>
+                            <dd>{{ users[0].gendre }}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>Date de naissance</dt>
+                            <dd>{{ users[0].datenaissance|date("d/m/Y") }}</dd>
+                        </dl>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="pmb-block">
+                <div class="pmbb-header">
+                    <h2><i class="zmdi zmdi-phone m-r-5"></i> Contact</h2>
+                </div>
+                <div class="pmbb-body p-l-30">
+                    <div class="pmbb-view">
+                        {% if users[0].numtel!=NULL %}
+                        <dl class="dl-horizontal">
+                            <dt>Numero de téléphone</dt>
+                            <dd>{{ users[0].numtel }}</dd>
+                        </dl>
+                        {% endif %}
+
+                        <dl class="dl-horizontal">
+                            <dt>Adresse Email</dt>
+                            <dd>{{ users[0].email }}
+                            </dd>
+                        </dl>
+
+
+                        {% if users[0].twitter!=NULL %}
+                        <dl class="dl-horizontal">
+                            <dt>Twitter</dt>
+                            <dd>@{{ users[0].skype }}</dd>
+
+                        </dl>
+                        {% endif %}
+                        {% if users[0].skype!=NULL %}
+                        <dl class="dl-horizontal">
+                            <dt>Skype</dt>
+                            <dd>{{ users[0].skype }}</dd>
+                        </dl>
+                        {% endif %}
+                        {% if users[0].facebook!=NULL %}
+                        <dl class="dl-horizontal">
+                            <dt>Facebook</dt>
+                                <dd>{{ users[0].facebook }}</dd>
+                        </dl>
+                        {% endif %}
+
+                        {% if users[0].linkedIn!=NULL %}
+                        <dl class="dl-horizontal">
+                            <dt>LinkedIn</dt>
+                                <dd>{{ users[0].linkedIn }}</dd>
+
+                        </dl>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div> </div>
+    </div>
+    <script type="text/javascript">
+        function tocompetence(){
+            debugger;
+            document.getElementById('apropos').style.display='none';
+            document.getElementById('competences').style.display='inline';
+            document.getElementById('aprop').className='waves-effect';
+            document.getElementById('compet').className='active waves-effect';
+        }
+        function toapropos(){
+            debugger;
+            document.getElementById('apropos').style.display='inline';
+            document.getElementById('competences').style.display='none';
+            document.getElementById('aprop').className='active waves-effect';
+            document.getElementById('compet').className='waves-effect';
+
+        }
+
+
+
+
+    </script>
+{% endblock %}
+
+{% block loader %}
+
+{% endblock %}
