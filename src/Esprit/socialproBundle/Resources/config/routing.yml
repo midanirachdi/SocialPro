@@ -132,17 +132,17 @@ modifierdescription:
     path:     /modifierdescription
     defaults: { _controller: EspritsocialproBundle:Profil:modifierdesc }
 rechercherconnecter:
-              path:     /rechercherconnecter
-              defaults: { _controller: EspritsocialproBundle:Profil:rechercherconnecter }
+    path:     /rechercherconnecter
+    defaults: { _controller: EspritsocialproBundle:Profil:rechercherconnecter }
 modifieretat:
-              path:     /modifieretat
-              defaults: { _controller: EspritsocialproBundle:Profil:modifierindisponnible }
+    path:     /modifieretat
+    defaults: { _controller: EspritsocialproBundle:Profil:modifierindisponnible }
 deconnecting:
-              path:     /deconnecter
-              defaults: { _controller: EspritsocialproBundle:Profil:deconnecteretat }
+    path:     /deconnecter
+    defaults: { _controller: EspritsocialproBundle:Profil:deconnecteretat }
 connecting:
-              path:     /connecter
-              defaults: { _controller: EspritsocialproBundle:Profil:connecteretat }
+    path:     /connecter
+    defaults: { _controller: EspritsocialproBundle:Profil:connecteretat }
 profilami:
-              path:     /profilAmi/{id}
-              defaults: { _controller: EspritsocialproBundle:Profil:ProfilAmi }
+    path:     /profilAmi/{id}
+    defaults: { _controller: EspritsocialproBundle:Profil:ProfilAmi }
