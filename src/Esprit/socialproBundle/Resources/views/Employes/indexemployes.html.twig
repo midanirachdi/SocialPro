@@ -15,10 +15,12 @@
 
 {% block bodymain %}
     <div class="card">
+        <form method="post">
         <div class="card-header" style="display:inline-flex">
-            <input type="text" class="search-field form-control" placeholder="Rechercher..."/>
-            <button class="btn btn-default btn-icon waves-effect waves-circle waves-float"><i class="zmdi zmdi-search"></i></button>
+            <input name="matricule" type="text" class="search-field form-control" placeholder="Recherche Par Matricule"/>
+            <button type="submit" class="btn btn-default btn-icon waves-effect waves-circle waves-float"><i class="zmdi zmdi-search"></i></button>
         </div>
+            </form>
         <table id="data-table-basic" class="table table-striped">
             <thead>
             <tr>
@@ -39,10 +41,10 @@
                 <td>{{ x.email }}</td>
                 <td>{{ x.nom }}</td>
                 <td>{{ x.prenom }}</td>
-                <td>{{ x.datenaiss|date("d-m-Y") }}</td>
-                <td>{{ x.sex }}</td>
+                <td>{{ x.datenaissance|date("d-m-Y") }}</td>
+                <td>{{ x.gendre }}</td>
                 <td>{{ x.numtel }}</td>
-                <td><a  href="#" class='btn palette-Light-Green bg btn-icon waves-effect waves-circle waves-float'><span class='zmdi zmdi-edit'></span></a>
+                <td><a  href="{{ path('modif_employe',{'id':x.id}) }}" class='btn palette-Light-Green bg btn-icon waves-effect waves-circle waves-float'><span class='zmdi zmdi-edit'></span></a>
                     <a  href="{{ path('supp_employe',{'id':x.id}) }}" class='btn btn-danger btn-icon waves-effect waves-circle waves-float'><span class='zmdi zmdi-delete'></span></a></td>
 
             </tr>

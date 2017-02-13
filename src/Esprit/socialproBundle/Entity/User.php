@@ -19,81 +19,74 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    /* yelzmek ta9rahaaaaa */
     /**
-     * @ORM\Column(type="integer",length=255)
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $matricule;
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $nom;
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $prenom;
-
-
     /**
-     * @ORM\Column(type="integer",length=255)
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $numtel;
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $adresse;
-
-    /**
-     * @return mixed
-     */
-    public function getDatenaiss()
-    {
-        return $this->datenaiss;
-    }
-
-    /**
-     * @param mixed $datenaiss
-     */
-    public function setDatenaiss($datenaiss)
-    {
-        $this->datenaiss = $datenaiss;
-    }
-    /**
-     * @ORM\Column(type="datetime",nullable=true)
-     */
-    private $datenaiss;
-    /**
-     * @ORM\Column(type="string",length=255)
-     */
-    private $fonction;
-    /**
-     * @ORM\Column(type="integer",length=255)
-     */
-    private $nbprojets;
-    /**
-     * @ORM\Column(type="integer",length=255)
-     */
-    private $evaluation;
     /**
      * @ORM\Column(type="string",length=255,nullable=true)
      */
-    private $sex;
-
+    private $fonction;
     /**
-     * @return mixed
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
-    public function getSex()
-    {
-        return $this->sex;
-    }
-
+    private $facebook;
     /**
-     * @param mixed $sex
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
-    public function setSex($sex)
-    {
-        $this->sex = $sex;
-    }
+    private $twitter;
+    /**
+     * @ORM\Column(type="string",length=2000,nullable=true)
+     */
+    private $description;
+    /**
+     * @ORM\Column(type="string",length=255,nullable=true)
+     */
+    private $linkedIn;
+    /**
+     * @ORM\Column(type="date",nullable=true)
+     */
+    private $datenaissance;
+    /**
+     * @ORM\Column(type="integer",length=255,nullable=true)
+     */
+    private $nbprojets;
+    /**
+     * @ORM\Column(type="integer",nullable=true)
+     */
+    private $evaluation;
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     */
+    private $gendre;
+    /**
+     * @ORM\Column(type="integer",nullable=true)
+     */
+    private $connected;
+    /**
+     * @ORM\Column(type="integer",nullable=true)
+     */
+    private $image;
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     */
+    private $skype;
     /**
      * @ORM\ManyToMany(targetEntity="Competence", mappedBy="users")
      */
@@ -367,6 +360,150 @@ class User extends BaseUser
     public function setProjets($projets)
     {
         $this->projets = $projets;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConnected()
+    {
+        return $this->connected;
+    }
+
+    /**
+     * @param mixed $connected
+     */
+    public function setConnected($connected)
+    {
+        $this->connected = $connected;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDatenaissance()
+    {
+        return $this->datenaissance;
+    }
+
+    /**
+     * @param mixed $datenaissance
+     */
+    public function setDatenaissance($datenaissance)
+    {
+        $this->datenaissance = $datenaissance;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFacebook()
+    {
+        return $this->facebook;
+    }
+
+    /**
+     * @param mixed $facebook
+     */
+    public function setFacebook($facebook)
+    {
+        $this->facebook = $facebook;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLinkedIn()
+    {
+        return $this->linkedIn;
+    }
+
+    /**
+     * @param mixed $linkedIn
+     */
+    public function setLinkedIn($linkedIn)
+    {
+        $this->linkedIn = $linkedIn;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
+
+    /**
+     * @param mixed $twitter
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGendre()
+    {
+        return $this->gendre;
+    }
+
+    /**
+     * @param mixed $gendre
+     */
+    public function setGendre($gendre)
+    {
+        $this->gendre = $gendre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSkype()
+    {
+        return $this->skype;
+    }
+
+    /**
+     * @param mixed $skype
+     */
+    public function setSkype($skype)
+    {
+        $this->skype = $skype;
     }
 
 }

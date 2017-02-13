@@ -1,0 +1,14 @@
+<div class="pmo-block pmo-items hidden-xs">
+    <h2>Connections</h2>
+
+    <div class="pmob-body">
+        <div class="row">
+            {% for user in users %}
+                <a href="{{ path('profilami' , {'id':user.id })}}" class="col-xs-2">
+                     <img  class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/1.jpg') }}" alt=""></li>
+                </a>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>

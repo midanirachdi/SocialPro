@@ -10,10 +10,6 @@ espritsocialpro_profil:
     path:     /profil
     defaults: { _controller: EspritsocialproBundle:Profil:index }
 
-espritsocialpro_profil_photos:
-    path:     /competences
-    defaults: { _controller: EspritsocialproBundle:Profil:photos }
-
 espritsocialpro_filactualite:
     path:     /Filactualite
     defaults: { _controller: EspritsocialproBundle:Filactualite:index }
@@ -32,6 +28,9 @@ espritsocialpro_demandeinscrptionemployes:
 supp_employe:
     path:     /suppEmploye/{id}
     defaults: { _controller: EspritsocialproBundle:Employes:supprimer }
+modif_employe:
+    path:     /modifEmploye/{id}
+    defaults: { _controller: EspritsocialproBundle:Employes:modifier }
 
 espritsocialpro_departements:
     path:     /Departements
@@ -111,6 +110,7 @@ espritsocialpro_historique:
 espritsocialpro_calendrier:
     path:     /Calendrier
     defaults: { _controller: EspritsocialproBundle:Calendrier:index }
+<<<<<<< Updated upstream
 
 espritsocialpro_departement:
     path:     /ajoutDepartement
@@ -124,3 +124,27 @@ modifier_departement:
     path:     /modifierDepartement/{id}
     defaults: { _controller: EspritsocialproBundle:Departement:modifier }
 
+modifiercontact:
+    path:     /modifiercontact
+    defaults: { _controller: EspritsocialproBundle:Profil:modifiercontact }
+modifierinfos:
+    path:     /modifierinfos
+    defaults: { _controller: EspritsocialproBundle:Profil:modifierinfos }
+modifierdescription:
+    path:     /modifierdescription
+    defaults: { _controller: EspritsocialproBundle:Profil:modifierdesc }
+rechercherconnecter:
+              path:     /rechercherconnecter
+              defaults: { _controller: EspritsocialproBundle:Profil:rechercherconnecter }
+modifieretat:
+              path:     /modifieretat
+              defaults: { _controller: EspritsocialproBundle:Profil:modifierindisponnible }
+deconnecting:
+              path:     /deconnecter
+              defaults: { _controller: EspritsocialproBundle:Profil:deconnecteretat }
+connecting:
+              path:     /connecter
+              defaults: { _controller: EspritsocialproBundle:Profil:connecteretat }
+profilami:
+              path:     /profilAmi{id}
+              defaults: { _controller: EspritsocialproBundle:Profil:ProfilAmi }
