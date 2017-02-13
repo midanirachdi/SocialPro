@@ -1,154 +1,53 @@
 {% extends '@Espritsocialpro/layout.html.twig' %}
 
 {% block titreheader %}
-    Gestion des Projets
+    Gestion des projets
 {% endblock %}
-
-{% block active6 %} class="sub-menu active" {% endblock %}
-    {% block active63 %} class="active" {% endblock %}
-
+{% block active2 %} class="sub-menu active" {% endblock %}
+{% block active21 %} class="active" {% endblock %}
 {% block descheader %}
 
 {% endblock %}
 
 {% block bodyheader %}
 
-    <br>
-    <h3 style="">Bonjour/Bonsoir nom_chef, Il est "date_actuelle"</h3>
 {% endblock %}
-{% block division1 %} class="c-header" {% endblock %}
-{% block division2 %} id="c-grid" class="clearfix"  {% endblock %}
+
 {% block bodymain %}
-<div class="column size-1of3">
-    <div>
-        <button id="creer" class="btn btn-info waves-effect">Creer un Projet</button>
-    </div>
     <div class="card">
-        <div class="card-header ch-alt">
-            <h2>Créer un nouveau projet </h2>
+        <div class="card-header" style="display:inline-flex">
+            <input type="text" class="search-field form-control" placeholder="Rechercher..."/>
+            <button class="btn btn-default btn-icon waves-effect waves-circle waves-float"><i class="zmdi zmdi-search"></i></button>
         </div>
-        <div class="card-body card-padding">
-            <div class="form-group fg-float m-b-30">
-                <div class="fg-line">
-                    <input type="text" class="form-control input-sm">
-                    <label class="fg-label">Nom</label>
-                </div>
-            </div>
+        <table id="data-table-basic" class="table table-striped">
+            <thead>
+            <tr>
 
-            <div class="form-group fg-float m-b-30">
-                <div class="fg-line">
-                    <textarea class="form-control" rows="3"></textarea>
-                    <label class="fg-label">Description</label>
-                </div>
-            </div>
-
-            <div class="form-group fg-float m-b-30">
-                <div class="fg-line">
-                    <div class="select">
-                        <select class="form-control">
-                            <option>Equipe</option>
-                            <option>Equipe 1</option>
-                            <option>Equipe 2</option>
-                            <option>Equipe 3</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <div class="m-t-20">
-                <button class="btn btn-info waves-effect">Créer</button>
-                <!--<button class="btn btn-danger waves-effect">Annuler</button>-->
-            </div>
-        </div>
+                <th style="color: #0a6ebd" data-column-id="nom">Nom</th>
+                <th style="color: #0a6ebd" data-column-id="description">Description</th>
+                <th style="color: #0a6ebd" data-column-id="datedebut" data-order="desc">Date debut</th>
+                <th style="color: #0a6ebd" data-column-id="datefin" data-order="desc">Date fin</th>
+                <th style="color: #0a6ebd" data-column-id="equipe" data-order="desc">Equipe</th>
+                <th style="color: #0a6ebd" data-column-id="nom">Nom Chef du projet</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for x in projets %}
+                <tr>
+                    <td>{{ x.nomprojet }}</td>
+                    <td>{{ x.description }}</td>
+                    <td>{{ x.dateDebut|date('Y-m-d') }}</td>
+                    <td>{{ x.dateFin|date('Y-m-d') }}</td>
+                    <td>{{ x.equipe }}</td>
+                    <td>{{ app.user.nom }}</td>
+                    <td><a  href="{{ path('espritsocialpro_update_projets',{'idprojet':x.idprojet}) }}" class='btn palette-Light-Green bg btn-icon waves-effect waves-circle waves-float'><span class='zmdi zmdi-edit'></span></a>
+                        <a  href="{{ path('espritsocialpro_supp_projets',{'idprojet':x.idprojet}) }}" class='btn btn-danger btn-icon waves-effect waves-circle waves-float'><span class='zmdi zmdi-delete'></span></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
-</div>
-    <div class="column size-1of3">
-        <div>
-            <button id="update" class="btn btn-warning waves-effect">Modifier un Projet</button>
-        </div>
-        <div class="card">
-            <div class="card-header ch-alt">
-                <h2>Modifier un projet </h2>
-            </div>
-            <div class="card-body card-padding">
-                <div class="form-group fg-float m-b-30">
-                    <div class="fg-line">
-                        <div class="select">
-                            <select class="form-control">
-                                <option>Projet</option>
-                                <option>Projet 1</option>
-                                <option>Projet 2</option>
-                                <option>Projet 3</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group fg-float m-b-30">
-                    <div class="fg-line">
-                        <input type="text" class="form-control input-sm">
-                        <label class="fg-label">Nom</label>
-                    </div>
-                </div>
+    {% block tabscript %}
 
-                <div class="form-group fg-float m-b-30">
-                    <div class="fg-line">
-                        <textarea class="form-control" rows="3"></textarea>
-                        <label class="fg-label">Description</label>
-                    </div>
-                </div>
-
-                <div class="form-group fg-float m-b-30">
-                    <div class="fg-line">
-                        <div class="select">
-                            <select class="form-control">
-                                <option>Equipe</option>
-                                <option>Equipe 1</option>
-                                <option>Equipe 2</option>
-                                <option>Equipe 3</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="clearfix"></div>
-
-                <div class="m-t-20">
-                    <button class="btn btn-warning waves-effect">Modifier</button>
-                    <!--<button class="btn btn-danger waves-effect">Annuler</button>-->
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="column size-1of3">
-        <div>
-            <button id="supprimer" class="btn btn-danger waves-effect">Supprimer un Projet</button>
-        </div>
-        <div class="card">
-            <div class="card-header ch-alt">
-                <h2>Supprimer un projet </h2>
-            </div>
-            <div class="card-body card-padding">
-                <div class="form-group fg-float m-b-30">
-                    <div class="fg-line">
-                        <div class="select">
-                            <select class="form-control">
-                                <option>Projet</option>
-                                <option>Projet 1</option>
-                                <option>Projet 2</option>
-                                <option>Projet 3</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-
-                <div class="m-t-20">
-                    <button class="btn btn-danger waves-effect">Supprimer</button>
-                    <!--<button class="btn btn-danger waves-effect">Annuler</button>-->
-                </div>
-            </div>
-        </div>
-    </div>
+    {% endblock %}
 {% endblock %}
