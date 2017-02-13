@@ -10,8 +10,14 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DepartementController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        if ($request->isMethod("post")){
+            $nom=$request->get("recherche");
+            $departements=$this->getDoctrine()->getManager()->getRepository("EspritsocialproBundle:Departement")->
+            findBy(array("nomDepartement"=>$nom));
+            return $this->render("@Espritsocialpro/Departement/indexdepartement.html.twig",array('departements'=>$departements));
+        }
         $departements=$this->getDoctrine()->getManager()->getRepository("EspritsocialproBundle:Departement")->findAll();
         return $this->render("@Espritsocialpro/Departement/indexdepartement.html.twig",array('departements'=>$departements));
     }
