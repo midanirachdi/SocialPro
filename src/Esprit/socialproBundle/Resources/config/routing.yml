@@ -144,5 +144,5 @@ connecting:
               path:     /connecter
               defaults: { _controller: EspritsocialproBundle:Profil:connecteretat }
 profilami:
-              path:     /profilAmi{id}
+              path:     /profilAmi/{id}
               defaults: { _controller: EspritsocialproBundle:Profil:ProfilAmi }
