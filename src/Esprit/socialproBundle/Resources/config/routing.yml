@@ -93,8 +93,6 @@ espritsocialpro_historique:
 espritsocialpro_calendrier:
     path:     /Calendrier
     defaults: { _controller: EspritsocialproBundle:Calendrier:index }
-<<<<<<< Updated upstream
-
 espritsocialpro_departement:
     path:     /ajoutDepartement
     defaults: { _controller: EspritsocialproBundle:Departement:ajout }
@@ -129,5 +127,5 @@ connecting:
               path:     /connecter
               defaults: { _controller: EspritsocialproBundle:Profil:connecteretat }
 profilami:
-              path:     /profilAmi{id}
+              path:     /profilAmi/{id}
               defaults: { _controller: EspritsocialproBundle:Profil:ProfilAmi }
