@@ -54,6 +54,26 @@ class Projet
     private $dateFin;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nomprojet;
+
+    /**
+     * @return mixed
+     */
+    public function getNomprojet()
+    {
+        return $this->nomprojet;
+    }
+
+    /**
+     * @param mixed $nomprojet
+     */
+    public function setNomprojet($nomprojet)
+    {
+        $this->nomprojet = $nomprojet;
+    }
+    /**
      * @return mixed
      */
     public function getIdprojet()
