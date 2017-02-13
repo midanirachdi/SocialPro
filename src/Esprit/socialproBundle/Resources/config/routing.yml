@@ -1,7 +1,3 @@
-espritsocialpro_equipe:
-    resource: "@EspritsocialproBundle/Resources/config/routing/equipe.yml"
-    prefix:   /equipe
-
 espritsocialpro_homepage:
     path:     /index
     defaults: { _controller: EspritsocialproBundle:Default:index }
