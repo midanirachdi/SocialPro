@@ -24,6 +24,9 @@ espritsocialpro_demandeinscrptionemployes:
 supp_employe:
     path:     /suppEmploye/{id}
     defaults: { _controller: EspritsocialproBundle:Employes:supprimer }
+modif_employe:
+    path:     /modifEmploye/{id}
+    defaults: { _controller: EspritsocialproBundle:Employes:modifier }
 
 espritsocialpro_departements:
     path:     /Departements
