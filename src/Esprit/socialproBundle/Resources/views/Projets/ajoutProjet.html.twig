@@ -1,0 +1,76 @@
+{% extends '@Espritsocialpro/layout.html.twig' %}
+
+{% block titreheader %}
+    Ajout Projets
+{% endblock %}
+
+{% block active6 %} class="sub-menu active" {% endblock %}
+{% block descheader %}
+
+{% endblock %}
+
+{% block bodyheader %}
+
+    <br>
+    <h3 style=""><span>{% if 'now'|date('H-i')  > '12:00'|date('H-i') %}
+                Bonsoir
+            {% else %}
+                Bonjour
+            {% endif %}</span> {{ app.user.nom|capitalize }},</h3>
+{% endblock %}
+{% block bodymain %}
+    <div id="container">
+        <div class="card">
+            <form class="form-horizontal" role="form" method="post">
+                <div class="card-body card-padding">
+                    <div class="form-group">
+                        <label for="inputNom" class="col-sm-2 control-label">Nom</label>
+                        <div class="col-sm-10">
+                            <div class="fg-line">
+                                <input type="text" class="form-control input-sm" id="inputNom" placeholder="Nom" name="nom">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group fg-float m-b-30">
+                        <div class="fg-line">
+                            <textarea class="form-control" rows="3" name="description"></textarea>
+                            <label class="fg-label">Description</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDate" class="col-sm-2 control-label">Date debut</label>
+                        <div class="col-sm-10">
+                            <div class="fg-line">
+                                <input type="date" class="form-control input-sm" id="inputDate" placeholder="Date debut" name="datedebut">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDate" class="col-sm-2 control-label">Date Fin</label>
+                        <div class="col-sm-10">
+                            <div class="fg-line">
+                                <input type="date" class="form-control input-sm" id="inputDate" placeholder="Date Fin" name="datefin">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="selectRole" class="col-sm-2 control-label">Equipe</label>
+                        <div class="col-sm-10">
+                            <div class="fg-line">
+                                <select class="selectpicker" id="selectequipe" name="equipe">
+                                    <option value="equipe">Equipe</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" class="btn btn-info waves-effect" value="Ajouter Projet"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
