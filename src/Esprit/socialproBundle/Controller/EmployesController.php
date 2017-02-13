@@ -5,7 +5,6 @@ namespace Esprit\socialproBundle\Controller;
 use Esprit\socialproBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 class EmployesController extends Controller
 {
@@ -30,8 +29,7 @@ class EmployesController extends Controller
         $utilisateur=$this->getDoctrine()->getManager()->getRepository("EspritsocialproBundle:User")->find($id);
         if($request->isMethod("post"))
         {
-            $username=substr($request->get("email"), 0, strpos($request->get("email"),'@'));
-            $utilisateur->setUsername($username);
+
             $utilisateur->setFonction("blob");
             $utilisateur->setNbprojets(0);
             $utilisateur->setEvaluation(0);
@@ -40,11 +38,12 @@ class EmployesController extends Controller
             $utilisateur->setNom($request->get("nom"));
             $utilisateur->setPrenom($request->get("prenom"));
             $utilisateur->setNumtel($request->get("numtell"));
-            $utilisateur->setDatenaiss(new \DateTime($request->get("datenaiss")));
-            $utilisateur->setSex($request->get("sex"));
+            $utilisateur->setDatenaissance(new \DateTime($request->get("datenaiss")));
+            $utilisateur->setGendre($request->get("sex"));
             $utilisateur->setAdresse($request->get("adresse"));
-            $utilisateur->addRole($request->get("role"));
-            $utilisateur->setPassword("0000");
+            $roles=array($request->get("role"));
+            $utilisateur->setRoles($roles);
+            $utilisateur->setPlainPassword("0000");
             $this->getDoctrine()->getManager()->persist($utilisateur);
             $this->getDoctrine()->getManager()->flush();
 
@@ -73,11 +72,12 @@ class EmployesController extends Controller
             $utilisateur->setNom($request->get("nom"));
             $utilisateur->setPrenom($request->get("prenom"));
             $utilisateur->setNumtel($request->get("numtell"));
-            $utilisateur->setDatenaiss(new \DateTime($request->get("datenaiss")));
-            $utilisateur->setSex($request->get("sex"));
+            $utilisateur->setDatenaissance(new \DateTime($request->get("datenaiss")));
+            $utilisateur->setGendre($request->get("sex"));
             $utilisateur->setAdresse($request->get("adresse"));
             $utilisateur->addRole($request->get("role"));
-            $utilisateur->setPassword("0000");
+            $utilisateur->setPlainPassword("0000");
+            $utilisateur->setEnabled(true);
             $this->getDoctrine()->getManager()->persist($utilisateur);
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute("espritsocialpro_employes");
