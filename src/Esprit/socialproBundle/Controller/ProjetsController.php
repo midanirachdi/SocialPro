@@ -31,6 +31,7 @@ class ProjetsController extends Controller
 
     public function ajoutAction(Request $request)
     {
+        $equipes=$this->getDoctrine()->getManager()->getRepository("EspritsocialproBundle:Equipe")->findAll();
         if ($request->isMethod("post")){
             $projet=new Projet();
             $projet->setNomprojet($request->get("nom"));
@@ -45,7 +46,7 @@ class ProjetsController extends Controller
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('espritsocialpro_gestionprojets');
         }
-        return $this->render('@Espritsocialpro/Projets/ajoutProjet.html.twig');
+        return $this->render('@Espritsocialpro/Projets/ajoutProjet.html.twig', array('equipes'=>$equipes));
     }
 
     public function afficheAction(Request $request){
@@ -87,4 +88,5 @@ class ProjetsController extends Controller
 
 
     }
+
 }
