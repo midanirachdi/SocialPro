@@ -24,12 +24,18 @@ class ProfilController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $user=$this->getUser();
-        $user->setNumtel($req->get("numtel")) ;
+        if($req->get("numtel")=="")
+        {
+            $user->setNumtel(NULL) ;
+        }
+        else
+        {
+            $user->setNumtel($req->get("numtel")) ;
+        }
         $user->setFacebook($req->get("facebook"));
         $user->setTwitter($req->get("twitter"));
         $user->setLinkedIn($req->get("linkedIn"));
         $user->setSkype($req->get("skype"));
-        $user->setEmail($req->get("email"));
         $em->persist($user);
         $em->flush();
         return $this->render('@Espritsocialpro/Profil/profil.html.twig');
@@ -45,16 +51,6 @@ class ProfilController extends Controller
         return $this->render('@Espritsocialpro/Profil/profil.html.twig');
 
     }
-
-    public function modifierindisponnibleAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $user=$this->getUser();
-        $user->setConnected(2);
-        $em->persist($user);
-    }
-
-
     public function modifierinfosAction(Request $req)
     {
         $em = $this->getDoctrine()->getManager();
@@ -71,8 +67,7 @@ class ProfilController extends Controller
     public function rechercherconnecterAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository('EspritsocialproBundle:User')->findBy(array('connected'=>1));
-        $users =$users+ $em->getRepository('EspritsocialproBundle:User')->findBy(array('connected'=>2));
+        $users = $em->getRepository('EspritsocialproBundle:User')->findConnected();
         return $this->render('@Espritsocialpro/Profil/connectedprofil.html.twig',array('users'=>$users));
     }
 
@@ -93,6 +88,13 @@ class ProfilController extends Controller
         $em->persist($user);
         $em->flush();
         return $this->render('@FOSUser/Security/login.html.twig');
+    }
+    public function modifierindisponnibleAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user=$this->getUser();
+        $user->setConnected(2);
+        $em->persist($user);
     }
 
 

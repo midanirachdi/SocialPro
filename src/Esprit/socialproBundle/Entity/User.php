@@ -8,8 +8,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="User")
+ * @ORM\Entity(repositoryClass="Esprit\socialproBundle\Entity\UserRepository")
  */
 class User extends BaseUser
 {
@@ -87,10 +86,6 @@ class User extends BaseUser
      * @ORM\Column(type="string",nullable=true)
      */
     private $skype;
-    /**
-     * @ORM\ManyToMany(targetEntity="Competence", mappedBy="users")
-     */
-    private $competences;
 
     public function __construct()
     {

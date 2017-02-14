@@ -8,8 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="Competence")
+ * @ORM\Entity(repositoryClass="Esprit\socialproBundle\Entity\CompetenceRepository")
  */
 class Competence
 {
@@ -21,26 +20,9 @@ class Competence
     private $idcompetence;
 
     /**
-     * @ORM\ManyToMany(targetEntity="User", inversedBy="competences")
-     * @ORM\JoinTable(
-     *      joinColumns={
-     *     @ORM\JoinColumn(name="idcompetence", referencedColumnName="idcompetence")
-     * })
-     */
-    private $users;
-    public function __construct() {
-        $this->users = new ArrayCollection();
-        $this->certifications = new ArrayCollection();
-    }
-
-    /**
      * @ORM\Column(type="string",length=255)
      */
-    private $descriptionCompetence;
-    /**
-     * @ORM\OneToMany(targetEntity="Certification", mappedBy="competence")
-     */
-    private $certifications;
+    private $description;
 
     /**
      * @return mixed
@@ -61,52 +43,22 @@ class Competence
     /**
      * @return mixed
      */
-    public function getUsers()
+    public function getDescription()
     {
-        return $this->users;
+        return $this->description;
     }
 
     /**
-     * @param mixed $users
+     * @param mixed $description
      */
-    public function setUsers($users)
+    public function setDescription($description)
     {
-        $this->users = $users;
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getDescriptionCompetence()
-    {
-        return $this->descriptionCompetence;
-    }
-
-    /**
-     * @param mixed $descriptionCompetence
-     */
-    public function setDescriptionCompetence($descriptionCompetence)
-    {
-        $this->descriptionCompetence = $descriptionCompetence;
+        $this->description = $description;
     }
 
     /**
      * @return mixed
      */
-    public function getCertifications()
-    {
-        return $this->certifications;
-    }
-
-    /**
-     * @param mixed $certifications
-     */
-    public function setCertifications($certifications)
-    {
-        $this->certifications = $certifications;
-    }
-
 
 
 
