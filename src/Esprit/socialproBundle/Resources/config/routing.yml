@@ -152,3 +152,6 @@ affichercertification:
 ajouterimagecertif:
     path:     /ajouterimagecertif/{id}
     defaults: { _controller: EspritsocialproBundle:Certification:ajouterimage }
+actus:
+    path:     /test
+    defaults: { _controller: EspritsocialproBundle:Filactualite:affiche }
