@@ -8,6 +8,11 @@ class FilactualiteController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('EspritsocialproBundle:filactualite:indexfil.html.twig');
+        $actualités=$this->getDoctrine()->getManager()->getRepository("EspritsocialproBundle:Filactualite")->findAll();
+        return $this->render('EspritsocialproBundle:filactualite:indexfil.html.twig',array('actus'=>$actualités));
+    }
+    public function afficheAction(){
+        $actualités=$this->getDoctrine()->getManager()->getRepository("EspritsocialproBundle:Filactualite")->findAll();
+        return $this->render('EspritsocialproBundle:Filactualite:fils.html.twig',array('actus'=>$actualités));
     }
 }
