@@ -1,0 +1,108 @@
+<div  class="pmb-block clearfix photos" >
+    <div class="p-header">
+        <table class="table">
+            <thead>
+            <th>ID</th>
+            <th>Compétence</th>
+            <th>Date d'éxpiration</th>
+            <th>Document</th>
+            </thead>
+            <tbody>
+            {% for c in certifications %}
+            <tr>
+                <td>{{ c.idcertification }}</td>
+                <td>{{ c.competence.description }}</td>
+                <td>{{ c.dateexpiration|date('d/m/Y') }}</td>
+                {% if c.image != NULL %}
+                <td><img src="{{ asset('bundles/espritsocialpro/index/img/demo/images.jpg') }}"/> </td>
+                {% else %}
+                <td  >
+                    <form method="POST" action="ajouterImage">
+                    <div style="background-color: #e0e0e0;border-radius:10px;">
+                        <p style="text-align:center;padding: 10px 10px 10px 10px;border-radius:10px; "; >cette compétence n'est toujours pas validée avec une photo,
+                            elle ne sera donc pas prise en concidération.</p>
+                    </div>
+                    <input name="imagecertif" type="file"/>
+                    </form>
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+        <button onclick="popup()" class="fadeInUp">Ajouter Certification</button>
+
+        <div class="modal fade" id="addNew-event" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add an Event</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="addEvent" role="form">
+                            <div class="form-group">
+                                <label for="eventName">Event Name</label>
+                                <div class="fg-line">
+                                    <input type="text" class="input-sm form-control" id="eventName" placeholder="Nom de la certification">
+                                </div>
+                                <div class="fg-line">
+                                    <input type="text" class="input-sm form-control" id="eventName" pattern="[1-5]{1}" placeholder="Années de validité d'aun an à 5 ans">
+                                </div>
+                                <div class="fg-line">
+                                    <input type="file" class="input-sm form-control" id="eventName" placeholder="Image de la certification">
+                                </div>
+                                <div class="fg-line">
+                                    <select id="ca" onchange="afficheajout()" class="selectpicker bs-select-hidden">
+                                       {% for competence in competences %}
+                                        <option>{{ competence.description }}</option>
+                                        {% endfor %}
+                                        <option>Autre Compétence</option>
+                                    </select >
+                                    <div  id="abd" style="display: none">
+                                    <form>
+                                        <input name="nomcomp" type="text" class="input-sm form-control" id="eventName" placeholder="Nom de la certification">
+
+                                        <button id="comp" ></button>
+                                    </form>
+                                    </div >
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-sm" id="addEvent">Add Event</button>
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    function popup() {
+        $('#addNew-event').modal('show');
+    }
+
+    function afficheajout() {
+        var t = document.getElementById("ca");
+        var selectedText = t.options[t.selectedIndex].text
+        if ( selectedText=="Autre Compétence"){
+
+
+        document.getElementById('abd').style.display='inline';
+        }
+        else{
+            document.getElementById('abd').style.display='none';
+
+        }
+    }
+
+
+
+    </script>
