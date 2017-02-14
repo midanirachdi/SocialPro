@@ -44,6 +44,10 @@ espritsocialpro_gestionreunions:
     path:     /GestionReunions
     defaults: { _controller: EspritsocialproBundle:Reunion:gestionreunion }
 
+espritsocialpro_gestionsallesreunions:
+    path:     /GestionSallesReunions
+    defaults: { _controller: EspritsocialproBundle:Reunion:gestionsallereunion }
+
 espritsocialpro_projets:
     path:     /Projets
     defaults: { _controller: EspritsocialproBundle:Projets:index }
