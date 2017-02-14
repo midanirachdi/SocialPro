@@ -31,6 +31,48 @@ class Filactualite
      * @ORM\Column(type="string",length=255)
      */
     private $tag;
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $datePublication;
+
+    /**
+     * @return mixed
+     */
+    public function getDatePublication()
+    {
+        return $this->datePublication;
+    }
+
+    /**
+     * @param mixed $datePublication
+     */
+    public function setDatePublication($datePublication)
+    {
+        $this->datePublication = $datePublication;
+    }
+    /**
+     * @ORM\ManyToOne(targetEntity="Esprit\socialproBundle\Entity\User")
+     * @ORM\JoinColumn(name="idutilisateur",referencedColumnName="id")
+     */
+    private $utilisateur;
+
+    /**
+     * @return mixed
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
+
+    /**
+     * @param mixed $utilisateur
+     */
+    public function setUtilisateur($utilisateur)
+    {
+        $this->utilisateur = $utilisateur;
+    }
+
 
     /**
      * @return mixed

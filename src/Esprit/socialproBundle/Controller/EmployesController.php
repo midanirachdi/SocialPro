@@ -29,10 +29,6 @@ class EmployesController extends Controller
         $utilisateur=$this->getDoctrine()->getManager()->getRepository("EspritsocialproBundle:User")->find($id);
         if($request->isMethod("post"))
         {
-
-            $utilisateur->setFonction("blob");
-            $utilisateur->setNbprojets(0);
-            $utilisateur->setEvaluation(0);
             $utilisateur->setMatricule($request->get("matricule"));
             $utilisateur->setEmail($request->get("email"));
             $utilisateur->setNom($request->get("nom"));
@@ -43,7 +39,6 @@ class EmployesController extends Controller
             $utilisateur->setAdresse($request->get("adresse"));
             $roles=array($request->get("role"));
             $utilisateur->setRoles($roles);
-            $utilisateur->setPlainPassword("0000");
             $this->getDoctrine()->getManager()->persist($utilisateur);
             $this->getDoctrine()->getManager()->flush();
 

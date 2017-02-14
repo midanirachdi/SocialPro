@@ -1,19 +1,21 @@
-{% for actu in actus %}
-<div class="card">
-    <div class="card-header">
-        <div class="media">
-            <div class="pull-left">
-                <img class="avatar-img a-lg" src="{{ asset('bundles/espritsocialpro/index/img/profile-pics/3.jpg') }}" alt="">
+    {% for actu in actus %}
+        <div class="card">
+            <div class="card-header">
+                <div class="media">
+                    <div class="pull-left">
+                        <img class="avatar-img a-lg" src="{{ asset('bundles/espritsocialpro/index/img/profile-pics/3.jpg') }}" alt="">
+                    </div>
+
+                    <div class="media-body m-t-5">
+                        {% if actu.utilisateur.id is defined %}
+                            <h2>{{ actu.utilisateur.nom }} {{ actu.utilisateur.prenom }}<small>Publié en {{ actu.datePublication|date("d M Y  h:s a") }}</small></h2>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
 
-            <div class="media-body m-t-5">
-                <h2>Nadia Zayene <small>Publié en 30 Septembre 2015 à 22:00</small></h2>
+            <div class="card-body card-padding p-t-0">
+                <p>{{ actu.contenu }}</p>
             </div>
         </div>
-    </div>
-
-    <div class="card-body card-padding p-t-0">
-        <p>{{ actu.contenu }}</p>
-    </div>
-</div>
-{% endfor %}
+    {% endfor %}

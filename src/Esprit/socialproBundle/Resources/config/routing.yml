@@ -9,6 +9,9 @@ espritsocialpro_profil:
 espritsocialpro_filactualite:
     path:     /Filactualite
     defaults: { _controller: EspritsocialproBundle:Filactualite:index }
+ajoutfil:
+    path:     /ajoutfil
+    defaults: { _controller: EspritsocialproBundle:Filactualite:ajout }
 
 espritsocialpro_employes:
     path:     /Employes
