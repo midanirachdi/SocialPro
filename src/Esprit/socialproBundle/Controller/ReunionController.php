@@ -15,4 +15,9 @@ class ReunionController extends Controller
     {
         return $this->render('EspritsocialproBundle:Reunions:gestionreunions.html.twig');
 
+    }
+
+    public function gestionsallereunionAction()
+    {
+        return $this->render('EspritsocialproBundle:Reunions:gestionsallesreunion.html.twig');
     }}

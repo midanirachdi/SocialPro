@@ -13,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Sallereunion
 {
+    //***************Attributs***************
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -21,22 +23,28 @@ class Sallereunion
     private $idsallereunion;
 
     /**
-     * @ORM\OneToMany(targetEntity="Reunion", mappedBy="sallereunion")
+     * @ORM\Column(type="string",length=255)
      */
-    private $reunions;
-    public function __construct() {
-        $this->users = new ArrayCollection();
-        $this->reunions = new ArrayCollection();
-    }
+    private $nomsalle;
+
     /**
      * @ORM\Column(type="integer")
      */
-    private $numsalle;
+    private $nbplaces;
+
+    /**
+     * @ORM\Column(type="string",length=255,nullable=true)
+     */
+    private $pathimgsalle;
+
     /**
      * @ORM\Column(type="boolean")
      */
-    private $etat;
+    private $disponibiliite;
 
+    //***************Methods (Getters and Setters) ***************
+
+    //*********Idsallereunion*******
     /**
      * @return mixed
      */
@@ -53,72 +61,59 @@ class Sallereunion
         $this->idsallereunion = $idsallereunion;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getUsers()
-    {
-        return $this->users;
-    }
-
-    /**
-     * @param mixed $users
-     */
-    public function setUsers($users)
-    {
-        $this->users = $users;
-    }
-
+    //*********Nomsalle*******
 
     /**
      * @return mixed
      */
-    public function getNumsalle()
+    public function getNomsalle()
     {
-        return $this->numsalle;
+        return $this->nomsalle;
     }
 
     /**
-     * @param mixed $numsalle
+     * @param mixed $nomsalle
      */
-    public function setNumsalle($numsalle)
+    public function setNomsalle($nomsalle)
     {
-        $this->numsalle = $numsalle;
+        $this->nomsalle = $nomsalle;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getEtat()
-    {
-        return $this->etat;
-    }
-
-    /**
-     * @param mixed $etat
-     */
-    public function setEtat($etat)
-    {
-        $this->etat = $etat;
-    }
+    //*********Pathimgsalle*******
 
     /**
      * @return mixed
      */
-    public function getReunions()
+    public function getPathimgsalle()
     {
-        return $this->reunions;
+        return $this->pathimgsalle;
     }
 
     /**
-     * @param mixed $reunions
+     * @param mixed $pathimgsalle
      */
-    public function setReunions($reunions)
+    public function setPathimgsalle($pathimgsalle)
     {
-        $this->reunions = $reunions;
+        $this->pathimgsalle = $pathimgsalle;
     }
 
+    //*********Disponibiliite*******
 
+    /**
+     * @return mixed
+     */
+    public function getDisponibiliite()
+    {
+        return $this->disponibiliite;
+    }
+
+    /**
+     * @param mixed $disponibiliite
+     */
+    public function setDisponibiliite($disponibiliite)
+    {
+        $this->disponibiliite = $disponibiliite;
+    }
 
 
 }
