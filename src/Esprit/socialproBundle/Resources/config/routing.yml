@@ -44,10 +44,6 @@ espritsocialpro_gestionreunions:
     path:     /GestionReunions
     defaults: { _controller: EspritsocialproBundle:Reunion:gestionreunion }
 
-espritsocialpro_gestionsallesreunions:
-    path:     /GestionSallesReunions
-    defaults: { _controller: EspritsocialproBundle:Reunion:gestionsallereunion }
-
 espritsocialpro_projets:
     path:     /Projets
     defaults: { _controller: EspritsocialproBundle:Projets:index }
@@ -146,12 +142,15 @@ connecting:
 profilami:
     path:     /profilAmi/{id}
     defaults: { _controller: EspritsocialproBundle:Profil:ProfilAmi }
-affichercertification:
-    path:     /affichercompetence/{id}
-    defaults: { _controller: EspritsocialproBundle:Competence:afficher }
 ajouterimagecertif:
     path:     /ajouterimagecertif/{id}
     defaults: { _controller: EspritsocialproBundle:Certification:ajouterimage }
-actus:
-    path:     /test
-    defaults: { _controller: EspritsocialproBundle:Filactualite:affiche }
+ajouterCertification:
+    path:     /ajoutercertification
+    defaults: { _controller: EspritsocialproBundle:Certification:AjouterCertification }
+ajoutercompetence:
+    path:     /ajoutercompetence
+    defaults: { _controller: EspritsocialproBundle:Certification:Ajoutercompetence }
+affichercompetence:
+    path:     /ajoutercompetence
+    defaults: { _controller: EspritsocialproBundle:Certification:AfficherCompetence }
