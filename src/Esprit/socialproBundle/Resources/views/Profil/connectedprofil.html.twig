@@ -3,10 +3,18 @@
 
     <div class="pmob-body">
         <div class="row">
-            {% for user in users %}
-                <a href="{{ path('profilami' , {'id':user.id })}}" class="col-xs-2">
-                     <img  class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/1.jpg') }}" alt=""></li>
-                </a>
+            {% for us in users %}
+                {% if us.id!=app.user.id %}
+                    {% if us.connected==1 %}
+                        <a style="background-color: #4caf50;  border-radius: 100px"  class="col-xs-2" href="{{ path('profilami' , {'id':us.id })}}">
+                            <img   class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/1.jpg') }}" alt="">
+                        </a>
+                        {% else %}
+                            <a style="background-color:#2b2b2b;  border-radius: 100px"  class="col-xs-2" href="{{ path('profilami' , {'id':us.id })}}">
+                                <img   class="img-circle" src="{{ asset('bundles/espritsocialpro/index/img/contacts/1.jpg') }}" alt="">
+                            </a>
+                    {% endif %}
+                {% endif %}
             {% endfor %}
 
         </div>

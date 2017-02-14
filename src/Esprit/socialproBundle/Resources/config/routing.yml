@@ -142,3 +142,9 @@ connecting:
 profilami:
     path:     /profilAmi/{id}
     defaults: { _controller: EspritsocialproBundle:Profil:ProfilAmi }
+affichercertification:
+    path:     /affichercompetence/{id}
+    defaults: { _controller: EspritsocialproBundle:Competence:afficher }
+ajouterimagecertif:
+    path:     /ajouterimagecertif/{id}
+    defaults: { _controller: EspritsocialproBundle:Certification:ajouterimage }

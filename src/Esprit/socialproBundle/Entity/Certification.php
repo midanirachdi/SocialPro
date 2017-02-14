@@ -3,8 +3,6 @@
 // social pro
 
 namespace Esprit\socialproBundle\Entity;
-
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,29 +21,76 @@ class Certification
     private $idcertification;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Competence" , inversedBy="certifications")
-     * @ORM\JoinColumn(name="idcompetence", referencedColumnName="idcompetence")
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="idutilisateur",referencedColumnName="id")
      */
-    private $competence;
+    private $utilisateur;
     /**
      * @ORM\Column(type="string",length=255)
      */
+
     private $descriptionCertification;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Competence")
+     * @ORM\JoinColumn(name="idcompetence",referencedColumnName="idcompetence")
+     */
+    private $competence;
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateexpiration;
+    /**
+     * @ORM\Column(type="string",length=255,nullable=true)
+     */
+    private $image;
 
     /**
      * @return mixed
      */
-    public function getIdcertification()
+    public function getCertification()
     {
-        return $this->idcertification;
+        return $this->certification;
     }
 
     /**
-     * @param mixed $idcertification
+     * @param mixed $certification
      */
-    public function setIdcertification($idcertification)
+    public function setCertification($certification)
     {
-        $this->idcertification = $idcertification;
+        $this->certification = $certification;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
+
+    /**
+     * @param mixed $utilisateur
+     */
+    public function setUtilisateur($utilisateur)
+    {
+        $this->utilisateur = $utilisateur;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescriptionCertification()
+    {
+        return $this->descriptionCertification;
+    }
+
+    /**
+     * @param mixed $descriptionCertification
+     */
+    public function setDescriptionCertification($descriptionCertification)
+    {
+        $this->descriptionCertification = $descriptionCertification;
     }
 
     /**
@@ -67,19 +112,49 @@ class Certification
     /**
      * @return mixed
      */
-    public function getDescriptionCertification()
+    public function getDateexpiration()
     {
-        return $this->descriptionCertification;
+        return $this->dateexpiration;
     }
 
     /**
-     * @param mixed $descriptionCertification
+     * @param mixed $dateexpiration
      */
-    public function setDescriptionCertification($descriptionCertification)
+    public function setDateexpiration($dateexpiration)
     {
-        $this->descriptionCertification = $descriptionCertification;
+        $this->dateexpiration = $dateexpiration;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdcertification()
+    {
+        return $this->idcertification;
+    }
+
+    /**
+     * @param mixed $idcertification
+     */
+    public function setIdcertification($idcertification)
+    {
+        $this->idcertification = $idcertification;
+    }
 
 }
