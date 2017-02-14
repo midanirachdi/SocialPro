@@ -48,84 +48,27 @@
                     </ul>
                 </div>
             {% endif %}
-            <div class="card">
-                <div class="card-header">
-                    <div class="media">
-                        <div class="pull-left">
-                            <img class="avatar-img a-lg" src="{{ asset('bundles/espritsocialpro/index/img/profile-pics/2.jpg') }}" alt="">
-                        </div>
+         <div id="fils" style="overflow-y:scroll;max-height:1000px">
+             {% for actu in actus %}
+                 <div class="card">
+                     <div class="card-header">
+                         <div class="media">
+                             <div class="pull-left">
+                                 <img class="avatar-img a-lg" src="{{ asset('bundles/espritsocialpro/index/img/profile-pics/3.jpg') }}" alt="">
+                             </div>
 
-                        <div class="media-body m-t-5">
-                            <h2>Midani Rachdi <small>Publié en 29 Septembre 2015 à 02:10</small></h2>
-                        </div>
-                    </div>
-                </div>
+                             <div class="media-body m-t-5">
+                                 <h2>Nadia Zayene <small>Publié en 30 Septembre 2015 à 22:00</small></h2>
+                             </div>
+                         </div>
+                     </div>
 
-                <div class="card-body card-padding p-t-0">
-                    <p>Diginium Graphics is looking for an Web Full-Stack (Front-End & Back-End) Developer for an internship "Stage PFE". This is an opportunity that can turn into a Full-Time position at Diginium Graphics if proven skills and motivation.
-
-
-                        Overview
-                        Diginium Graphics is a Tunisian software...</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="media">
-                        <div class="pull-left">
-                            <img class="avatar-img a-lg" src="{{ asset('bundles/espritsocialpro/index/img/profile-pics/3.jpg') }}" alt="">
-                        </div>
-
-                        <div class="media-body m-t-5">
-                            <h2>Nadia Zayene <small>Publié en 30 Septembre 2015 à 22:00</small></h2>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-body card-padding p-t-0">
-                    <p>Nous recherchons un développeur expérimenté H/F.
-                        Vous travaillerez en collaboration avec l'équipe technique existante pour concevoir et améliorer les services développés l'agence ainsi que les solutions conçues pour nos...</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="media">
-                        <div class="pull-left">
-                            <img class="avatar-img a-lg" src="{{ asset('bundles/espritsocialpro/index/img/profile-pics/4.jpg') }}" alt="">
-                        </div>
-
-                        <div class="media-body m-t-5">
-                            <h2>Yassine Ben Abderrabba <small>Publié en 18 Mai 2015 à 01:10</small></h2>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-body card-padding p-t-0">
-                    <p>Société spécialisé dans le développement web, recrute un intégrateur web.
-                        Ingénieur (Bac + 5) ou diplômé en informatique (Bac+3/4), avec une expérience de 1 ans ou plus.
-                        Vous êtes un passionné par le web et les nouvelles technologies, vous recherchez des projets innovants.
-                        Exigences de...</p>
-                </div>
-            </div>
-            <!--
-            <div class="card">
-                <div class="card-header">
-                    <div class="media">
-                        <div class="pull-left">
-                            <img class="avatar-img a-lg" src="img/profile-pics/3.jpg" alt="">
-                        </div>
-
-                        <div class="media-body m-t-5">
-                            <h2>Felix Harper <small>Posted on 29th Aug 2015 at 02:10</small></h2>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-body card-padding p-t-0">
-                    <p>Aliquam vel sem ut ligula posuere viverra. Ut dolor nisi, fringilla quis consectetur maximus, finibus vel diam. Duis condimentum, diam in semper congue, tortor orci condimentum urna</p>
-                </div>
-            </div>
-            -->
+                     <div class="card-body card-padding p-t-0">
+                         <p>{{ actu.contenu }}</p>
+                     </div>
+                 </div>
+             {% endfor %}
+        </div>
         </div>
         <div class="col-md-4 hidden-sm">
             <div class="card">
@@ -256,5 +199,17 @@
             </div>
         </div>
     </div>
-
+<script>
+        var ajax_affiche= function(){
+            $.ajax({
+                type:'POST',
+                url:'{{ path("actus") }}',
+                success: function (response) {
+                    $("#fils").html(response);
+                }
+            });
+        };
+        var interval=1000*60*0.5;
+        setInterval(ajax_affiche,interval);
+</script>
 {% endblock %}
