@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block descheader %}
-
+Dans ce menu vous pouvez gérer les salles de réunions
 {% endblock %}
 
 {% block bodyheader %}
@@ -15,4 +15,185 @@
 
 {% block bodymain %}
 
+    <!--*********ajout Button salle de réunion*****************-->
+    <div class="card" xmlns="http://www.w3.org/1999/html">
+        <div class="pull-right">
+            <div class="card-header">
+                <p>
+                    <a class="btn palette-Teal bg" onclick="popup()">
+                        <i class="zmdi zmdi-plus-circle zmdi-hc-fw"></i> Ajouter</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!--*************Affichage**************-->
+
+    <table style="margin: 0 auto;text-align: center;" id="data-table-basic" class="table table-striped">
+        <thead>
+        <tr>
+            <th style="color: #0a6ebd;text-align: center;" data-column-id="matricule" data-type="numeric">Numéro de salle</th>
+            <th style="color: #0a6ebd;text-align: center;" data-column-id="email">Nom de la salle</th>
+            <th style="color: #0a6ebd;text-align: center;" data-column-id="nom">Nombre de places</th>
+            <th style="color: #0a6ebd;text-align: center;" data-column-id="nom">Disponibilité</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for x in salles %}
+            <tr>
+
+                <td>{{ x.idsallereunion }}</td>
+                <td>{{ x.nomsalle }}</td>
+
+
+                <td>{{ x.nbplaces }}</td>
+                {% if x.disponibilite==1 %}
+                    <td>
+                        <div class="btn palette-Blue-600 btn-icon bg"><i class="zmdi zmdi-check"></i></div>
+                    </td>
+                {% else %}
+                    <td>
+                        <div class="btn palette-Amber-A400 btn-icon bg"><i class="zmdi zmdi-close"></i></div>
+                    </td>
+                {% endif %}
+                <td><a onclick="popup1()" href="#" class='btn palette-Light-Green bg btn-icon waves-effect waves-circle waves-float'><span class='zmdi zmdi-edit'></span></a>
+                    <a onclick="anima()" href="#" class='btn btn-danger btn-icon waves-effect waves-circle waves-float'><span class='zmdi zmdi-delete'></span></a></td>
+                <form action="{{ path('espritsocialpro_supprimersallesreunions',{'id':x.idsallereunion}) }}">
+                    <input style="display:none;" type="submit" value="Submit" id="suppression" />
+                </form>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+    <!--*********PopUp Ajout salle de réunion*****************-->
+    <form class="addEvent" role="form" method="post" action="{{ path('espritsocialpro_ajoutsallesreunions') }}">
+        <div class="modal fade" id="addNew-event" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Ajouter une salle de réunion</h4>
+                    </div>
+                    <div class="modal-body">
+                        <br/><br/>
+                        <div class="form-group fg-float">
+                            <div class="fg-line">
+                                <input type="text" name="Nomsalle" class="input-sm-3 form-control fg-input">
+                                <label class="fg-label">Nom de la salle </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group fg-float">
+                            <div class="fg-line">
+                                <input type="number" name="Nbsalle" class="input-sm-3 form-control fg-input">
+                                <label class="fg-label">Nombre de places </label>
+                            </div>
+                        </div>
+                        Disponibilité : &nbsp;&nbsp;
+                        <div class="btn palette-Blue btn-icon bg"><i class="zmdi zmdi-check"></i></div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button  class="btn btn-primary btn-sm" id="addEvent">Ajouter</button>
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!--*********PopUp Modification salle de réunion*****************-->
+    {{ form_start(form ,{'class': 'addEvent','role': 'form' } ) }}
+    <!--<form class="addEvent" role="form" method="post" action="">-->
+        <div class="modal fade" id="addNew-event1" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Modification d'une salle de réunion</h4>
+                    </div>
+                    <div class="modal-body">
+                        <br/><br/>
+                        <div class="form-group fg-float">
+                            <div class="fg-line">
+                                {{ form_widget(form.nomsalle,
+                                { 'attr': {'class': 'input-sm-3 form-control fg-input'} }
+                                ) }}
+                                <input value="{{ form_row(form.nomsalle) }}" type="text"  name="Nomsalle" class="input-sm-3 form-control fg-input">
+                                <label class="fg-label">Nom de la salle </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group fg-float">
+                            <div class="fg-line">
+                                {{ form_widget(form.nbplaces,
+                                { 'attr': {'class': 'input-sm-3 form-control fg-input'} }
+                                ) }}
+                                <!--<input value="" type="number"  name="Nbsalle" class="input-sm-3 form-control fg-input">-->
+                                <label class="fg-label">Nombre de places </label>
+                            </div>
+                        </div>
+                        Disponibilité : &nbsp;&nbsp;
+                        <div class="btn palette-Blue btn-icon bg"><i class="zmdi zmdi-check"></i></div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        {{ form_widget(form.Modifier,
+                        { 'attr': {'class': 'btn palette-Amber-800 bg'} }) }}
+                        <!--<a class="btn palette-Amber-800 bg">
+                             Modifier</a>-->
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    <!--</form>-->
+    {{ form_end(form) }}
+
+
+
+
+    {% block tabscript %}
+
+    {% endblock %}
+    <script type="text/javascript">
+        function anima() {
+            swal({
+                title: "Est ce que vous êtes sûr ?",
+                text: "",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Oui, Supprimer !",
+                closeOnConfirm: false
+            }, function(){
+                var evt = document.createEvent("MouseEvents");
+                evt.initMouseEvent("click", true, true, window,0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                document.getElementById("suppression").dispatchEvent(evt);
+                swal("Supprimé !", "L'élément a été supprimé.", "success");
+            });
+        }
+    </script>
+    <script src="{{ asset('bundles/espritsocialpro/index/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="{{ asset('bundles/espritsocialpro/index/vendors/bower_components/Waves/dist/waves.min.js') }}"></script>
+    <script src="{{ asset('bundles/espritsocialpro/index/vendors/bootstrap-growl/bootstrap-growl.min.js') }}"></script>
+    <script src="{{ asset('bundles/espritsocialpro/index/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js') }}"></script>
+
+    <!--*********Script Popup*****************-->
+    <script type="text/javascript">
+        function popup() {
+            $('#addNew-event').modal('show');
+        }
+        function popup1() {
+            $('#addNew-event1').modal('show');
+        }
+    </script>
 {% endblock %}
+{% block loader %}{% endblock %}
