@@ -168,5 +168,5 @@ ajoutercompetence:
     path:     /ajoutercompetence
     defaults: { _controller: EspritsocialproBundle:Certification:Ajoutercompetence }
 affichercompetence:
-    path:     /ajoutercompetence
+    path:     /affichecompetence
     defaults: { _controller: EspritsocialproBundle:Certification:AfficherCompetence }

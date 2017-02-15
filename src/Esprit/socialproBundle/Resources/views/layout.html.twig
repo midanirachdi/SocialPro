@@ -9,7 +9,7 @@
     {% block cssjs %} {% endblock %}
     {% block stylesheet %}
         <!-- Vendor CSS -->
-        <link href="{{ asset('bundles/espritsocialpro/index/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css')  }}" rel="stylesheet">
+        <link href="{{ asset('bundles/espritsocialpro/index/vendors/bower_components/fullcalendar/dist/fullcalendar.min.cssf')  }}" rel="stylesheet">
         <link href="{{ asset('bundles/espritsocialpro/index/vendors/bower_components/animate.css/animate.min.css')  }}"  rel="stylesheet">
         <link href="{{ asset('bundles/espritsocialpro/index/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css')  }}" rel="stylesheet">
         <link href="{{ asset('bundles/espritsocialpro/index/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css')  }}"  rel="stylesheet">
@@ -374,7 +374,6 @@
                     <ul>
                         <li {% block active4 %} {% endblock %}><a href="{{ path('espritsocialpro_gestionreunions') }}">Gestion des réunions</a></li>
                         <li {% block active5 %} {% endblock %}><a href="{{ path('espritsocialpro_reunions') }}">Calendrier des réunions</a></li>
-                        <li {% block active51 %} {% endblock %}><a href="{{ path('espritsocialpro_gestionsallesreunions') }}">Gestion des salles de réunions</a></li>
                     </ul>
                 </li>
                 <li {% block active61 %} {% endblock %}><a href="{{ path('espritsocialpro_taches') }}"><i class="zmdi zmdi-calendar"></i>Tâches</a></li>
