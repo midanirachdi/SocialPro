@@ -44,6 +44,22 @@ espritsocialpro_gestionreunions:
     path:     /GestionReunions
     defaults: { _controller: EspritsocialproBundle:Reunion:gestionreunion }
 
+espritsocialpro_gestionsallesreunions:
+    path:     /GestionSallesReunions
+    defaults: { _controller: EspritsocialproBundle:Reunion:gestionsallereunion }
+
+espritsocialpro_ajoutsallesreunions:
+    path:     /AjoutSallesReunions
+    defaults: { _controller: EspritsocialproBundle:Reunion:ajoutsallereunion }
+
+espritsocialpro_supprimersallesreunions:
+    path:     /suppSalle/{id}
+    defaults: { _controller: EspritsocialproBundle:Reunion:supprimer }
+
+espritsocialpro_modifierersallesreunions:
+    path:     /modifierSalle/{id}
+    defaults: { _controller: EspritsocialproBundle:Reunion:modifiersalle }
+
 espritsocialpro_projets:
     path:     /Projets
     defaults: { _controller: EspritsocialproBundle:Projets:index }
@@ -153,4 +169,4 @@ ajoutercompetence:
     defaults: { _controller: EspritsocialproBundle:Certification:Ajoutercompetence }
 affichercompetence:
     path:     /ajoutercompetence
-    defaults: { _controller: EspritsocialproBundle:Certification:AfficherCompetence }
+    defaults: { _controller: EspritsocialproBundle:Certification:AfficherCompetence }

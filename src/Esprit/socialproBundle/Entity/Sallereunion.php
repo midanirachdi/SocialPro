@@ -6,6 +6,8 @@ namespace Esprit\socialproBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity
@@ -33,17 +35,28 @@ class Sallereunion
     private $nbplaces;
 
     /**
-     * @ORM\Column(type="string",length=255,nullable=true)
-     */
-    private $pathimgsalle;
-
-    /**
      * @ORM\Column(type="boolean")
      */
-    private $disponibiliite;
+    private $disponibilite;
 
     //***************Methods (Getters and Setters) ***************
 
+
+    /**
+     * @return mixed
+     */
+    public function getNbplaces()
+    {
+        return $this->nbplaces;
+    }
+
+    /**
+     * @param mixed $nbplaces
+     */
+    public function setNbplaces($nbplaces)
+    {
+        $this->nbplaces = $nbplaces;
+    }
     //*********Idsallereunion*******
     /**
      * @return mixed
@@ -79,41 +92,25 @@ class Sallereunion
         $this->nomsalle = $nomsalle;
     }
 
-    //*********Pathimgsalle*******
-
-    /**
-     * @return mixed
-     */
-    public function getPathimgsalle()
-    {
-        return $this->pathimgsalle;
-    }
-
-    /**
-     * @param mixed $pathimgsalle
-     */
-    public function setPathimgsalle($pathimgsalle)
-    {
-        $this->pathimgsalle = $pathimgsalle;
-    }
 
     //*********Disponibiliite*******
 
     /**
      * @return mixed
      */
-    public function getDisponibiliite()
+    public function getDisponibilite()
     {
-        return $this->disponibiliite;
+        return $this->disponibilite;
     }
 
     /**
-     * @param mixed $disponibiliite
+     * @param mixed $disponibilite
      */
-    public function setDisponibiliite($disponibiliite)
+    public function setDisponibilite($disponibilite)
     {
-        $this->disponibiliite = $disponibiliite;
+        $this->disponibilite = $disponibilite;
     }
+
 
 
 }
