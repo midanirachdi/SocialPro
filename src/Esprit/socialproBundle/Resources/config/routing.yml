@@ -48,6 +48,18 @@ espritsocialpro_gestionsallesreunions:
     path:     /GestionSallesReunions
     defaults: { _controller: EspritsocialproBundle:Reunion:gestionsallereunion }
 
+espritsocialpro_ajoutsallesreunions:
+    path:     /AjoutSallesReunions
+    defaults: { _controller: EspritsocialproBundle:Reunion:ajoutsallereunion }
+
+espritsocialpro_supprimersallesreunions:
+    path:     /suppSalle/{id}
+    defaults: { _controller: EspritsocialproBundle:Reunion:supprimer }
+
+espritsocialpro_modifierersallesreunions:
+    path:     /modifierSalle/{id}
+    defaults: { _controller: EspritsocialproBundle:Reunion:modifiersalle }
+
 espritsocialpro_projets:
     path:     /Projets
     defaults: { _controller: EspritsocialproBundle:Projets:index }
