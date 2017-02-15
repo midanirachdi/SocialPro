@@ -6,9 +6,6 @@ parameters:
     database_user: root
     database_password: null
     mailer_transport: gmail
-    mailer_port: 465
-    mailer_encryption: ssl
-    mailer_auth_mode: login
     mailer_host: smtp.gmail.com
     mailer_user: pisocial.pro@gmail.com
     mailer_password: '07201725'
