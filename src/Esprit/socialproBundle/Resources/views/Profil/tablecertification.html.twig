@@ -2,27 +2,27 @@
     <div class="p-header">
         <table class="table">
             <thead>
-            <th>ID</th>
-            <th>Compétence</th>
-            <th>Date d'éxpiration</th>
-            <th>Document</th>
+            <th style="text-align: center">ID</th>
+            <th style="text-align: center">Compétence</th>
+            <th style="text-align: center">Date d'éxpiration</th>
+            <th style="text-align: center">Document</th>
             </thead>
             <tbody>
             {% for c in certifications %}
             <tr>
-                <td>{{ c.idcertification }}</td>
-                <td>{{ c.competence.description }}</td>
-                <td>{{ c.dateexpiration|date('d/m/Y') }}</td>
+                <td style="text-align: center" >{{ c.idcertification }}</td>
+                <td style="text-align: center">{{ c.competence.description }}</td>
+                <td style="text-align: center">{{ c.dateexpiration|date('d/m/Y') }}</td>
                 {% if c.image != NULL %}
-                <td><img src="{{ asset('bundles/espritsocialpro/index/img/demo/images.jpg') }}"/> </td>
+                <td style="text-align: center"><img src="{{ asset('bundles/espritsocialpro/index/img/demo/images.jpg') }}"/> </td>
                 {% else %}
-                <td  >
+                <td  style="text-align: center">
                     <form method="POST" action="ajouterImage">
                     <div style="background-color: #e0e0e0;border-radius:10px;">
                         <p style="text-align:center;padding: 10px 10px 10px 10px;border-radius:10px; "; >cette compétence n'est toujours pas validée avec une photo,
                             elle ne sera donc pas prise en concidération.</p>
                     </div>
-                    <input name="imagecertif" type="file"/>
+                    <center><input style="margin-right: -40%" name="imagecertif" type="file"/></center>
                     </form>
                 </td>
             </tr>
@@ -30,79 +30,67 @@
             {% endfor %}
             </tbody>
         </table>
-        <button onclick="popup()" class="fadeInUp">Ajouter Certification</button>
-
+        <center><button onclick="popup()" class="fadeInUp btn btn-primary">Ajouter certification</button></center>
+        <form class="addEvent" action="{{ path('ajouterCertification') }}">
         <div class="modal fade" id="addNew-event" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog">
                 <div class="modal-content">
+
                     <div class="modal-header">
-                        <h4 class="modal-title">Add an Event</h4>
+                        <h4 class="modal-title">Ajouter certification</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="addEvent" role="form">
-                            <div class="form-group">
-                                <label for="eventName">Event Name</label>
-                                <div class="fg-line">
-                                    <input type="text" class="input-sm form-control" id="eventName" placeholder="Nom de la certification">
-                                </div>
-                                <div class="fg-line">
-                                    <input type="text" class="input-sm form-control" id="eventName" pattern="[1-5]{1}" placeholder="Années de validité d'aun an à 5 ans">
-                                </div>
-                                <div class="fg-line">
-                                    <input type="file" class="input-sm form-control" id="eventName" placeholder="Image de la certification">
-                                </div>
-                                <div class="fg-line">
-                                    <select id="ca" onchange="afficheajout()" class="selectpicker bs-select-hidden">
-                                       {% for competence in competences %}
-                                        <option>{{ competence.description }}</option>
-                                        {% endfor %}
-                                        <option>Autre Compétence</option>
-                                    </select >
-                                    <div  id="abd" style="display: none">
-                                    <form>
-                                        <input name="nomcomp" type="text" class="input-sm form-control" id="eventName" placeholder="Nom de la certification">
 
-                                        <button id="comp" ></button>
-                                    </form>
-                                    </div >
+                            <div style="margin:20px 0 25px 0;">
+                                <div class="fg-line">
+                                    <strong>Nom de certification</strong> <input name="description" type="text" class="input-sm form-control"  placeholder="Nom de la certification">
                                 </div>
-
-
+                                <div class="fg-line" style="margin-top: 4%">
+                                    <strong>Date d'expiration</strong><input name="duree" type="date" class="input-sm form-control" id="eventName" placeholder="Années de validité d'aun an à 5 ans">
+                                </div>
+                                <div class="fg-line" style="margin-top: 5%">
+                                    <strong>Image de certification</strong><center><input name="imagecertif" type="file" id="eventName" style="margin-top: 1%;margin-left:15%"/></center>
+                                </div>
+                                <div id="ac">
+                                {{ render(controller('EspritsocialproBundle:Certification:AfficherCompetence')) }}
+                                </div>
                             </div>
-                        </form>
+                            <div id="abd"  style="display: none">
+                            <input  name="nomcomp" type="text" class="input-sm form-control" id="nomco" placeholder="Nom de la certification">
+                            </div >
                     </div>
-
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary btn-sm" id="addEvent">Add Event</button>
-                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary btn-sm" id="addEvent">Ajouter</input>
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Annuler</button>
                     </div>
                 </div>
             </div>
         </div>
-
+        </form>
     </div>
+
 
 
 </div>
 <script type="text/javascript">
     function popup() {
         $('#addNew-event').modal('show');
-    }
+    };
 
     function afficheajout() {
         var t = document.getElementById("ca");
-        var selectedText = t.options[t.selectedIndex].text
+        var selectedText = t.options[t.selectedIndex].text;
+        var requ = document.getElementById('nomco').value;
+
         if ( selectedText=="Autre Compétence"){
-
-
-        document.getElementById('abd').style.display='inline';
+            document.getElementById('nomco').setAttribute("required","");
+            document.getElementById('nomco').required = true;
+            document.getElementById('abd').style.display='inline';
         }
         else{
             document.getElementById('abd').style.display='none';
+            element.removeAttribute("required");
 
         }
-    }
-
-
-
+    };
     </script>
