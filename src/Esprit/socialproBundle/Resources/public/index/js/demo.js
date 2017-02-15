@@ -6,7 +6,7 @@ $(window).load(function(){
         },{
             type: type,
             allow_dismiss: false,
-            label: 'Cancel',
+            label: 'Annuler',
             className: 'btn-xs btn-inverse',
             placement: {
                 from: 'bottom',
@@ -152,15 +152,15 @@ $(document).ready(function() {
     //Warning Message
     $('#sa-warning').click(function(){
         swal({
-            title: "Are you sure?",
-            text: "You will not be able to recover this imaginary file!",
+            title: "Est ce que vous êtes sûr ?",
+            text: "",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "Oui, Supprimer !",
             closeOnConfirm: false
         }, function(){
-            swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            swal("Supprimé !", "L'élément a été supprimé.", "success");
         });
     });
 

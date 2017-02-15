@@ -25,15 +25,21 @@
             </div>
         </div>
 
-        <div class="card-header" style="display:inline-flex">
+        <div class="card-header" style="display:inline-block">
             {{ form_start(form) }}
+            <table>
+                <tr>
+                    <td>{{ form_widget(form.description,
+                        { 'attr': {'class': 'search-field form-control','placeholder':'Rechercher...'} }) }}
+                    </td>
 
-            {{ form_widget(form.description,
-            { 'attr': {'class': 'search-field form-control','placeholder':'Rechercher...'} }) }}
+                    <td>{{ form_widget(form.Rechercher,
+                        { 'attr': {'class': 'btn btn-info'} }) }}
+                    </td>
 
-            {#<a href="#" class="btn btn-info"><i class="zmdi zmdi-search"></i></a>#}
-            {{ form_widget(form.Rechercher,
-            { 'icon': {'class':'zmdi zmdi-search'}, 'attr': {'class': 'btn btn-info'} }) }}
+                    {#<a href="#" class="btn btn-info"><i class="zmdi zmdi-search"></i></a>#}
+                </tr>
+            </table>
 
             {{ form_end(form) }}
 
@@ -53,6 +59,7 @@
             </tr>
             </thead>
             <tbody>
+
             {% for offre in offres %}
                 <tr>
                     <td>{{ offre.idoffre }}</td>
