@@ -34,6 +34,7 @@
     {% endblock %}
 </head>
 <body data-ma-header="teal">
+<div id="divdepage" >
 {% block header %}
     <header id="header" class="media">
         <div class="pull-left h-logo" style="height: 70px;">
@@ -532,8 +533,52 @@
                 }
             });
         });
+        var etats=1;
+        var level=1000*60*3;
+         var temp;
+        document.getElementById('divdepage').addEventListener("onmousemove", voirconnected());
+        document.getElementById('divdepage').addEventListener("onmouseout", azerty());
+        document.getElementById('divdepage').addEventListener("onmouseover", voirconnected());
+        document.getElementById('divdepage').addEventListener("onmouseup", voirconnected() );
+
+        var temp ;
+
+        function azerty()
+        {
+           temp=setTimeout(indisponnible(),10000);
+        }
+        function voirconnected()
+        {
+        if (etats===2)
+        {
+            temp=setTimeout(indisponnible(),10000);
+            clearTimeout(temp);
+            actif();
+        }
+        }
+        function actif(){
+            $.ajax({
+                url: '{{path('connecting') }}',
+                type: 'POST',
+                success:function(response) {
+                    etats = 1;
+                    temp = setTimeout(indisponnible(),10000);
+                }})}
+
+        function indisponnible() {
+            $.ajax({
+                url: '{{path('modifieretat') }}',
+                type: 'POST',
+                success:function(response){
+                    etats=2;
+                }})}
+
+
+
+
     </script>
 {% endblock %}
 {% endblock %}
+</div>
 </body>
 </html>

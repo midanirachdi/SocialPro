@@ -1,0 +1,12 @@
+<div class="fg-line"style="margin-top: 4%">
+    <select  id="ca" name="compconnue" onchange="afficheajout()" class="selectpicker bs-select-hidden">
+        {% for competence in competences %}
+            <option value="{{ competence.idcompetence }}">{{ competence.description }}</option>
+        {% endfor %}
+        <option>Autre Compétence</option>
+    </select >
+
+</div>
+
+
+

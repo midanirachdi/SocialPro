@@ -64,7 +64,6 @@ espritsocialpro_taches:
     path:     /Taches
     defaults: { _controller: EspritsocialproBundle:Projets:taches }
 
-
 espritsocialpro_equipes:
     path:     /Equipes
     defaults: { _controller: EspritsocialproBundle:Projets:equipes }
@@ -154,3 +153,6 @@ ajoutercompetence:
 affichercompetence:
     path:     /affichecompetence
     defaults: { _controller: EspritsocialproBundle:Certification:AfficherCompetence }
+effacercertififcation:
+    path:     /effacercertification/{id}
+    defaults: { _controller: EspritsocialproBundle:Certification:effacercertification }
