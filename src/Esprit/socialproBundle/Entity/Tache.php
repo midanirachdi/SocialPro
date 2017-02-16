@@ -21,23 +21,28 @@ class Tache
     private $idtache;
 
     /**
-     * @ORM\OneToMany(targetEntity="Historique", mappedBy="tache")
-     */
-    private $historique;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Projet", inversedBy="taches")
+     * @ORM\ManyToOne(targetEntity="Projet")
      * @ORM\JoinColumn(name="idprojet", referencedColumnName="idprojet")
      */
     private $projet;
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="iduser", referencedColumnName="id")
+     */
+    protected $user;
+
     /**
      * @ORM\Column(type="string",length=255)
      */
     private $descriptionTache;
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=255)
      */
-    private $etat;
+    private $dateDebut;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $dateFin;
 
     /**
      * @return mixed
@@ -45,6 +50,54 @@ class Tache
     public function getIdtache()
     {
         return $this->idtache;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateDebut()
+    {
+        return $this->dateDebut;
+    }
+
+    /**
+     * @param mixed $dateDebut
+     */
+    public function setDateDebut($dateDebut)
+    {
+        $this->dateDebut = $dateDebut;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
+    }
+
+    /**
+     * @param mixed $dateFin
+     */
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
     }
 
     /**
@@ -86,38 +139,6 @@ class Tache
     public function setDescriptionTache($descriptionTache)
     {
         $this->descriptionTache = $descriptionTache;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEtat()
-    {
-        return $this->etat;
-    }
-
-    /**
-     * @param mixed $etat
-     */
-    public function setEtat($etat)
-    {
-        $this->etat = $etat;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHistorique()
-    {
-        return $this->historique;
-    }
-
-    /**
-     * @param mixed $historique
-     */
-    public function setHistorique($historique)
-    {
-        $this->historique = $historique;
     }
 
 

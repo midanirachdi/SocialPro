@@ -35,6 +35,10 @@ class Departement
      */
     private $nomDepartement;
     /**
+     * @ORM\Column(type="string",length=255)
+     */
+    private $Description;
+    /**
      * @ORM\OneToOne(targetEntity="Esprit\socialproBundle\Entity\User", cascade={"persist"})
      */
 
@@ -104,6 +108,22 @@ class Departement
     public function setNomDepartement($nomDepartement)
     {
         $this->nomDepartement = $nomDepartement;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->Description;
+    }
+
+    /**
+     * @param mixed $Description
+     */
+    public function setDescription($Description)
+    {
+        $this->Description = $Description;
     }
 
 

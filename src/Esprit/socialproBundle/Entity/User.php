@@ -506,4 +506,5 @@ class User extends BaseUser
         $this->skype = $skype;
     }
 
+
 }

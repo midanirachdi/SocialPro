@@ -1,0 +1,21 @@
+<div class="list-group lg-alt c-overflow">
+
+
+
+    {% for transfert in transferts  %}
+    {% if is_granted('ROLE_CHEF_DEP') and app.user.departement == transfert.idDepartementnouveau %}
+    <a href="{{ path('espritsocialpro_transfert', {'id' : transfert.idTransfer}) }}" class="list-group-item media">
+        <div class="pull-left">
+            <img class="avatar-img" src="{{ asset('bundles/espritsocialpro/index/img/profile-pics/1.jpg')  }}"  alt="">
+        </div>
+        <div class="media-body">
+            <div class="lgi-heading">{{ transfert.idDepartementactuel.chef.nom }} {{ transfert.idDepartementactuel.chef.prenom }}</div>
+            <small class="lgi-text">{{ transfert.raison }}</small>
+        </div>
+
+    </a>
+    {% endif %}
+    {% endfor %}
+
+
+</div>

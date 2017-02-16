@@ -8,6 +8,7 @@ class FilactualiteController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('EspritsocialproBundle:filactualite:indexfil.html.twig');
+
+        return $this->render('EspritsocialproBundle:filactualite:indexfil.html.twig' );
     }
 }
