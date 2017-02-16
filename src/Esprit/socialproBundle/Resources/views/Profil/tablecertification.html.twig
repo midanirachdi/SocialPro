@@ -1,16 +1,16 @@
+
 <div  class="pmb-block clearfix photos" >
     <div class="p-header">
         <table class="table">
             <thead>
-            <th style="text-align: center">ID</th>
             <th style="text-align: center">Compétence</th>
             <th style="text-align: center">Date d'éxpiration</th>
             <th style="text-align: center">Document</th>
+            <th style="text-align: center">Effacer certification</th>
             </thead>
             <tbody>
             {% for c in certifications %}
             <tr>
-                <td style="text-align: center" >{{ c.idcertification }}</td>
                 <td style="text-align: center">{{ c.competence.description }}</td>
                 <td style="text-align: center">{{ c.dateexpiration|date('d/m/Y') }}</td>
                 {% if c.image != NULL %}
@@ -25,12 +25,14 @@
                     <center><input style="margin-right: -40%" name="imagecertif" type="file"/></center>
                     </form>
                 </td>
+                {% endif %}
+                <td> <center><a href="{{ path('effacercertififcation' , {'id':c.idcertification })}}" class="btn btn-primary" style="position: relative;margin-top: 40% ">Effacer</a></center></td>
             </tr>
-            {% endif %}
             {% endfor %}
             </tbody>
         </table>
-        <center><button onclick="popup()" class="fadeInUp btn btn-primary">Ajouter certification</button></center>
+
+  <center>  <button onclick="popup()" style="margin-top: 2%" class="fadeInUp btn btn-primary">Ajouter certification</button></center>
         <form class="addEvent" action="{{ path('ajouterCertification') }}">
         <div class="modal fade" id="addNew-event" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog">
@@ -43,10 +45,10 @@
 
                             <div style="margin:20px 0 25px 0;">
                                 <div class="fg-line">
-                                    <strong>Nom de certification</strong> <input name="description" type="text" class="input-sm form-control"  placeholder="Nom de la certification">
+                                    <strong>Nom de certification</strong> <input name="description" type="text" class="input-sm form-control" REQUIRED placeholder="Nom de la certification">
                                 </div>
                                 <div class="fg-line" style="margin-top: 4%">
-                                    <strong>Date d'expiration</strong><input name="duree" type="date" class="input-sm form-control" id="eventName" placeholder="Années de validité d'aun an à 5 ans">
+                                    <strong>Date d'expiration</strong><input name="duree" type="integer" pattern="[0-5]{1}" class="input-sm form-control" REQUIRED id="eventName" placeholder="Années de validité d'aun an à 5 ans">
                                 </div>
                                 <div class="fg-line" style="margin-top: 5%">
                                     <strong>Image de certification</strong><center><input name="imagecertif" type="file" id="eventName" style="margin-top: 1%;margin-left:15%"/></center>
@@ -60,7 +62,7 @@
                             </div >
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" class="btn btn-primary btn-sm" id="addEvent">Ajouter</input>
+                        <button type="submit" class="btn btn-primary btn-sm" id="addEvent">Ajouter</button>
                         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Annuler</button>
                     </div>
                 </div>

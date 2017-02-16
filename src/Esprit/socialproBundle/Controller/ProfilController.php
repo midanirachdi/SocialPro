@@ -38,7 +38,7 @@ class ProfilController extends Controller
         $user->setSkype($req->get("skype"));
         $em->persist($user);
         $em->flush();
-        return $this->render('@Espritsocialpro/Profil/profil.html.twig');
+        return  $this->redirectToRoute('espritsocialpro_profil');
     }
 
     public function modifierdescAction(Request $req)
@@ -48,7 +48,7 @@ class ProfilController extends Controller
         $user->setDescription($req->get("description"));
         $em->persist($user);
         $em->flush();
-        return $this->render('@Espritsocialpro/Profil/profil.html.twig');
+        return $this->redirectToRoute('espritsocialpro_profil');
 
     }
     public function modifierinfosAction(Request $req)
@@ -60,7 +60,7 @@ class ProfilController extends Controller
         $user->setAdresse($req->get("adresse"));
         $em->persist($user);
         $em->flush();
-        return $this->render('@Espritsocialpro/Profil/profil.html.twig');
+        return  $this->redirectToRoute('espritsocialpro_profil');
     }
 
     public function rechercherconnecterAction()
@@ -86,7 +86,7 @@ class ProfilController extends Controller
         $user->setConnected(1);
         $em->persist($user);
         $em->flush();
-        return $this->render('@FOSUser/Security/login.html.twig');
+        return $this->render('@Espritsocialpro/Profil/profil.html.twig');
     }
     public function modifierindisponnibleAction()
     {
@@ -94,6 +94,8 @@ class ProfilController extends Controller
         $user=$this->getUser();
         $user->setConnected(2);
         $em->persist($user);
+        $em->flush();
+        return $this->render('@Espritsocialpro/Profil/profil.html.twig');
     }
 
 
