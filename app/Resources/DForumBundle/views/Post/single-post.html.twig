@@ -30,11 +30,11 @@
         <div id="content{{ post.id }}" class="raw">{{ post.content }}</div>
       {% if app.user and posts is defined %}
         <ul class="pull-right list-inline">
-          <li><a href="{{ path(posts.route, {'slug': posts.params.slug, 'p': posts.pageCount, 'quote': post.id}) }}#discutea_forum_post"><i class="glyphicon glyphicon-tint"></i> {{ 'discutea.forum.quote'|trans }}</a></li>
+          {#<li><a href="{{ path(posts.route, {'slug': posts.params.slug, 'p': posts.pageCount, 'quote': post.id}) }}#discutea_forum_post"><i class="glyphicon glyphicon-tint"></i> {{ 'discutea.forum.quote'|trans }}</a></li>#}
           {% if posts.pageCount != posts.currentPageNumber %}
             <li><a href="{{ path(posts.route, {'slug': posts.params.slug, 'p': posts.pageCount}) }}#discutea_forum_post"><i class="glyphicon glyphicon-thumbs-up"></i> {{ 'discutea.forum.reply'|trans }}</a></li>
-          {% else %}
-            <li><a href="#discutea_forum_post"><i class="glyphicon glyphicon-thumbs-up"></i> {{ 'discutea.forum.reply'|trans }}</a></li>
+          {#{% else %}#}
+            {#<li><a href="#discutea_forum_post"><i class="glyphicon glyphicon-thumbs-up"></i> {{ 'discutea.forum.reply'|trans }}</a></li>#}
           {% endif %} 
         </ul>
       {% endif %}

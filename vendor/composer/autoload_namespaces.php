@@ -18,4 +18,5 @@ return array(
     'Doctrine\\Common\\Annotations\\' => array($vendorDir . '/doctrine/annotations/lib'),
     'Discutea\\DForumBundle' => array($vendorDir . '/discutea/forum-bundle'),
     'Behat\\Transliterator' => array($vendorDir . '/behat/transliterator/src'),
+    'Assetic' => array($vendorDir . '/kriswallsmith/assetic/src'),
 );

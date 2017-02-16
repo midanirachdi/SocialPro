@@ -2,6 +2,14 @@
 
 {% block titreheader %}
   Forum
+  <div class="pull-right">
+
+      <p>
+        <a class="btn palette-Teal bg" href="{{ path('discutea_forum_homepage') }}"><i
+                  class="zmdi zmdi-long-arrow-return zmdi-hc-fw"></i> Retourner à la liste des forums</a>
+      </p>
+
+  </div>
 {% endblock %}
 
 {% block active8 %} class="active" {% endblock %}
@@ -11,12 +19,13 @@
 {% endblock %}
 
 {% block bodyheader %}
-  Choisissez votre topic
+  Liste des sujets
 {% endblock %}
 
 {% block bodymain %}
 <div class="container">
-    <h1 class="text-center">{{ forum.name }} <small>({{ pagination.getTotalItemCount }} topics)</small></h1>
+
+    <h1 class="text-center">{{ forum.name }} <small>({{ pagination.getTotalItemCount }} sujets)</small></h1>
     <p class="text-center">{{ forum.description }}</p>
     {{ knp_pagination_render(pagination) }}
       {% for topic in pagination %}
@@ -56,22 +65,22 @@
               </a>
             </div>
           </div>
-          {% if is_granted('ROLE_MODERATOR') %}  
+          {% if is_granted('ROLE_MODERATOR') %}
             <div class="row admin">
               <ul class="pull-right list-inline">
                 <li><a id="{{ topic.id }}" class="editAction" href="{{ path("discutea_forum_topic_edit", {'id': topic.id}) }}"><i class="glyphicon glyphicon-edit"></i> {{ 'discutea.forum.edit'|trans }}</a></li>
-                <li><a href="{{ path('discutea_forum_topic_delete', {'id': topic.id}) }}"><i class="glyphicon glyphicon-remove"></i> {{ 'discutea.forum.remove'|trans }}</a></li>  
+                <li><a href="{{ path('discutea_forum_topic_delete', {'id': topic.id}) }}"><i class="glyphicon glyphicon-remove"></i> {{ 'discutea.forum.remove'|trans }}</a></li>
               </ul>
             </div>
           {% endif %}
-        </div>    
+        </div>
       {% else %}
         <div class="list-group-item text-center"><h5>{{ 'discutea.forum.null'|trans }}</h5></div>
       {% endfor %}
- 
+
 
   {{ knp_pagination_render(pagination) }}
-  
+
   {% if form is not null %}{% include 'DForumBundle:Form:Topic.html.twig' %}{% endif %}
 </div>
     {% endblock %}

@@ -113,3 +113,8 @@ discutea_forum:
         posts:
             enabled: true
             per_page: 10
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: false
+    filters:
+        cssrewrite: ~
