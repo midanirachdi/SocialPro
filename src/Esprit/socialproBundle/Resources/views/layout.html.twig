@@ -9,7 +9,7 @@
     {% block cssjs %} {% endblock %}
     {% block stylesheet %}
         <!-- Vendor CSS -->
-        <link href="{{ asset('bundles/espritsocialpro/index/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css')  }}" rel="stylesheet">
+        <link href="{{ asset('bundles/espritsocialpro/index/vendors/bower_components/fullcalendar/dist/fullcalendar.min.cssf')  }}" rel="stylesheet">
         <link href="{{ asset('bundles/espritsocialpro/index/vendors/bower_components/animate.css/animate.min.css')  }}"  rel="stylesheet">
         <link href="{{ asset('bundles/espritsocialpro/index/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css')  }}" rel="stylesheet">
         <link href="{{ asset('bundles/espritsocialpro/index/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css')  }}"  rel="stylesheet">
@@ -20,6 +20,8 @@
         <link href="{{ asset('bundles/espritsocialpro/index/vendors/farbtastic/farbtastic.css') }}" rel="stylesheet">
         <link href="{{ asset('bundles/espritsocialpro/index/vendors/bower_components/chosen/chosen.min.css') }}" rel="stylesheet">
         <link href="{{ asset('bundles/espritsocialpro/index/vendors/summernote/dist/summernote.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/espritsocialpro/index/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css') }}" rel="stylesheet">
+
         <!-- CSS -->
         <link href="{{ asset('bundles/espritsocialpro/index/css/app.min.1.css')  }}"  rel="stylesheet">
         <link href="{{ asset('bundles/espritsocialpro/index/css/app.min.2.css')  }}"  rel="stylesheet">
@@ -35,7 +37,7 @@
 {% block header %}
     <header id="header" class="media">
         <div class="pull-left h-logo" style="height: 70px;">
-            <a href="{{ path('espritsocialpro_homepage') }}" class="hidden-xs">
+            <a href="{{ path('espritsocialpro_filactualite') }}" class="hidden-xs">
                 <center><img src="{{ asset('bundles/espritsocialpro/index/img/socialpro.png')  }}"  width="150" height="150"/>  </center>
             </a>
             <div class="menu-collapse" data-ma-action="sidebar-open" data-ma-target="main-menu">
@@ -372,16 +374,11 @@
                     <ul>
                         <li {% block active4 %} {% endblock %}><a href="{{ path('espritsocialpro_gestionreunions') }}">Gestion des réunions</a></li>
                         <li {% block active5 %} {% endblock %}><a href="{{ path('espritsocialpro_reunions') }}">Calendrier des réunions</a></li>
-                        <li {% block active51 %} {% endblock %}><a href="{{ path('espritsocialpro_gestionsallesreunions') }}">Gestion des salles de réunions</a></li>
                     </ul>
                 </li>
-                <li {% block active6 %} class="sub-menu" {% endblock %}><a href="{{ path('espritsocialpro_projets') }}" ><i class="zmdi zmdi-view-list"></i> Projets</a>
-                    <ul>
-                        <li {% block active61 %} {% endblock %}><a href="{{ path('espritsocialpro_taches') }}">Gestion des tâches</a></li>
-                        <li {% block active62 %} {% endblock %}><a href="{{ path('espritsocialpro_equipes') }}">Gestion des équipes</a></li>
-                        <li {% block active63 %} {% endblock %}><a href="{{ path('espritsocialpro_gestionprojets') }}">Gestion des projets</a></li>
-                    </ul>
-                </li>
+                <li {% block active61 %} {% endblock %}><a href="{{ path('espritsocialpro_taches') }}"><i class="zmdi zmdi-calendar"></i>Tâches</a></li>
+                <li {% block active62 %} {% endblock %}><a href="{{ path('espritsocialpro_equipes') }}"><i class="zmdi zmdi-collection-text"></i>Equipes</a></li>
+                <li {% block active63 %} {% endblock %}><a href="{{ path('espritsocialpro_gestionprojets') }}"><i class="zmdi zmdi-trending-up"></i>Projets</a></li>
                 <li {% block active7 %} {% endblock %}><a href="{{ path('espritsocialpro_offres') }}"><i class="zmdi zmdi-swap-alt"></i>Offres</a></li>
                 <li {% block active8 %} {% endblock %}><a href="{{ path('espritsocialpro_forum') }}"><i class="zmdi zmdi-collection-item"></i> Forum </a></li>
                 <li {% block active9 %} {% endblock %}><a href="{{ path('espritsocialpro_statistiques') }}"><i class="zmdi zmdi-trending-up"></i> Statistiques</a></li>

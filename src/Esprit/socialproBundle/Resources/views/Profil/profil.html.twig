@@ -73,7 +73,7 @@
                     {% endif %}
                 </ul>
             </div>
-            <div id="ajaxconnected">{{ render(controller('EspritsocialproBundle:Profil:rechercherconnecter')) }} </div>
+            <div id="ajaxconnected"> </div>
 
 
         </div>
@@ -125,12 +125,12 @@
                                 <div class="fg-line">
                                     <textarea name="description" class="form-control" rows="5" placeholder="Decrivez vous..." >{{ app.user.description }}</textarea>
                                 </div>
-                                <center>
+
                                     <div class="m-t-30">
                                         <button class="btn btn-primary waves-effect">Enregistrer</button>
                                         <button data-pmb-action="reset" class="btn palette-Deep-Orange bg waves-effect">Annuler</button>
                                     </div>
-                                </center>
+
                             </div>
                         </form>
                     </div>
@@ -139,7 +139,6 @@
                 <div class="pmb-block">
                     <div class="pmbb-header">
                         <h2><i class="zmdi zmdi-account m-r-5"></i> Informations générales</h2>
-
                         <ul class="actions">
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown">
@@ -157,18 +156,24 @@
 
                     <div class="pmbb-body p-l-30">
                         <div class="pmbb-view">
+
                             <dl class="dl-horizontal">
                                 <dt>Nom Complet</dt>
                                 <dd><p style="text-transform: capitalize">{{ app.user.prenom }} {{ app.user.nom }}</p></dd>
                             </dl>
+
+                            {% if app.user.gendre!=NULL %}
                             <dl class="dl-horizontal">
                                 <dt>Gendre</dt>
                                 <dd><p style="text-transform: capitalize">{{ app.user.gendre }}</p></dd>
                             </dl>
+                            {% endif %}
+                            {% if app.user.datenaissance!=NULL %}
                             <dl class="dl-horizontal">
                                 <dt>Date de naissance</dt>
                                 <dd>{{ app.user.datenaissance|date("d/m/Y") }}</dd>
                             </dl>
+                            {% endif %}
 
                         </div>
                         <form method="POST" action="modifierinfos">

@@ -58,7 +58,6 @@ class ProfilController extends Controller
         $date = new \DateTime($req->get("datenaissance"));
         $user->setDatenaissance($date);
         $user->setAdresse($req->get("adresse"));
-
         $em->persist($user);
         $em->flush();
         return $this->render('@Espritsocialpro/Profil/profil.html.twig');
@@ -99,7 +98,9 @@ class ProfilController extends Controller
 
 
     public function ProfilAmiAction($id)
-    {        $em = $this->getDoctrine()->getManager();
+    {
+        $em = $this->getDoctrine()->getManager();
         $users = $em->getRepository('EspritsocialproBundle:User')->findBy(array('id'=>$id));
         return $this->render('@Espritsocialpro/Profil/profilAmi.html.twig',array('users'=>$users));
-    }}
+    }
+}

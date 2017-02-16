@@ -45,21 +45,6 @@ class Certification
      */
     private $image;
 
-    /**
-     * @return mixed
-     */
-    public function getCertification()
-    {
-        return $this->certification;
-    }
-
-    /**
-     * @param mixed $certification
-     */
-    public function setCertification($certification)
-    {
-        $this->certification = $certification;
-    }
 
     /**
      * @return mixed
