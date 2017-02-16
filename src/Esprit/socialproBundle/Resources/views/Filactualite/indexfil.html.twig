@@ -18,33 +18,23 @@
     <div class="row">
         <div class="col-md-8">
             {% if is_granted('ROLE_CHEF_DEP') or  is_granted('ROLE_CHEF_PROJET') %}
+
                 <div class="card wall-posting">
                     <div class="card-body card-padding">
-                        <textarea class="wp-text" data-auto-size placeholder="Publier..."></textarea>
-
-                        <div class="tab-content p-0">
-                            <div class="wp-media tab-pane" id="wpm-image">
-                                Images - Coming soon...
-                            </div>
-
-                            <div class="wp-media tab-pane" id="wpm-video">
-                                Video Links - Coming soon...
-                            </div>
-
-                            <div class="wp-media tab-pane" id="wpm-link">
-                                Links - Coming soon...
-                            </div>
-                        </div>
+                        <textarea name="contenu" id="contenu" class="wp-text" data-auto-size placeholder="Publier..."></textarea>
                     </div>
-
                     <ul class="list-unstyled clearfix wpb-actions">
-                        <li class="wpba-attrs">
-                            <ul class="list-unstyled list-inline">
-                                <li><a data-wpba="link" data-toggle="tab" href="#" data-target="#wpm-link"><i class="zmdi zmdi-link"></i></a></li>
-                            </ul>
+                        <li>
+                            {% for tag in tags %}
+                            <label class="radio radio-inline m-r-20">
+                                <input id="tag" type="radio" name="tag" value="{{ tag.competence.description }}">
+                                <i class="input-helper"></i>
+                                {{ tag.competence.description }}
+                            </label>
+                            {% endfor %}
                         </li>
 
-                        <button class="btn btn-primary btn-sm btn-icon"><i class="zmdi zmdi-check"></i></button>
+                        <li><button onclick="AjoutFil()" class="btn btn-primary btn-sm btn-icon"><i class="zmdi zmdi-check"></i></button></li>
                     </ul>
                 </div>
             {% endif %}
@@ -58,7 +48,9 @@
                              </div>
 
                              <div class="media-body m-t-5">
-                                 <h2>Nadia Zayene <small>Publié en 30 Septembre 2015 à 22:00</small></h2>
+                                 {% if actu.utilisateur.id is defined %}
+                                     <a href="{{ path('profilami' , {'id':actu.utilisateur.id })}}"><h2>{{ actu.utilisateur.nom }} {{ actu.utilisateur.prenom }}</a><small>Publié en {{ actu.datePublication|date("d M Y  h:s a") }}</small></h2>
+                             {% endif %}
                              </div>
                          </div>
                      </div>
@@ -211,5 +203,21 @@
         };
         var interval=1000*60*0.5;
         setInterval(ajax_affiche,interval);
+        function AjoutFil() {
+            var cont= document.getElementById("contenu").value;
+            var tay=$('input[name="tag"]:checked').val();
+            console.log(cont);
+            console.log(tay);
+            $.ajax({
+                type:'POST',
+                url:'{{ path("ajoutfil") }}',
+                data:{contenu : cont , tag : tay },
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+            document.getElementById("contenu").value="";
+            ajax_affiche();
+        }
 </script>
 {% endblock %}

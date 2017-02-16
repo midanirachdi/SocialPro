@@ -9,6 +9,9 @@ espritsocialpro_profil:
 espritsocialpro_filactualite:
     path:     /Filactualite
     defaults: { _controller: EspritsocialproBundle:Filactualite:index }
+ajoutfil:
+    path:     /ajoutfil
+    defaults: { _controller: EspritsocialproBundle:Filactualite:ajout }
 
 espritsocialpro_employes:
     path:     /Employes
@@ -155,4 +158,4 @@ affichercompetence:
     defaults: { _controller: EspritsocialproBundle:Certification:AfficherCompetence }
 effacercertififcation:
     path:     /effacercertification/{id}
-    defaults: { _controller: EspritsocialproBundle:Certification:effacercertification }
+    defaults: { _controller: EspritsocialproBundle:Certification:effacercertification }
