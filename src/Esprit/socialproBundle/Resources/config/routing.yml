@@ -9,6 +9,9 @@ espritsocialpro_profil:
 espritsocialpro_filactualite:
     path:     /Filactualite
     defaults: { _controller: EspritsocialproBundle:Filactualite:index }
+ajoutfil:
+    path:     /ajoutfil
+    defaults: { _controller: EspritsocialproBundle:Filactualite:ajout }
 
 espritsocialpro_employes:
     path:     /Employes
@@ -63,7 +66,6 @@ espritsocialpro_update_projets:
 espritsocialpro_taches:
     path:     /Taches
     defaults: { _controller: EspritsocialproBundle:Projets:taches }
-
 
 espritsocialpro_equipes:
     path:     /Equipes
@@ -146,5 +148,8 @@ ajoutercompetence:
     path:     /ajoutercompetence
     defaults: { _controller: EspritsocialproBundle:Certification:Ajoutercompetence }
 affichercompetence:
-    path:     /ajoutercompetence
+    path:     /affichecompetence
     defaults: { _controller: EspritsocialproBundle:Certification:AfficherCompetence }
+effacercertififcation:
+    path:     /effacercertification/{id}
+    defaults: { _controller: EspritsocialproBundle:Certification:effacercertification }

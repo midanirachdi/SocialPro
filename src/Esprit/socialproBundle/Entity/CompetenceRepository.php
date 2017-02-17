@@ -17,4 +17,10 @@ class CompetenceRepository extends EntityRepository
         $query=$this->getEntityManager()->createQuery("SELECT DISTINCT u FROM EspritsocialproBundle:competence u  ");
         return $query->getResult();
     }
+    public function findcompetenceparnom($description)
+    {
+        $query=$this->getEntityManager()->createQuery("SELECT u FROM EspritsocialproBundle:competence u where u.description =:a ");
+        $query->setParameter('a',$description);
+        return $query->getResult();
+    }
 }
