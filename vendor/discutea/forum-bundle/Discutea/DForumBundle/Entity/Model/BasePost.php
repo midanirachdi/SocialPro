@@ -22,6 +22,27 @@ abstract class BasePost
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+    /**
+     * @ORM\Column(type="integer",nullable=true)
+     */
+    private $sentiment;
+
+    /**
+     * @return mixed
+     */
+    public function getSentiment()
+    {
+        return $this->sentiment;
+    }
+
+    /**
+     * @param mixed $sentiment
+     */
+    public function setSentiment($sentiment)
+    {
+        $this->sentiment = $sentiment;
+    }
+
 
     /**
      * @ORM\Column(name="content", type="text", nullable=false)
