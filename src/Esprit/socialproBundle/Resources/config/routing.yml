@@ -82,20 +82,14 @@ espritsocialpro_offres:
 espritsocialpro_ajoutoffre:
     path:     /ajoutoffre
     defaults: { _controller: EspritsocialproBundle:Offres:ajout }
+
 espritsocialpro_suppoffre:
     path:     /suppoffre/{id}
     defaults: { _controller: EspritsocialproBundle:Offres:supp }
+
 espritsocialpro_modifoffre:
     path:     /modifoffre/{id}
     defaults: { _controller: EspritsocialproBundle:Offres:update }
-
-espritsocialpro_forum:
-    path:     /Forum
-    defaults: { _controller: EspritsocialproBundle:Forum:index }
-
-espritsocialpro_support:
-    path:     /Support
-    defaults: { _controller: EspritsocialproBundle:Forum:support }
 
 espritsocialpro_statistiques:
     path:     /Statistiques

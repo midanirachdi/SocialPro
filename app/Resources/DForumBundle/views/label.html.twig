@@ -1,5 +1,8 @@
 <div class="raw">
-    <a href="{{ path('discutea_label_solved', {'slug': topic.slug}) }}">{{ 'discutea.forum.label.solved'|trans }}</a>
+    {% if topic.resolved == false %}
+    <a class="btn palette-Teal bg pull-right"  href="{{ path('discutea_label_solved', {'slug': topic.slug}) }}">
+        <i class="zmdi zmdi-check-circle zmdi-hc-fw"></i>{{ 'discutea.forum.label.solved'|trans }}</a>
+    {% endif %}
     {% if is_granted('ROLE_MODERATOR') %}
       <a href="{{ path('discutea_label_closed', {'slug': topic.slug}) }}">{{ 'discutea.forum.label.closed'|trans }}</a>
       {% if is_granted('ROLE_ADMIN') %}
@@ -7,3 +10,4 @@
       {% endif %}
     {% endif %}
 </div>
+

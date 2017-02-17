@@ -28,16 +28,54 @@
       </div>
               
         <div id="content{{ post.id }}" class="raw">{{ post.content }}</div>
+        {% set sentiment = 1  %}
       {% if app.user and posts is defined %}
         <ul class="pull-right list-inline">
-          <li><a href="{{ path(posts.route, {'slug': posts.params.slug, 'p': posts.pageCount, 'quote': post.id}) }}#discutea_forum_post"><i class="glyphicon glyphicon-tint"></i> {{ 'discutea.forum.quote'|trans }}</a></li>
+          {#<li><a href="{{ path(posts.route, {'slug': posts.params.slug, 'p': posts.pageCount, 'quote': post.id}) }}#discutea_forum_post"><i class="glyphicon glyphicon-tint"></i> {{ 'discutea.forum.quote'|trans }}</a></li>#}
           {% if posts.pageCount != posts.currentPageNumber %}
             <li><a href="{{ path(posts.route, {'slug': posts.params.slug, 'p': posts.pageCount}) }}#discutea_forum_post"><i class="glyphicon glyphicon-thumbs-up"></i> {{ 'discutea.forum.reply'|trans }}</a></li>
-          {% else %}
-            <li><a href="#discutea_forum_post"><i class="glyphicon glyphicon-thumbs-up"></i> {{ 'discutea.forum.reply'|trans }}</a></li>
+          {#{% else %}#}
+            {#<li><a href="#discutea_forum_post"><i class="glyphicon glyphicon-thumbs-up"></i> {{ 'discutea.forum.reply'|trans }}</a></li>#}
           {% endif %} 
         </ul>
       {% endif %}
     </div>
   </div>
 </li>
+
+<div id="abc"></div>
+<script src="{{ asset('bundles/espritsocialpro/login/js/jquery.min.js') }}"></script>
+<script type="text/javascript">
+    $(function() {
+        var params ={
+            "documents": [
+                {
+                    "language": "fr",
+                    "id": "1",
+                    "text": "{{ post.content }}"
+                }
+            ]
+        };
+
+
+        $.ajax({
+            url: "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment?" + $.param( params ),
+            beforeSend: function(xhrObj){
+// Request headers
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","9663d42013cc4e63843ccaf9c42e62f6");
+                xhrObj.setRequestHeader("Accept","application/json");
+            },
+            type: "POST",
+// Request body
+            data: JSON.stringify(params)
+        })
+            .done(function(data) {
+                $("#abc").html(""+data.documents[0].score);
+
+            })
+            .fail(function() {
+                $("#abc").html("erreur");
+            });
+    });
+</script>

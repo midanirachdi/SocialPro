@@ -1,7 +1,15 @@
 {% extends '@Espritsocialpro/layout.html.twig' %}
 
 {% block titreheader %}
-  Forum
+    Forum
+    <div class="pull-right">
+
+        <p>
+            <a class="btn palette-Teal bg" href="{{ path('discutea_forum_homepage') }}"><i
+                        class="zmdi zmdi-long-arrow-return zmdi-hc-fw"></i> Retourner à la liste des forums</a>
+        </p>
+
+    </div>
 {% endblock %}
 
 {% block active8 %} class="active" {% endblock %}
@@ -11,39 +19,53 @@
 {% endblock %}
 
 {% block bodyheader %}
-  Choisissez votre post
+
+    Postez votre message
+
 {% endblock %}
 
 {% block bodymain %}
-<div class="container">
-  <h1 class="text-center">{{ topic.title }}</h1>
-  {{ knp_pagination_render(posts) }}
-  
-  {% if topic.closed == true %}
-    <div class="alert alert-danger">{{ 'discutea.forum.label.isclosed'|trans }}</div>
-  {% endif %}
-  {% if topic.resolved == true %}
-    <div class="alert alert-success">{{ 'discutea.forum.label.issolved'|trans }}</div>
-  {% endif %}
-  {% if topic.pinned == true %}
-    <div class="alert alert-warning">{{ 'discutea.forum.label.ispinned'|trans }}</div>
-  {% endif %}
+    <div class="container">
 
-  <ul class="list-unstyled">
-    {% for post in posts %}{% include 'DForumBundle::Post/single-post.html.twig' %}{% endfor %}
-    {% if postpreview %}{% include 'DForumBundle::Post/preview-post.html.twig' %}{% endif %}
-    {% if is_granted('CanEditTopic', topic) %}{% include 'DForumBundle::label.html.twig' %}{% endif %}
-  </ul>
+        <h1 class="text-center">{{ topic.title }}</h1>
 
-  {{ knp_pagination_render(posts) }}
-  
-  {% if form is not null %}
-    <h2>{{ topic.title }}</h2>
-    {% if date(topic.lastpost) < date('-1month') %}
-      <div class="alert alert-danger text-center" role="alert">{{ 'discutea.forum.post.aged'|trans }}</div>
-    {% endif %}
-    {% include 'DForumBundle::Form/Post.html.twig' %}
-  {% endif %}
-</div>
+        {{ knp_pagination_render(posts) }}
+
+        {#{% if topic.closed == true %}#}
+        {#<div class="alert alert-danger alert-dismissible">{{ 'discutea.forum.label.isclosed'|trans }}#}
+        {#<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span#}
+        {#aria-hidden="true">&times;</span></button>#}
+        {#</div>#}
+        {#{% endif %}#}
+        {#{% if topic.resolved == true %}#}
+        {#<div class="alert alert-success alert-dismissible">{{ 'discutea.forum.label.issolved'|trans }}#}
+        {#<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span#}
+        {#aria-hidden="true">&times;</span></button>#}
+
+        {#</div>#}
+        {#{% endif %}#}
+        {#{% if topic.pinned == true %}#}
+        {#<div class="alert alert-warning alert-dismissible">{{ 'discutea.forum.label.ispinned'|trans }}#}
+        {#<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span#}
+        {#aria-hidden="true">&times;</span></button>#}
+        {#</div>#}
+        {#{% endif %}#}
+
+        <ul class="list-unstyled">
+            {% for post in posts %}{% include 'DForumBundle::Post/single-post.html.twig' %}{% endfor %}
+            {% if postpreview %}{% include 'DForumBundle::Post/preview-post.html.twig' %}{% endif %}
+            {% if is_granted('CanEditTopic', topic) %}{% include 'DForumBundle::label.html.twig' %}{% endif %}
+        </ul>
+
+        {{ knp_pagination_render(posts) }}
+
+        {% if form is not null %}
+            {% if date(topic.lastpost) < date('-1month') %}
+                <div class="alert alert-danger text-center" role="alert">{{ 'discutea.forum.post.aged'|trans }}</div>
+            {% endif %}
+            {% include 'DForumBundle::Form/Post.html.twig' %}
+        {% endif %}
+    </div>
+
 {% endblock %}
 

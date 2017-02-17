@@ -40,6 +40,27 @@ class DemandesInscri
     private $mdp;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $vu;
+
+    /**
+     * @return mixed
+     */
+    public function getVu()
+    {
+        return $this->vu;
+    }
+
+    /**
+     * @param mixed $vu
+     */
+    public function setVu($vu)
+    {
+        $this->vu = $vu;
+    }
+
+    /**
      * @return mixed
      */
     public function getId()

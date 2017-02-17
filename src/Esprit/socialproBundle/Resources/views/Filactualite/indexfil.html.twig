@@ -195,7 +195,7 @@
         var ajax_affiche= function(){
             $.ajax({
                 type:'POST',
-                url:'{{ path("actus") }}',
+                url:'{{ path("espritsocialpro_filactualite") }}',
                 success: function (response) {
                     $("#fils").html(response);
                 }

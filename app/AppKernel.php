@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Discutea\DForumBundle\DForumBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

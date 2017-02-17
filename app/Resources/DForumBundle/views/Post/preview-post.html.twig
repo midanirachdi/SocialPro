@@ -1,4 +1,9 @@
-<div class="alert alert-danger text-center" role="alert">{{ 'discutea.forum.warning.preview'|trans }}</div>
+<div class="alert alert-danger text-center alert-dismissible" role="alert">
+  {{ 'discutea.forum.warning.preview'|trans }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+
+</div>
 
 <li id="post-preview" class="list-group-item topics">
   <div class="row">

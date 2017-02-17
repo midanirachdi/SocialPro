@@ -1,17 +1,31 @@
-{% extends "DForumBundle::layout.html.twig" %}
+{% extends '@Espritsocialpro/layout.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block titreheader %}
+  Forum
+  <div class="pull-right">
 
-{% block stylesheets %}
-  {% stylesheets 
-    '@DForumBundle/Resources/public/css/post.css' %}
-  <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-  {% endstylesheets %}
+    <p>
+      <a class="btn palette-Teal bg" href="{{ path('discutea_forum_homepage') }}"><i
+                class="zmdi zmdi-long-arrow-return zmdi-hc-fw"></i> Retourner à la liste des forums</a>
+    </p>
+
+  </div>
 {% endblock %}
 
-{% block body %}
-<div class="container">
-<h1 class="text-center">{{ 'discutea.forum.post.editpost'|trans }}</h1>
+{% block active8 %} class="active" {% endblock %}
+
+{% block descheader %}
+
+{% endblock %}
+
+{% block bodyheader %}
+    {{ 'discutea.forum.post.editpost'|trans }}
+{% endblock %}
+
+{% block bodymain %}
+
+  <div class="container">
+
   
   <ul id="postsList" class="list-unstyled">
 
@@ -22,7 +36,7 @@
   </ul>
 
   {% if form is not null %}
-  <h2>form</h2>
+
 
   
    {% include 'DForumBundle:Form:Post.html.twig' %}
@@ -41,7 +55,7 @@
           '@DForumBundle/Resources/public/js/post.js'
           '@DForumBundle/Resources/public/js/moderator/post.js' %}
           <script src="{{ asset_url }}"></script>
-        {% endjavascripts %}       
+        {% endjavascripts %}
     {% else %}
         {% javascripts
           '@DForumBundle/Resources/public/js/post.js' %}
